@@ -274,6 +274,37 @@
     return buffer;
   };
 
+  // ---------- FFT (iterative radix-2, in-place; n must be a power of 2) ----------
+  Engine.fft = function (re, im, inverse) {
+    var n = re.length;
+    for (var i = 1, j = 0; i < n; i++) {
+      var bit = n >> 1;
+      for (; j & bit; bit >>= 1) j ^= bit;
+      j ^= bit;
+      if (i < j) {
+        var tr = re[i]; re[i] = re[j]; re[j] = tr;
+        var ti = im[i]; im[i] = im[j]; im[j] = ti;
+      }
+    }
+    for (var len = 2; len <= n; len <<= 1) {
+      var ang = (inverse ? 2 : -2) * Math.PI / len;
+      var wr = Math.cos(ang), wi = Math.sin(ang);
+      for (var s = 0; s < n; s += len) {
+        var cr = 1, ci = 0;
+        for (var k = 0; k < len / 2; k++) {
+          var ur = re[s + k], ui = im[s + k];
+          var vr = re[s + k + len / 2] * cr - im[s + k + len / 2] * ci;
+          var vi = re[s + k + len / 2] * ci + im[s + k + len / 2] * cr;
+          re[s + k] = ur + vr; im[s + k] = ui + vi;
+          re[s + k + len / 2] = ur - vr; im[s + k + len / 2] = ui - vi;
+          var ncr = cr * wr - ci * wi;
+          ci = cr * wi + ci * wr; cr = ncr;
+        }
+      }
+    }
+    if (inverse) for (var m = 0; m < n; m++) { re[m] /= n; im[m] /= n; }
+  };
+
   // ---------- WAV encoding (16-bit PCM) ----------
   Engine.encodeWav = function (audioBuffer) {
     var numChannels = audioBuffer.numberOfChannels;

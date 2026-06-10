@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Metronome Free — 30–300 BPM, Tap Tempo & Time Signatures | MyFreeAudioTool</title>
+  <meta name="description" content="Free online metronome with rock-solid timing: 30–300 BPM, time signatures with accented downbeat, tap tempo and a visual pulse. Runs in your browser, works offline after load.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/metronome/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/metronome/">
+  <meta property="og:title" content="Online Metronome Free — 30–300 BPM, Tap Tempo">
+  <meta property="og:description" content="Sample-accurate metronome with time signatures, accents, tap tempo and visual pulse. Free, in your browser.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Online Metronome Free">
+  <meta name="twitter:description" content="Sample-accurate metronome: 30–300 BPM, time signatures, tap tempo.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Metronome — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/metronome/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online metronome with sample-accurate Web Audio scheduling, 30–300 BPM, time signatures with accented downbeats, tap tempo and a visual pulse."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is an online metronome accurate enough to practice with?", "acceptedAnswer": { "@type": "Answer", "text": "This one is. It schedules clicks ahead of time on the Web Audio clock — the same sample-accurate clock used for music production — rather than relying on JavaScript timers, which drift. The result is rock-steady timing even when the browser is busy." } },
+      { "@type": "Question", "name": "How do I use tap tempo?", "acceptedAnswer": { "@type": "Answer", "text": "Tap the TAP button (or press T) in time with the music. After two taps the BPM is estimated from your tap intervals, averaging the last eight taps for stability." } },
+      { "@type": "Question", "name": "What BPM should I practice at?", "acceptedAnswer": { "@type": "Answer", "text": "Slower than you think — drop difficult passages to 60–70% of target tempo, play them perfectly clean, then raise the tempo in small steps. Practicing mistakes fast just makes the mistakes faster." } },
+      { "@type": "Question", "name": "Does it work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Once the page has loaded, the metronome needs no network at all — clicks are synthesized on your device." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-h)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      <span>MyFreeAudioTool<em class="logo__tag">.com</em></span>
+    </a>
+    <nav class="nav">
+      <a href="/#tools">tools</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <p class="kicker">// generate · tool 26</p>
+      <h1>Metronome</h1>
+      <p>Sample-accurate clicks from 30 to 300 BPM, with time signatures, accented downbeats, tap tempo and a visual pulse you can follow with the sound off.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="big-readout" id="bpmReadout">120 <small>BPM</small></div>
+
+      <div class="field">
+        <input type="range" class="slider" id="bpmSlider" min="30" max="300" step="1" value="120" aria-label="Tempo in BPM">
+      </div>
+
+      <div class="controls-row" style="justify-content:center">
+        <button class="btn btn--ghost btn--sm" id="bpmDown" type="button" aria-label="Decrease BPM">−1</button>
+        <button class="btn btn--ghost btn--sm" id="bpmDown5" type="button" aria-label="Decrease BPM by 5">−5</button>
+        <button class="btn btn--ghost btn--sm" id="tapBtn" type="button">TAP (T)</button>
+        <button class="btn btn--ghost btn--sm" id="bpmUp5" type="button" aria-label="Increase BPM by 5">+5</button>
+        <button class="btn btn--ghost btn--sm" id="bpmUp" type="button" aria-label="Increase BPM">+1</button>
+      </div>
+
+      <div class="controls-row" style="justify-content:center">
+        <div class="preset-row" id="sigs" style="margin:0">
+          <button class="preset-chip" type="button" data-beats="1">1/4</button>
+          <button class="preset-chip" type="button" data-beats="2">2/4</button>
+          <button class="preset-chip" type="button" data-beats="3">3/4</button>
+          <button class="preset-chip active" type="button" data-beats="4">4/4</button>
+          <button class="preset-chip" type="button" data-beats="5">5/4</button>
+          <button class="preset-chip" type="button" data-beats="6">6/8</button>
+          <button class="preset-chip" type="button" data-beats="7">7/8</button>
+        </div>
+        <label class="switch"><input type="checkbox" id="accentOn" data-switch checked>Accent downbeat</label>
+      </div>
+
+      <div id="pulseRow" style="display:flex;justify-content:center;gap:12px;margin:22px 0" aria-hidden="true"></div>
+
+      <div class="controls-row" style="justify-content:center">
+        <button class="btn btn--primary" id="playBtn" type="button">▶ Start (Space)</button>
+      </div>
+
+      <div class="status" id="status" style="text-align:center"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>A metronome that doesn't drift</h2>
+      <p>Most browser metronomes use JavaScript timers, which wobble by tens of milliseconds whenever the page breathes — enough to throw off your internal clock. This one uses the technique pro web audio apps use: a lookahead scheduler that books every click in advance on the <strong>Web Audio hardware clock</strong>, which is sample-accurate (±0.02 ms at 44.1 kHz). Leave it running for an hour and beat 14,400 lands exactly where it should.</p>
+      <h3>Practice technique, in three lines</h3>
+      <ul>
+        <li><strong>Slow it down.</strong> Take hard passages at 60–70% tempo until they're effortless, then climb back up in +5 BPM steps.</li>
+        <li><strong>Subdivide.</strong> For shuffles and compound feels, set 6/8 or 7/8 and let the accent anchor the "one."</li>
+        <li><strong>Mute test.</strong> Watch the visual pulse with the volume down and try to stay locked — brutal, and brutally effective.</li>
+      </ul>
+      <h3>Keyboard shortcuts</h3>
+      <ul>
+        <li><strong>Space</strong> — start / stop</li>
+        <li><strong>T</strong> — tap tempo</li>
+        <li><strong>↑ / ↓</strong> — ±1 BPM, <strong>Shift</strong> for ±5</li>
+      </ul>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Is an online metronome accurate enough to practice with?</summary>
+          <p>This one schedules clicks on the Web Audio clock — sample-accurate, no JavaScript timer drift, steady even when the browser is busy.</p>
+        </details>
+        <details>
+          <summary>How do I use tap tempo?</summary>
+          <p>Tap the TAP button (or press T) with the music; the BPM is averaged from your last eight tap intervals.</p>
+        </details>
+        <details>
+          <summary>What BPM should I practice at?</summary>
+          <p>Slower than you think — perfect the passage at 60–70% tempo, then raise in small steps.</p>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes — after the page loads, clicks are synthesized locally with no network needed.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="related-strip">
+      <p class="kicker">// related tools</p>
+      <div class="related-grid">
+        <a class="related-card" href="/instrument-tuner/"><b>Instrument Tuner</b><span>Tune up before you practice</span></a>
+        <a class="related-card" href="/bpm-key-finder/"><b>BPM &amp; Key Finder</b><span>Detect the tempo of any song</span></a>
+        <a class="related-card" href="/audio-recorder/"><b>Voice Recorder</b><span>Record your practice takes</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-f)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          <span>MyFreeAudioTool</span>
+        </a>
+        <p class="tagline">Free audio tools that run entirely in your browser. Zero uploads. Zero accounts. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>// edit &amp; record</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+          <li><a href="/silence-remover/">Silence Remover</a></li>
+          <li><a href="/audio-tag-editor/">MP3 Tag Editor</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// convert</h4>
+        <ul>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/extract-audio-from-video/">Video to MP3</a></li>
+          <li><a href="/stereo-to-mono/">Stereo ↔ Mono</a></li>
+          <li><a href="/432hz-converter/">432 Hz Converter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// effects</h4>
+        <ul>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/bass-booster/">Bass Booster</a></li>
+          <li><a href="/equalizer/">Equalizer</a></li>
+          <li><a href="/reverb/">Reverb</a></li>
+          <li><a href="/vocal-remover/">Vocal Remover</a></li>
+          <li><a href="/noise-reducer/">Noise Reducer</a></li>
+          <li><a href="/8d-audio/">8D Audio</a></li>
+          <li><a href="/3d-audio-panner/">3D Audio Panner</a></li>
+          <li><a href="/slowed-and-reverb/">Slowed &amp; Reverb</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/pitch-shifter/">Pitch Shifter</a></li>
+          <li><a href="/reverse-audio/">Reverse Audio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// generate</h4>
+        <ul>
+          <li><a href="/tone-generator/">Tone Generator</a></li>
+          <li><a href="/white-noise-generator/">Noise Generator</a></li>
+          <li><a href="/metronome/">Metronome</a></li>
+          <li><a href="/text-to-speech/">Text to Speech</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// analyze</h4>
+        <ul>
+          <li><a href="/bpm-key-finder/">BPM &amp; Key Finder</a></li>
+          <li><a href="/instrument-tuner/">Instrument Tuner</a></li>
+          <li><a href="/spectrogram/">Spectrogram</a></li>
+          <li><a href="/waveform-image/">Waveform Image</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// more free tools</h4>
+        <ul>
+          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
+          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script src="/assets/js/meters.js"></script>
+<script src="/assets/js/controls.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var bpm = 120, beats = 4, running = false;
+  var nextNoteTime = 0, beatInBar = 0, schedulerTimer = 0;
+  var taps = [];
+  var uiQueue = []; // {time, beat} for the visual pulse
+
+  function setBpm(v) {
+    bpm = Math.min(300, Math.max(30, Math.round(v)));
+    $('bpmReadout').innerHTML = bpm + ' <small>BPM</small>';
+    $('bpmSlider').value = bpm;
+  }
+
+  $('bpmSlider').addEventListener('input', function () { setBpm(parseFloat(this.value)); });
+  $('bpmUp').addEventListener('click', function () { setBpm(bpm + 1); });
+  $('bpmDown').addEventListener('click', function () { setBpm(bpm - 1); });
+  $('bpmUp5').addEventListener('click', function () { setBpm(bpm + 5); });
+  $('bpmDown5').addEventListener('click', function () { setBpm(bpm - 5); });
+
+  // ---------- pulse dots ----------
+  function buildDots() {
+    var row = $('pulseRow');
+    row.innerHTML = '';
+    for (var i = 0; i < beats; i++) {
+      var d = document.createElement('span');
+      d.style.cssText = 'width:16px;height:16px;border-radius:50%;background:var(--wave-base);transition:background 60ms ease, transform 60ms ease';
+      row.appendChild(d);
+    }
+  }
+  buildDots();
+
+  document.querySelectorAll('#sigs .preset-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('#sigs .preset-chip').forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      beats = parseInt(chip.dataset.beats, 10);
+      beatInBar = 0;
+      buildDots();
+    });
+  });
+
+  // ---------- click synthesis ----------
+  function scheduleClick(ctx, time, accent) {
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.frequency.value = accent ? 1568 : 1046; // G6 / C6
+    gain.gain.setValueAtTime(accent ? 0.5 : 0.3, time);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.05);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(time);
+    osc.stop(time + 0.06);
+  }
+
+  // ---------- lookahead scheduler ----------
+  function scheduler() {
+    var ctx = E.getAudioContext();
+    while (nextNoteTime < ctx.currentTime + 0.12) {
+      var accent = $('accentOn').checked && beatInBar === 0;
+      scheduleClick(ctx, nextNoteTime, accent);
+      uiQueue.push({ time: nextNoteTime, beat: beatInBar });
+      nextNoteTime += 60 / bpm;
+      beatInBar = (beatInBar + 1) % beats;
+    }
+  }
+
+  function uiTick() {
+    if (!running) return;
+    var ctx = E.getAudioContext();
+    while (uiQueue.length && uiQueue[0].time <= ctx.currentTime) {
+      var ev = uiQueue.shift();
+      var dots = $('pulseRow').children;
+      for (var i = 0; i < dots.length; i++) {
+        var on = i === ev.beat;
+        dots[i].style.background = on ? (ev.beat === 0 && $('accentOn').checked ? 'var(--accent)' : 'var(--accent-2)') : 'var(--wave-base)';
+        dots[i].style.transform = on ? 'scale(1.35)' : 'scale(1)';
+      }
+    }
+    requestAnimationFrame(uiTick);
+  }
+
+  function start() {
+    var ctx = E.getAudioContext();
+    running = true;
+    beatInBar = 0;
+    uiQueue.length = 0;
+    nextNoteTime = ctx.currentTime + 0.08;
+    scheduler();
+    schedulerTimer = setInterval(scheduler, 25);
+    requestAnimationFrame(uiTick);
+    $('playBtn').textContent = '⏸ Stop (Space)';
+  }
+  function stop() {
+    running = false;
+    clearInterval(schedulerTimer);
+    $('playBtn').textContent = '▶ Start (Space)';
+    var dots = $('pulseRow').children;
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].style.background = 'var(--wave-base)';
+      dots[i].style.transform = 'scale(1)';
+    }
+  }
+  $('playBtn').addEventListener('click', function () { running ? stop() : start(); });
+
+  // ---------- tap tempo ----------
+  function tap() {
+    var now = performance.now();
+    if (taps.length && now - taps[taps.length - 1] > 2500) taps.length = 0;
+    taps.push(now);
+    if (taps.length > 8) taps.shift();
+    if (taps.length >= 2) {
+      var sum = 0;
+      for (var i = 1; i < taps.length; i++) sum += taps[i] - taps[i - 1];
+      setBpm(60000 / (sum / (taps.length - 1)));
+    }
+    $('tapBtn').style.transform = 'scale(0.92)';
+    setTimeout(function () { $('tapBtn').style.transform = ''; }, 90);
+  }
+  $('tapBtn').addEventListener('click', tap);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.code === 'Space') { e.preventDefault(); running ? stop() : start(); }
+    else if (e.key === 't' || e.key === 'T') tap();
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setBpm(bpm + (e.shiftKey ? 5 : 1)); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); setBpm(bpm - (e.shiftKey ? 5 : 1)); }
+  });
+})();
+</script>
+</body>
+</html>
