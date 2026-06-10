@@ -24,18 +24,33 @@
     document.addEventListener(evt, unlock, { passive: true });
   });
 
+  // ---------- Human-friendly errors ----------
+  Engine.humanError = function (err) {
+    var m = (err && err.message) || String(err || '');
+    if (/decod|demux|EncodingError|NotSupportedError/i.test(m) || (err && err.name === 'EncodingError')) {
+      return 'This file appears to be corrupted or in a format your browser cannot decode. Try converting it first.';
+    }
+    if (/memory|allocation/i.test(m)) {
+      return 'Your device ran out of memory for this file. Try a shorter or smaller file.';
+    }
+    if (/Failed to load|fetch|network/i.test(m)) {
+      return 'A required component could not be downloaded. Check your connection and try again.';
+    }
+    return m || 'Something went wrong. Please try again.';
+  };
+
   // ---------- File loading ----------
   Engine.decodeFile = function (file) {
     return file.arrayBuffer().then(function (buf) {
       var ctx = Engine.getAudioContext();
       return new Promise(function (resolve, reject) {
-        // Callback form works on every browser incl. older Safari
         ctx.decodeAudioData(buf, resolve, function (e) {
-          reject(e || new Error('Could not decode this audio file. The format may be unsupported.'));
+          reject(e || new Error('decode failed'));
         });
       });
     });
   };
+  Engine.loadAudioFile = Engine.decodeFile; // alias
 
   // ---------- Waveform peaks (downsample to ~N peaks so big files stay fast) ----------
   Engine.computePeaks = function (audioBuffer, count) {
@@ -51,7 +66,6 @@
       var max = 0;
       for (var ch = 0; ch < channels.length; ch++) {
         var data = channels[ch];
-        // sample sparsely inside very large blocks for speed
         var step = block > 64 ? Math.floor(block / 64) : 1;
         for (var j = start; j < end; j += step) {
           var v = Math.abs(data[j]);
@@ -63,8 +77,8 @@
     return peaks;
   };
 
-  // ---------- Waveform drawing ----------
-  // opts: { selStart, selEnd } as fractions 0..1; { playhead } fraction; colors auto from CSS vars
+  // ---------- Waveform drawing (retina-aware) ----------
+  // opts: { selStart, selEnd } fractions 0..1; { playhead } fraction
   Engine.drawWaveform = function (canvas, peaks, opts) {
     opts = opts || {};
     var dpr = window.devicePixelRatio || 1;
@@ -80,8 +94,8 @@
     g.clearRect(0, 0, w, h);
 
     var styles = getComputedStyle(document.documentElement);
-    var baseColor = styles.getPropertyValue('--wave-base').trim() || '#e4e4ea';
-    var accent = styles.getPropertyValue('--accent').trim() || '#ff5c5c';
+    var baseColor = styles.getPropertyValue('--wave-base').trim() || '#d9e8f4';
+    var accent = styles.getPropertyValue('--accent').trim() || '#0ea5e9';
 
     var mid = h / 2;
     var n = peaks.length;
@@ -97,7 +111,6 @@
       g.fillRect(x, mid - amp, Math.max(w / n - 0.5, 0.8), amp * 2);
     }
 
-    // selection handles
     if (selStart !== null) {
       g.fillStyle = accent;
       [selStart, selEnd].forEach(function (f) {
@@ -107,16 +120,16 @@
         g.arc(hx, mid > 14 ? 10 : mid, 7, 0, Math.PI * 2);
         g.fill();
       });
-      g.fillStyle = 'rgba(255,92,92,0.08)';
+      g.fillStyle = 'rgba(14,165,233,0.08)';
       g.fillRect(selStart * w, 0, (selEnd - selStart) * w, h);
     }
 
-    // playhead
     if (typeof opts.playhead === 'number' && opts.playhead >= 0) {
-      g.fillStyle = styles.getPropertyValue('--text').trim() || '#0d0d0f';
+      g.fillStyle = styles.getPropertyValue('--text').trim() || '#0b1526';
       g.fillRect(opts.playhead * w - 1, 0, 2, h);
     }
   };
+  Engine.renderWaveform = Engine.drawWaveform; // alias
 
   // ---------- Buffer utilities ----------
   Engine.sliceBuffer = function (buffer, startSec, endSec) {
@@ -127,8 +140,36 @@
     var frames = Math.max(1, end - start);
     var out = ctx.createBuffer(buffer.numberOfChannels, frames, rate);
     for (var c = 0; c < buffer.numberOfChannels; c++) {
-      var src = buffer.getChannelData(c).subarray(start, end);
-      out.getChannelData(c).set(src);
+      out.getChannelData(c).set(buffer.getChannelData(c).subarray(start, end));
+    }
+    return out;
+  };
+
+  Engine.reverseBuffer = function (buffer) {
+    var ctx = Engine.getAudioContext();
+    var out = ctx.createBuffer(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var src = buffer.getChannelData(c);
+      var dst = out.getChannelData(c);
+      for (var i = 0, n = buffer.length; i < n; i++) dst[i] = src[n - 1 - i];
+    }
+    return out;
+  };
+
+  // Linear fade in/out, seconds. Mutates a copy and returns it.
+  Engine.applyFades = function (buffer, fadeInSec, fadeOutSec) {
+    var ctx = Engine.getAudioContext();
+    var out = ctx.createBuffer(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+    var rate = buffer.sampleRate;
+    var n = buffer.length;
+    var inN = Math.min(n, Math.floor((fadeInSec || 0) * rate));
+    var outN = Math.min(n, Math.floor((fadeOutSec || 0) * rate));
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var src = buffer.getChannelData(c);
+      var dst = out.getChannelData(c);
+      dst.set(src);
+      for (var i = 0; i < inN; i++) dst[i] *= i / inN;
+      for (var j = 0; j < outN; j++) dst[n - 1 - j] *= j / outN;
     }
     return out;
   };
@@ -148,10 +189,8 @@
   };
 
   Engine.concatBuffers = function (buffers) {
-    // Normalize to a common rate/channel count, then concatenate.
     var rate = Math.max.apply(null, buffers.map(function (b) { return b.sampleRate; }));
-    var chans = Math.max.apply(null, buffers.map(function (b) { return b.numberOfChannels; }));
-    chans = Math.min(chans, 2);
+    var chans = Math.min(Math.max.apply(null, buffers.map(function (b) { return b.numberOfChannels; })), 2);
     return Promise.all(buffers.map(function (b) {
       return Engine.resampleBuffer(b, rate, chans);
     })).then(function (normalized) {
@@ -174,8 +213,7 @@
     var numChannels = audioBuffer.numberOfChannels;
     var sampleRate = audioBuffer.sampleRate;
     var frames = audioBuffer.length;
-    var bytesPerSample = 2;
-    var blockAlign = numChannels * bytesPerSample;
+    var blockAlign = numChannels * 2;
     var dataSize = frames * blockAlign;
     var buffer = new ArrayBuffer(44 + dataSize);
     var view = new DataView(buffer);
@@ -188,13 +226,13 @@
     view.setUint32(4, 36 + dataSize, true);
     writeStr(8, 'WAVE');
     writeStr(12, 'fmt ');
-    view.setUint32(16, 16, true);            // fmt chunk size
-    view.setUint16(20, 1, true);             // PCM
+    view.setUint32(16, 16, true);
+    view.setUint16(20, 1, true);
     view.setUint16(22, numChannels, true);
     view.setUint32(24, sampleRate, true);
     view.setUint32(28, sampleRate * blockAlign, true);
     view.setUint16(32, blockAlign, true);
-    view.setUint16(34, 16, true);            // bits per sample
+    view.setUint16(34, 16, true);
     writeStr(36, 'data');
     view.setUint32(40, dataSize, true);
 
@@ -210,6 +248,7 @@
     }
     return new Blob([buffer], { type: 'audio/wav' });
   };
+  Engine.encodeWAV = Engine.encodeWav; // alias
 
   // ---------- Script loader ----------
   var _scriptPromises = {};
@@ -221,7 +260,7 @@
       s.onload = resolve;
       s.onerror = function () {
         delete _scriptPromises[src];
-        reject(new Error('Failed to load ' + src + '. Check your connection and try again.'));
+        reject(new Error('Failed to load ' + src));
       };
       document.head.appendChild(s);
     });
@@ -276,20 +315,42 @@
       });
     });
   };
+  Engine.encodeMP3 = Engine.encodeMp3; // alias
 
   // ---------- FFmpeg.wasm (lazy, single-threaded core — no COOP/COEP needed) ----------
+  // Loaded once per session; the ~25 MB core wasm is prefetched with byte-level
+  // progress (lands in the HTTP cache, so ff.load() reuses it instantly).
+  var FF_JS = 'https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js';
+  var FF_CORE = 'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js';
+  var FF_WASM = 'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.wasm';
   var _ffmpeg = null;
   var _ffmpegPromise = null;
-  Engine.getFFmpeg = function () {
+
+  // onProgress(fraction|null, loadedBytes, totalBytes) — fraction null = size unknown
+  Engine.getFFmpeg = function (onProgress) {
     if (_ffmpeg) return Promise.resolve(_ffmpeg);
     if (!_ffmpegPromise) {
-      _ffmpegPromise = Engine.loadScript('https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js')
+      _ffmpegPromise = Engine.loadScript(FF_JS)
         .then(function () {
-          var ff = FFmpeg.createFFmpeg({
-            corePath: 'https://unpkg.com/@ffmpeg/core-st@0.11.1/dist/ffmpeg-core.js',
-            mainName: 'main',
-            log: false
-          });
+          // Prefetch the big wasm with streaming progress
+          return fetch(FF_WASM).then(function (res) {
+            if (!res.ok || !res.body) return null;
+            var total = parseInt(res.headers.get('Content-Length') || '0', 10);
+            var reader = res.body.getReader();
+            var got = 0;
+            function pump() {
+              return reader.read().then(function (r) {
+                if (r.done) return null;
+                got += r.value.length;
+                if (onProgress) onProgress(total ? got / total : null, got, total);
+                return pump();
+              });
+            }
+            return pump();
+          }).catch(function () { /* progress is best-effort; ff.load() will fetch anyway */ });
+        })
+        .then(function () {
+          var ff = FFmpeg.createFFmpeg({ corePath: FF_CORE, mainName: 'main', log: false });
           return ff.load().then(function () {
             _ffmpeg = ff;
             return ff;
@@ -302,6 +363,7 @@
     }
     return _ffmpegPromise;
   };
+
   Engine.fetchFile = function (file) {
     return file.arrayBuffer().then(function (b) { return new Uint8Array(b); });
   };
@@ -337,30 +399,55 @@
   };
 
   // ---------- Dropzone wiring ----------
-  // setupDropzone(el, inputEl, onFiles) — handles click, drag/drop, file input
-  Engine.setupDropzone = function (zone, input, onFiles) {
+  // Accepts drops anywhere on the page, not just the box.
+  // Warns (without blocking) above 200 MB.
+  var SIZE_WARN = 200 * 1048576;
+  Engine.setupDropzone = function (zone, input, onFiles, opts) {
+    opts = opts || {};
+    var accept = opts.video
+      ? function (f) { return /^(audio|video)\//.test(f.type) || /\.(mp4|webm|mov|mkv|avi|m4v|mp3|wav|m4a|ogg|flac|aac)$/i.test(f.name); }
+      : function (f) { return /^audio\//.test(f.type) || /\.(mp3|wav|m4a|ogg|oga|flac|aac|webm|opus|wma|aiff?|mp4)$/i.test(f.name); };
+
+    function handle(files) {
+      files = files.filter(accept);
+      if (!files.length) return;
+      var big = files.filter(function (f) { return f.size > SIZE_WARN; });
+      if (big.length) {
+        var note = zone.querySelector('.size-warn') || (function () {
+          var d = document.createElement('p');
+          d.className = 'status error size-warn';
+          zone.appendChild(d);
+          return d;
+        })();
+        note.textContent = '⚠ ' + big[0].name + ' is over 200 MB — processing may be slow on this device, but we\'ll try.';
+      }
+      onFiles(files);
+    }
+
     zone.addEventListener('click', function () { input.click(); });
     input.addEventListener('change', function () {
-      if (input.files.length) onFiles(Array.prototype.slice.call(input.files));
+      if (input.files.length) handle(Array.prototype.slice.call(input.files));
       input.value = '';
     });
+
+    // page-wide drag & drop
     ['dragenter', 'dragover'].forEach(function (evt) {
-      zone.addEventListener(evt, function (e) {
+      document.addEventListener(evt, function (e) {
         e.preventDefault();
         zone.classList.add('dragover');
       });
     });
     ['dragleave', 'drop'].forEach(function (evt) {
-      zone.addEventListener(evt, function (e) {
+      document.addEventListener(evt, function (e) {
         e.preventDefault();
-        zone.classList.remove('dragover');
+        if (evt === 'drop' || e.target === document.documentElement) zone.classList.remove('dragover');
       });
     });
-    zone.addEventListener('drop', function (e) {
-      var files = Array.prototype.slice.call(e.dataTransfer.files).filter(function (f) {
-        return /^audio\//.test(f.type) || /\.(mp3|wav|m4a|ogg|oga|flac|aac|webm|opus|wma|aiff?|mp4)$/i.test(f.name);
-      });
-      if (files.length) onFiles(files);
+    document.addEventListener('drop', function (e) {
+      e.preventDefault();
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+        handle(Array.prototype.slice.call(e.dataTransfer.files));
+      }
     });
   };
 

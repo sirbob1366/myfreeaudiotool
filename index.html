@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyFreeAudioTool — Free Online Audio Tools. No Uploads, 100% Private.</title>
-  <meta name="description" content="Free online audio tools that run entirely in your browser. Trim, convert, compress, merge, boost, speed up audio, make ringtones and record — no uploads, no signup, no watermarks.">
+  <title>MyFreeAudioTool — 13 Free Audio Tools That Run In Your Browser. Zero Uploads.</title>
+  <meta name="description" content="13 free audio tools powered by Web Audio + WebAssembly: trim, convert, compress, merge, EQ, pitch, speed, reverse, BPM detection and more. No uploads, no signup — your files never leave your device.">
   <link rel="canonical" href="https://myfreeaudiotool.com/">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://myfreeaudiotool.com/">
-  <meta property="og:title" content="MyFreeAudioTool — Free Online Audio Tools">
-  <meta property="og:description" content="Trim, convert, compress, merge, boost and record audio — free, in your browser, with zero uploads.">
+  <meta property="og:title" content="MyFreeAudioTool — 13 Free Browser-Based Audio Tools">
+  <meta property="og:description" content="Trim, convert, compress, merge, EQ, pitch-shift and analyze audio — free, in your browser, with zero uploads.">
   <meta property="og:site_name" content="MyFreeAudioTool">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MyFreeAudioTool — Free Online Audio Tools">
-  <meta name="twitter:description" content="Trim, convert, compress, merge, boost and record audio — free, in your browser, with zero uploads.">
+  <meta name="twitter:title" content="MyFreeAudioTool — 13 Free Browser-Based Audio Tools">
+  <meta name="twitter:description" content="Trim, convert, compress, merge, EQ, pitch-shift and analyze audio — free, in your browser, with zero uploads.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,87 +34,169 @@
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser with JavaScript",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online audio tools that run entirely in your browser: trim, convert, compress, merge, volume boost, speed change, ringtone maker and voice recorder. No uploads, no signup."
+    "description": "13 free online audio tools that run entirely in your browser: trim, convert, compress, merge, volume boost, speed, pitch shift, reverse, equalizer, BPM and key detection, ringtone maker, voice recorder and video-to-audio extraction."
   }
   </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="logo" href="/" aria-label="MyFreeAudioTool home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
-      MyFreeAudioTool
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-h)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      <span>MyFreeAudioTool<em class="logo__tag">.com</em></span>
     </a>
     <nav class="nav">
-      <a href="/#tools">Tools</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
+      <a href="/#tools">tools</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
       <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
-        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
     </nav>
   </div>
 </header>
 
+
 <main>
   <section class="hero">
     <div class="container">
-      <div class="badge">🔒 100% private — your files never leave your device</div>
-      <h1>Free audio tools.<br><span class="accent">Right in your browser.</span></h1>
-      <p class="lede">Trim, convert, compress, merge, boost and record audio — with zero uploads. Everything runs locally on your device, so it's faster and more private than any upload-based site.</p>
-      <a class="btn btn--primary" href="#tools">Explore the tools ↓</a>
+      <div class="hero__split">
+        <div>
+          <div class="badge"><span class="dot"></span>100% CLIENT-SIDE · 0 UPLOADS</div>
+          <h1>The audio lab<br>that lives <span class="grad">in your browser.</span></h1>
+          <p class="lede">13 precision audio tools built on Web Audio + WebAssembly. Trim, convert, EQ, pitch-shift, analyze — your files are processed on your silicon, not our servers.</p>
+          <div class="controls-row" style="margin:0">
+            <a class="btn btn--primary" href="#tools">Open the toolbox ↓</a>
+            <a class="btn btn--ghost" href="/about/">How it works</a>
+          </div>
+          <div class="hero__stats">
+            <div class="stat"><b>13</b>tools</div>
+            <div class="stat"><b>0</b>bytes uploaded</div>
+            <div class="stat"><b>∞</b>file size limit</div>
+            <div class="stat"><b>$0</b>forever</div>
+          </div>
+        </div>
+        <div class="scene scene--hero">
+          <span class="chip chip--1">⚡ WASM-accelerated</span>
+          <span class="chip chip--2">🔒 0 bytes uploaded</span>
+          <span class="chip chip--3">44.1 kHz / 16-bit</span>
+          <div class="mock-window">
+            <div class="mock-window__bar"><i></i><i></i><i></i><span>trim-audio · track_07.wav</span></div>
+            <div class="mock-window__body">
+              <div class="mock-wave">
+                <i style="--h:30"></i><i style="--h:55"></i><i style="--h:40"></i><i style="--h:72"></i><i style="--h:48"></i><i class="on" style="--h:85"></i><i class="on" style="--h:62"></i><i class="on" style="--h:95"></i><i class="on" style="--h:70"></i><i class="on" style="--h:88"></i><i class="on" style="--h:52"></i><i class="on" style="--h:78"></i><i class="on" style="--h:91"></i><i class="on" style="--h:60"></i><i style="--h:44"></i><i style="--h:66"></i><i style="--h:35"></i><i style="--h:50"></i><i style="--h:28"></i><i style="--h:42"></i>
+              </div>
+              <div class="mock-row">
+                <span class="mock-btn mock-btn--p">▶ PREVIEW</span>
+                <span class="mock-btn mock-btn--g">EXPORT WAV</span>
+                <span class="mock-meta">sel 0:12.4 → 0:41.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <canvas class="hero-wave-strip" id="heroWave" aria-hidden="true"></canvas>
     </div>
   </section>
 
   <section class="section" id="tools">
     <div class="container">
-      <h2 class="section-title reveal">Eight tools. All free. No catch.</h2>
-      <p class="section-sub reveal">No signup, no watermarks, no file size games. Pick a tool and get to work.</p>
+      <h2 class="section-title reveal">Thirteen tools. All free. All local.</h2>
+      <p class="section-sub reveal">No signup, no watermarks, no upload queue. Pick an instrument and get to work.</p>
+
+      <p class="cat-label reveal">01 / edit &amp; record</p>
       <div class="tool-grid">
         <a class="tool-card reveal" href="/trim-audio/">
+          <span class="tool-card__num">[01]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg></div>
           <h3>Trim Audio</h3>
-          <p>Cut any part of a song or recording on an interactive waveform.</p>
-        </a>
-        <a class="tool-card reveal" href="/convert-audio/">
-          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
-          <h3>Convert Audio</h3>
-          <p>MP3, WAV, M4A, OGG, FLAC, AAC — convert between any of them.</p>
-        </a>
-        <a class="tool-card reveal" href="/compress-audio/">
-          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4a1 1 0 0 1-1 1H3"/><path d="M16 3v4a1 1 0 0 0 1 1h4"/><path d="M8 21v-4a1 1 0 0 0-1-1H3"/><path d="M16 21v-4a1 1 0 0 1 1-1h4"/></svg></div>
-          <h3>Compress Audio</h3>
-          <p>Shrink file size with bitrate control. See before/after sizes.</p>
+          <p>Cut any region on an interactive waveform with drag handles.</p>
         </a>
         <a class="tool-card reveal" href="/merge-audio/">
+          <span class="tool-card__num">[02]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="16" width="18" height="4" rx="1"/></svg></div>
           <h3>Merge Audio</h3>
-          <p>Join multiple tracks into one file. Drag to reorder.</p>
-        </a>
-        <a class="tool-card reveal" href="/volume-booster/">
-          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
-          <h3>Volume Booster</h3>
-          <p>Make quiet audio louder, or normalize peaks with one click.</p>
-        </a>
-        <a class="tool-card reveal" href="/audio-speed-changer/">
-          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10"/><path d="M12 6v6l4 2"/><path d="M19 16l3 3-3 3"/></svg></div>
-          <h3>Speed Changer</h3>
-          <p>Slow down or speed up audio from 0.25× to 4×.</p>
+          <p>Join tracks into one file. Drag to reorder, mix any formats.</p>
         </a>
         <a class="tool-card reveal" href="/ringtone-maker/">
+          <span class="tool-card__num">[03]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
           <h3>Ringtone Maker</h3>
-          <p>Cut the perfect 30-second clip for iPhone or Android.</p>
+          <p>iPhone (M4R) and Android (MP3) presets with fade in/out.</p>
         </a>
         <a class="tool-card reveal" href="/audio-recorder/">
+          <span class="tool-card__num">[04]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/></svg></div>
           <h3>Voice Recorder</h3>
-          <p>Record from your microphone and download instantly.</p>
+          <p>Live waveform, level meter, pause/resume, MP3/WAV export.</p>
+        </a>
+      </div>
+
+      <p class="cat-label reveal">02 / convert</p>
+      <div class="tool-grid">
+        <a class="tool-card reveal" href="/convert-audio/">
+          <span class="tool-card__num">[05]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+          <h3>Convert Audio</h3>
+          <p>MP3 · WAV · M4A · OGG · FLAC · AAC, in any direction.</p>
+        </a>
+        <a class="tool-card reveal" href="/compress-audio/">
+          <span class="tool-card__num">[06]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4a1 1 0 0 1-1 1H3"/><path d="M16 3v4a1 1 0 0 0 1 1h4"/><path d="M8 21v-4a1 1 0 0 0-1-1H3"/><path d="M16 21v-4a1 1 0 0 1 1-1h4"/></svg></div>
+          <h3>Compress Audio</h3>
+          <p>Bitrate control with live before/after size readout.</p>
+        </a>
+        <a class="tool-card reveal" href="/extract-audio-from-video/">
+          <span class="tool-card__num">[07]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="12" rx="2"/><path d="M22 7l-6 3 6 3z" fill="currentColor" stroke="none"/><path d="M7 20h13"/><path d="M17 17l3 3-3 3"/></svg></div>
+          <h3>Video to MP3</h3>
+          <p>Extract the audio track from MP4, WebM or MOV files.</p>
+        </a>
+      </div>
+
+      <p class="cat-label reveal">03 / effects</p>
+      <div class="tool-grid">
+        <a class="tool-card reveal" href="/volume-booster/">
+          <span class="tool-card__num">[08]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
+          <h3>Volume Booster</h3>
+          <p>Boost up to 400% or normalize peaks to −1 dB in one click.</p>
+        </a>
+        <a class="tool-card reveal" href="/audio-speed-changer/">
+          <span class="tool-card__num">[09]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10"/><path d="M12 6v6l4 2"/><path d="M19 16l3 3-3 3"/></svg></div>
+          <h3>Speed Changer</h3>
+          <p>0.25× to 4× playback with instant preview.</p>
+        </a>
+        <a class="tool-card reveal" href="/pitch-shifter/">
+          <span class="tool-card__num">[10]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Pitch Shifter</h3>
+          <p>±12 semitones without changing the speed.</p>
+        </a>
+        <a class="tool-card reveal" href="/reverse-audio/">
+          <span class="tool-card__num">[11]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h13"/><path d="M8 7l-5 5 5 5"/><path d="M21 5v14"/></svg></div>
+          <h3>Reverse Audio</h3>
+          <p>Flip any track backwards. Instant, with preview.</p>
+        </a>
+        <a class="tool-card reveal" href="/equalizer/">
+          <span class="tool-card__num">[12]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+          <h3>Equalizer</h3>
+          <p>10-band EQ with live preview, presets and response curve.</p>
+        </a>
+      </div>
+
+      <p class="cat-label reveal">04 / analyze</p>
+      <div class="tool-grid">
+        <a class="tool-card reveal" href="/bpm-key-finder/">
+          <span class="tool-card__num">[13]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l3-9 4 18 3-9h3"/><circle cx="20" cy="12" r="2"/></svg></div>
+          <h3>BPM &amp; Key Finder</h3>
+          <p>Detect tempo and musical key with confidence scores.</p>
         </a>
       </div>
     </div>
@@ -115,51 +204,73 @@
 
   <section class="section section--soft">
     <div class="container">
-      <h2 class="section-title reveal">How it works</h2>
-      <p class="section-sub reveal">Three steps, no account, nothing uploaded.</p>
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step__num">1</div>
-          <h3>Pick a tool</h3>
-          <p>Choose from eight focused audio tools — each one does its job exceptionally well.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step__num">2</div>
-          <h3>Drop your file</h3>
-          <p>Your audio is processed directly in your browser. It never touches a server.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step__num">3</div>
-          <h3>Download the result</h3>
-          <p>Export instantly — no queue, no email, no watermark, no waiting on uploads.</p>
-        </div>
+      <h2 class="section-title reveal">Why we're different</h2>
+      <p class="section-sub reveal">Every other "free online audio tool" makes you upload your file to their server first. We don't have a server to upload to.</p>
+      <div class="compare reveal">
+        <table>
+          <thead>
+            <tr><th></th><th>MyFreeAudioTool</th><th>Upload-based sites</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Upload wait time</td><td class="yes">✓ Zero — starts instantly</td><td class="no">✗ Minutes for big files</td></tr>
+            <tr><td>File size limits</td><td class="yes">✓ None (device memory only)</td><td class="no">✗ Usually 50–100 MB</td></tr>
+            <tr><td>Account required</td><td class="yes">✓ Never</td><td class="no">✗ Often, for "premium"</td></tr>
+            <tr><td>Watermarks / nags</td><td class="yes">✓ None</td><td class="no">✗ Common</td></tr>
+            <tr><td>Your files on their server</td><td class="yes">✓ Never — physically impossible</td><td class="no">✗ Always</td></tr>
+            <tr><td>Works after page load, offline</td><td class="yes">✓ Web Audio tools do</td><td class="no">✗ Needs their backend</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
+      <h2 class="section-title reveal">How it works</h2>
+      <p class="section-sub reveal">Three steps. No account. Nothing uploaded.</p>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__num">01</div>
+          <h3>Pick a tool</h3>
+          <p>Thirteen focused instruments — each one does a single job exceptionally well.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__num">02</div>
+          <h3>Drop your file</h3>
+          <p>Decoded straight into your browser's memory via Web Audio + WebAssembly. It never touches a network.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__num">03</div>
+          <h3>Download the result</h3>
+          <p>Rendered on your device and saved instantly. No queue, no email, no watermark.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
       <h2 class="section-title reveal">Frequently asked questions</h2>
       <div class="faq reveal">
         <details>
           <summary>Are my audio files uploaded anywhere?</summary>
-          <p>No. Every tool on this site runs entirely inside your browser using Web Audio and WebAssembly. Your files stay on your device from start to finish — we never see them, store them, or transmit them. That also makes processing faster, because there's no upload or download queue.</p>
+          <p>No. Every tool runs entirely inside your browser using the Web Audio API and WebAssembly. Your files stay on your device from start to finish — we never see them, store them, or transmit them. That's also why it's faster: there's no upload or download queue.</p>
         </details>
         <details>
           <summary>Is MyFreeAudioTool really free?</summary>
           <p>Yes — every tool is completely free with no signup, no watermarks, and no daily limits. The site is supported by ads, never by selling your data (we couldn't anyway: we never receive your files).</p>
         </details>
         <details>
-          <summary>What audio formats are supported?</summary>
-          <p>You can load MP3, WAV, M4A/AAC, OGG, FLAC and most other common formats. Exports are available in WAV and MP3 across the tools, and the converter handles MP3, WAV, M4A, OGG, FLAC and AAC in both directions.</p>
+          <summary>What formats are supported?</summary>
+          <p>Load MP3, WAV, M4A/AAC, OGG, FLAC and most other common formats — plus MP4/WebM/MOV video for audio extraction. Export WAV and MP3 everywhere, with M4A, OGG, FLAC and AAC available in the converter.</p>
         </details>
         <details>
           <summary>Is there a file size limit?</summary>
-          <p>There's no hard limit imposed by us — processing capacity depends on your device's memory. Typical songs and recordings (up to a few hundred MB) work fine on modern phones and computers.</p>
+          <p>No hard limit from us — capacity depends on your device's memory. We'll warn you above 200 MB, but we'll still try. Typical songs and recordings work fine on modern phones.</p>
         </details>
         <details>
           <summary>Does it work on my phone?</summary>
-          <p>Yes. All tools work on iOS Safari, Android Chrome and every modern desktop browser. No app install needed.</p>
+          <p>Yes. Every tool works on iOS Safari, Android Chrome and all modern desktop browsers. No app install needed.</p>
         </details>
       </div>
     </div>
@@ -169,40 +280,89 @@
 <footer class="site-footer">
   <div class="container">
     <div class="site-footer__grid">
-      <div>
+      <div class="site-footer__brand">
         <a class="logo" href="/">
-          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
-          MyFreeAudioTool
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-f)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          <span>MyFreeAudioTool</span>
         </a>
-        <p class="tagline">Free, private, browser-based audio tools. Your files never leave your device.</p>
+        <p class="tagline">13 free audio tools that run entirely in your browser. Zero uploads. Zero accounts. Your files never leave your device.</p>
       </div>
       <div>
-        <h4>Tools</h4>
+        <h4>// edit &amp; convert</h4>
         <ul>
           <li><a href="/trim-audio/">Trim Audio</a></li>
-          <li><a href="/convert-audio/">Convert Audio</a></li>
-          <li><a href="/compress-audio/">Compress Audio</a></li>
           <li><a href="/merge-audio/">Merge Audio</a></li>
-          <li><a href="/volume-booster/">Volume Booster</a></li>
-          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
           <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
           <li><a href="/audio-recorder/">Voice Recorder</a></li>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/extract-audio-from-video/">Video to MP3</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h4>// effects &amp; analyze</h4>
+        <ul>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/pitch-shifter/">Pitch Shifter</a></li>
+          <li><a href="/reverse-audio/">Reverse Audio</a></li>
+          <li><a href="/equalizer/">Equalizer</a></li>
+          <li><a href="/bpm-key-finder/">BPM &amp; Key Finder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// company</h4>
         <ul>
           <li><a href="/about/">About</a></li>
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
         </ul>
+        <h4 style="margin-top:20px">// more free tools</h4>
+        <ul>
+          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
+          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
+        </ul>
       </div>
     </div>
-    <div class="copyright">© 2026 MyFreeAudioTool.com — All processing happens in your browser.</div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
   </div>
 </footer>
 
+
 <script src="/assets/js/site.js"></script>
+<script>
+// Animated hero waveform strip — transform/opacity-free canvas anim, skipped for reduced motion
+(function () {
+  var canvas = document.getElementById('heroWave');
+  if (!canvas) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx = canvas.getContext('2d');
+  var t = 0;
+
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.getBoundingClientRect();
+    var w = Math.round(rect.width), h = Math.round(rect.height);
+    if (canvas.width !== w * dpr || canvas.height !== h * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var styles = getComputedStyle(document.documentElement);
+    var base = styles.getPropertyValue('--wave-base').trim();
+    var accent = styles.getPropertyValue('--accent').trim();
+    var bars = Math.floor(w / 7);
+    for (var i = 0; i < bars; i++) {
+      var x = i * 7;
+      var amp = (Math.sin(i * 0.32 + t) * 0.5 + 0.5) * (Math.sin(i * 0.085 + t * 0.6) * 0.5 + 0.5);
+      var bh = Math.max(3, amp * (h - 8));
+      ctx.fillStyle = (i % 9 === 0) ? accent : base;
+      ctx.fillRect(x, (h - bh) / 2, 4, bh);
+    }
+    t += 0.045;
+    if (!reduced) requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body>
 </html>

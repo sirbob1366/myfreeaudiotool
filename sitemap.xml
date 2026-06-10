@@ -2,13 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://myfreeaudiotool.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://myfreeaudiotool.com/trim-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://myfreeaudiotool.com/convert-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://myfreeaudiotool.com/compress-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://myfreeaudiotool.com/merge-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://myfreeaudiotool.com/volume-booster/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://myfreeaudiotool.com/audio-speed-changer/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://myfreeaudiotool.com/ringtone-maker/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://myfreeaudiotool.com/audio-recorder/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/convert-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/compress-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/extract-audio-from-video/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/volume-booster/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/audio-speed-changer/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/pitch-shifter/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/reverse-audio/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/equalizer/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://myfreeaudiotool.com/bpm-key-finder/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://myfreeaudiotool.com/about/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://myfreeaudiotool.com/contact/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://myfreeaudiotool.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Equalizer Online Free — 10-Band EQ & Bass Booster | MyFreeAudioTool</title>
+  <meta name="description" content="Free online 10-band equalizer with live preview, Bass Boost / Treble / Podcast presets and a real frequency response curve. EQ any audio file in your browser — no uploads.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/equalizer/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/equalizer/">
+  <meta property="og:title" content="Audio Equalizer Online Free — 10-Band EQ & Bass Booster">
+  <meta property="og:description" content="10-band EQ with live preview and presets. Free, private, no uploads.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Audio Equalizer Online Free — 10-Band EQ & Bass Booster">
+  <meta name="twitter:description" content="10-band EQ with live preview and presets. Free, private, no uploads.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Equalizer — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/equalizer/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online 10-band audio equalizer with live preview, presets and frequency response visualization, entirely in your browser."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Can I use this as a bass booster?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — hit the Bass Boost preset (or raise the 31–125 Hz sliders yourself) and export. Boosting bass eats headroom, so if you hear distortion, pull the low sliders back a couple of dB." } },
+      { "@type": "Question", "name": "What do the 10 bands mean?", "acceptedAnswer": { "@type": "Answer", "text": "Each slider controls a frequency region: 31–62 Hz is sub-bass, 125–250 Hz is warmth/body, 500 Hz–2 kHz is voice presence, 4–8 kHz is clarity and edge, 16 kHz is air. Cutting is usually cleaner than boosting." } },
+      { "@type": "Question", "name": "Is the preview the same as the exported file?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the same BiquadFilter chain runs live for preview and offline for export, so what you hear is exactly what you download." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-h)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      <span>MyFreeAudioTool<em class="logo__tag">.com</em></span>
+    </a>
+    <nav class="nav">
+      <a href="/#tools">tools</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <p class="kicker">// effects · tool 12</p>
+      <h1>Equalizer</h1>
+      <p>10-band EQ with live preview, one-click presets and a real frequency-response curve. Also your bass booster.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="privacy-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>YOUR FILE NEVER LEAVES YOUR DEVICE</div>
+
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+        <h2>Drop your audio file here</h2>
+        <p>MP3, WAV, M4A, OGG, FLAC and more — or click to browse</p>
+        <p class="hint-drop">[ drop works anywhere on this page ]</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac">
+      </div>
+
+      <div id="editor" style="display:none">
+        <div class="file-info">
+          <strong id="fileName"></strong>
+          <span class="meta" id="fileMeta"></span>
+        </div>
+
+        <div class="controls-row" style="margin-top:0">
+          <button class="btn btn--ghost btn--sm eq-preset" data-preset="flat" type="button">Flat</button>
+          <button class="btn btn--ghost btn--sm eq-preset" data-preset="bass" type="button">Bass Boost</button>
+          <button class="btn btn--ghost btn--sm eq-preset" data-preset="treble" type="button">Treble Boost</button>
+          <button class="btn btn--ghost btn--sm eq-preset" data-preset="podcast" type="button">Podcast Voice</button>
+        </div>
+
+        <canvas class="eq-curve" id="eqCurve" aria-label="Frequency response curve"></canvas>
+
+        <div class="eq-grid" id="eqGrid"></div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary btn--sm" id="previewBtn" type="button">▶ Preview with EQ</button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost btn--sm" id="newFileBtn" type="button">Process another file</button>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="exportWavBtn" type="button">Download WAV</button>
+          <button class="btn btn--ghost" id="exportMp3Btn" type="button">Download MP3</button>
+        </div>
+      </div>
+
+      <div class="progress" id="progress"><div class="progress__bar"></div></div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>A real 10-band equalizer, in your browser</h2>
+      <p>Each slider drives a Web Audio BiquadFilter — a low shelf at 31 Hz, a high shelf at 16 kHz, and peaking filters in between, ±12 dB each. The curve above the sliders is the actual combined frequency response of the filter chain (computed with <code>getFrequencyResponse</code>), not a decoration. Adjust while the track plays and hear changes instantly; the export renders the identical chain offline, so what you hear is what you download.</p>
+      <h3>Bass booster online</h3>
+      <p>Looking to boost bass specifically? The <strong>Bass Boost</strong> preset raises the 31–125 Hz region in one click. Bass boosting consumes headroom — if the result distorts, drop the low sliders a couple of dB or run the file through our <a href="/volume-booster/">normalizer</a> afterwards.</p>
+      <h3>Quick band guide</h3>
+      <ul>
+        <li><strong>31–62 Hz</strong> — sub-bass rumble. Feel more than hear.</li>
+        <li><strong>125–250 Hz</strong> — warmth and body; too much sounds muddy.</li>
+        <li><strong>500 Hz–2 kHz</strong> — voice presence and intelligibility.</li>
+        <li><strong>4–8 kHz</strong> — clarity, attack, sibilance.</li>
+        <li><strong>16 kHz</strong> — "air" and sparkle.</li>
+      </ul>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Can I use this as a bass booster?</summary>
+          <p>Yes — hit the Bass Boost preset (or raise the 31–125 Hz sliders) and export. If you hear distortion, pull the low sliders back a couple of dB.</p>
+        </details>
+        <details>
+          <summary>What do the 10 bands mean?</summary>
+          <p>31–62 Hz is sub-bass, 125–250 Hz is warmth, 500 Hz–2 kHz is voice presence, 4–8 kHz is clarity, 16 kHz is air. Cutting is usually cleaner than boosting.</p>
+        </details>
+        <details>
+          <summary>Is the preview the same as the exported file?</summary>
+          <p>Yes — the same filter chain runs live for preview and offline for export, so what you hear is exactly what you download.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="related-strip">
+      <p class="kicker">// related tools</p>
+      <div class="related-grid">
+        <a class="related-card" href="/volume-booster/"><b>Volume Booster</b><span>Level, not tone</span></a>
+        <a class="related-card" href="/pitch-shifter/"><b>Pitch Shifter</b><span>Move the key, keep the speed</span></a>
+        <a class="related-card" href="/compress-audio/"><b>Compress Audio</b><span>Shrink the EQ'd file</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-f)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          <span>MyFreeAudioTool</span>
+        </a>
+        <p class="tagline">13 free audio tools that run entirely in your browser. Zero uploads. Zero accounts. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>// edit &amp; convert</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/extract-audio-from-video/">Video to MP3</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// effects &amp; analyze</h4>
+        <ul>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/pitch-shifter/">Pitch Shifter</a></li>
+          <li><a href="/reverse-audio/">Reverse Audio</a></li>
+          <li><a href="/equalizer/">Equalizer</a></li>
+          <li><a href="/bpm-key-finder/">BPM &amp; Key Finder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// more free tools</h4>
+        <ul>
+          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
+          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
+  </div>
+</footer>
+
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+
+  var BANDS = [31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 16000];
+  var PRESETS = {
+    flat:    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    bass:    [7, 6, 5, 3, 1, 0, 0, 0, 0, 0],
+    treble:  [0, 0, 0, 0, 0, 1, 2, 4, 5, 6],
+    podcast: [-4, -3, 1, 2, 3, 4, 3, 2, 0, -1]
+  };
+
+  var dropzone = document.getElementById('dropzone');
+  var editor = document.getElementById('editor');
+  var statusEl = document.getElementById('status');
+  var progressEl = document.getElementById('progress');
+  var eqGrid = document.getElementById('eqGrid');
+  var curveCanvas = document.getElementById('eqCurve');
+
+  var audioBuffer = null;
+  var fileName = '';
+  var gains = PRESETS.flat.slice();
+  var playing = null;   // { source, filters }
+  var sliders = [];
+
+  // ---------- Build sliders ----------
+  BANDS.forEach(function (freq, i) {
+    var band = document.createElement('div');
+    band.className = 'eq-band';
+    band.innerHTML =
+      '<span class="gain-val" data-i="' + i + '">0</span>' +
+      '<div class="eq-slider-wrap"><input type="range" min="-12" max="12" value="0" step="1" data-i="' + i + '" aria-label="' + freq + ' Hz gain"></div>' +
+      '<span class="freq">' + (freq >= 1000 ? (freq / 1000) + 'k' : freq) + '</span>';
+    eqGrid.appendChild(band);
+  });
+  sliders = Array.prototype.slice.call(eqGrid.querySelectorAll('input[type="range"]'));
+
+  function updateGainLabels() {
+    sliders.forEach(function (s) {
+      var i = +s.dataset.i;
+      var v = gains[i];
+      eqGrid.querySelector('.gain-val[data-i="' + i + '"]').textContent = (v > 0 ? '+' : '') + v;
+    });
+  }
+
+  sliders.forEach(function (s) {
+    s.addEventListener('input', function () {
+      gains[+s.dataset.i] = +s.value;
+      updateGainLabels();
+      if (playing) playing.filters[+s.dataset.i].gain.value = +s.value;
+      drawCurve();
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.eq-preset'), function (btn) {
+    btn.addEventListener('click', function () {
+      gains = PRESETS[btn.dataset.preset].slice();
+      sliders.forEach(function (s, i) { s.value = gains[i]; });
+      updateGainLabels();
+      if (playing) playing.filters.forEach(function (f, i) { f.gain.value = gains[i]; });
+      drawCurve();
+    });
+  });
+
+  // ---------- Filter chain ----------
+  function buildChain(ctx) {
+    var filters = BANDS.map(function (freq, i) {
+      var f = ctx.createBiquadFilter();
+      f.type = i === 0 ? 'lowshelf' : (i === BANDS.length - 1 ? 'highshelf' : 'peaking');
+      f.frequency.value = freq;
+      if (f.type === 'peaking') f.Q.value = 1.1;
+      f.gain.value = gains[i];
+      return f;
+    });
+    for (var i = 0; i < filters.length - 1; i++) filters[i].connect(filters[i + 1]);
+    return filters;
+  }
+
+  // ---------- Response curve ----------
+  function drawCurve() {
+    var ctx = E.getAudioContext();
+    var filters = buildChain(ctx);
+    var N = 200;
+    var freqs = new Float32Array(N);
+    for (var i = 0; i < N; i++) {
+      freqs[i] = 20 * Math.pow(1000, i / (N - 1)); // 20 Hz → 20 kHz log scale
+    }
+    var totalDb = new Float32Array(N);
+    var mag = new Float32Array(N), phase = new Float32Array(N);
+    filters.forEach(function (f) {
+      f.getFrequencyResponse(freqs, mag, phase);
+      for (var i = 0; i < N; i++) totalDb[i] += 20 * Math.log10(Math.max(mag[i], 1e-6));
+    });
+
+    var dpr = window.devicePixelRatio || 1;
+    var rect = curveCanvas.getBoundingClientRect();
+    var w = Math.round(rect.width), h = Math.round(rect.height);
+    if (curveCanvas.width !== w * dpr || curveCanvas.height !== h * dpr) {
+      curveCanvas.width = w * dpr; curveCanvas.height = h * dpr;
+    }
+    var g = curveCanvas.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, w, h);
+    var styles = getComputedStyle(document.documentElement);
+
+    // zero line
+    g.strokeStyle = styles.getPropertyValue('--wave-base').trim();
+    g.lineWidth = 1;
+    g.beginPath(); g.moveTo(0, h / 2); g.lineTo(w, h / 2); g.stroke();
+
+    // response (±15 dB range)
+    g.strokeStyle = styles.getPropertyValue('--accent').trim();
+    g.lineWidth = 2.5;
+    g.beginPath();
+    for (var x = 0; x < N; x++) {
+      var px = (x / (N - 1)) * w;
+      var py = h / 2 - (totalDb[x] / 15) * (h / 2 - 6);
+      x === 0 ? g.moveTo(px, py) : g.lineTo(px, py);
+    }
+    g.stroke();
+  }
+
+  window.addEventListener('resize', function () { if (audioBuffer) drawCurve(); });
+
+  // ---------- File loading ----------
+  E.setupDropzone(dropzone, document.getElementById('fileInput'), function (files) {
+    var file = files[0];
+    fileName = file.name;
+    E.status(statusEl, 'Decoding audio…');
+    E.progress(progressEl, 'indeterminate');
+    E.decodeFile(file).then(function (buf) {
+      audioBuffer = buf;
+      document.getElementById('fileName').textContent = file.name;
+      document.getElementById('fileMeta').textContent = E.formatTime(buf.duration) + ' · ' + buf.sampleRate + ' Hz · ' + E.formatBytes(file.size);
+      dropzone.style.display = 'none';
+      editor.style.display = 'block';
+      E.progress(progressEl, null);
+      E.status(statusEl, '');
+      updateGainLabels();
+      drawCurve();
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, E.humanError(err), 'error');
+    });
+  });
+
+  // ---------- Live preview ----------
+  function stopPreview() {
+    if (playing) {
+      try { playing.source.stop(); } catch (e) {}
+      playing = null;
+      document.getElementById('previewBtn').textContent = '▶ Preview with EQ';
+    }
+  }
+
+  document.getElementById('previewBtn').addEventListener('click', function () {
+    if (playing) { stopPreview(); return; }
+    var ctx = E.getAudioContext();
+    var source = ctx.createBufferSource();
+    source.buffer = audioBuffer;
+    var filters = buildChain(ctx);
+    source.connect(filters[0]);
+    filters[filters.length - 1].connect(ctx.destination);
+    source.start();
+    playing = { source: source, filters: filters };
+    this.textContent = '⏸ Stop';
+    source.onended = stopPreview;
+  });
+
+  document.getElementById('newFileBtn').addEventListener('click', function () {
+    stopPreview();
+    editor.style.display = 'none';
+    dropzone.style.display = '';
+    audioBuffer = null;
+    E.status(statusEl, '');
+  });
+
+  // ---------- Export ----------
+  function renderWithEq() {
+    var off = new OfflineAudioContext(audioBuffer.numberOfChannels, audioBuffer.length, audioBuffer.sampleRate);
+    var src = off.createBufferSource();
+    src.buffer = audioBuffer;
+    var filters = BANDS.map(function (freq, i) {
+      var f = off.createBiquadFilter();
+      f.type = i === 0 ? 'lowshelf' : (i === BANDS.length - 1 ? 'highshelf' : 'peaking');
+      f.frequency.value = freq;
+      if (f.type === 'peaking') f.Q.value = 1.1;
+      f.gain.value = gains[i];
+      return f;
+    });
+    src.connect(filters[0]);
+    for (var i = 0; i < filters.length - 1; i++) filters[i].connect(filters[i + 1]);
+    filters[filters.length - 1].connect(off.destination);
+    src.start(0);
+    return off.startRendering();
+  }
+
+  function doExport(format) {
+    if (!audioBuffer) return;
+    stopPreview();
+    E.status(statusEl, 'Rendering EQ…');
+    E.progress(progressEl, 'indeterminate');
+    renderWithEq().then(function (rendered) {
+      if (format === 'wav') {
+        var blob = E.encodeWav(rendered);
+        E.downloadBlob(blob, E.baseName(fileName) + '-eq.wav');
+        E.progress(progressEl, null);
+        E.status(statusEl, '✓ WAV saved (' + E.formatBytes(blob.size) + '). Drop another file to go again.', 'success');
+      } else {
+        E.status(statusEl, 'Encoding MP3…');
+        return E.encodeMp3(rendered, 192, function (p) { E.progress(progressEl, p); }).then(function (blob) {
+          E.downloadBlob(blob, E.baseName(fileName) + '-eq.mp3');
+          E.progress(progressEl, null);
+          E.status(statusEl, '✓ MP3 saved (' + E.formatBytes(blob.size) + '). Drop another file to go again.', 'success');
+        });
+      }
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, E.humanError(err), 'error');
+    });
+  }
+
+  document.getElementById('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
+  document.getElementById('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
+})();
+</script>
+</body>
+</html>
