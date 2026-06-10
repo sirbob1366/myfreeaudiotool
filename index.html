@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyFreeAudioTool — 13 Free Audio Tools That Run In Your Browser. Zero Uploads.</title>
-  <meta name="description" content="13 free audio tools powered by Web Audio + WebAssembly: trim, convert, compress, merge, EQ, pitch, speed, reverse, BPM detection and more. No uploads, no signup — your files never leave your device.">
+  <title>MyFreeAudioTool — 31 Free Audio Tools That Run In Your Browser. Zero Uploads.</title>
+  <meta name="description" content="31 free audio tools powered by Web Audio + WebAssembly: trim, convert, vocal remover, reverb, 8D audio, spectrogram, tone generator, tuner, tag editor and more. No uploads, no signup — your files never leave your device.">
   <link rel="canonical" href="https://myfreeaudiotool.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://myfreeaudiotool.com/">
-  <meta property="og:title" content="MyFreeAudioTool — 13 Free Browser-Based Audio Tools">
-  <meta property="og:description" content="Trim, convert, compress, merge, EQ, pitch-shift and analyze audio — free, in your browser, with zero uploads.">
+  <meta property="og:title" content="MyFreeAudioTool — 31 Free Browser-Based Audio Tools">
+  <meta property="og:description" content="Trim, convert, remove vocals, add reverb, analyze spectrograms and more — free, in your browser, with zero uploads.">
   <meta property="og:site_name" content="MyFreeAudioTool">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MyFreeAudioTool — 13 Free Browser-Based Audio Tools">
-  <meta name="twitter:description" content="Trim, convert, compress, merge, EQ, pitch-shift and analyze audio — free, in your browser, with zero uploads.">
+  <meta name="twitter:title" content="MyFreeAudioTool — 31 Free Browser-Based Audio Tools">
+  <meta name="twitter:description" content="Trim, convert, remove vocals, add reverb, analyze spectrograms and more — free, in your browser, with zero uploads.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
     "operatingSystem": "Any",
     "browserRequirements": "Requires a modern web browser with JavaScript",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "13 free online audio tools that run entirely in your browser: trim, convert, compress, merge, volume boost, speed, pitch shift, reverse, equalizer, BPM and key detection, ringtone maker, voice recorder and video-to-audio extraction."
+    "description": "31 free online audio tools that run entirely in your browser: trim, merge, convert, compress, vocal remover, bass booster, reverb, 8D audio, noise reduction, silence removal, tone and noise generators, metronome, instrument tuner, spectrogram, waveform images, MP3 tag editing and more."
   }
   </script>
 </head>
@@ -58,7 +58,6 @@
   </div>
 </header>
 
-
 <main>
   <section class="hero">
     <div class="container">
@@ -66,13 +65,13 @@
         <div>
           <div class="badge"><span class="dot"></span>100% CLIENT-SIDE · 0 UPLOADS</div>
           <h1>The audio lab<br>that lives <span class="grad">in your browser.</span></h1>
-          <p class="lede">13 precision audio tools built on Web Audio + WebAssembly. Trim, convert, EQ, pitch-shift, analyze — your files are processed on your silicon, not our servers.</p>
+          <p class="lede">31 precision audio instruments built on Web Audio + WebAssembly. Trim, convert, remove vocals, sculpt reverb, read spectrograms — your files are processed on your silicon, not our servers.</p>
           <div class="controls-row" style="margin:0">
             <a class="btn btn--primary" href="#tools">Open the toolbox ↓</a>
-            <a class="btn btn--ghost" href="/about/">How it works</a>
+            <a class="btn btn--ghost" href="#listeners">Built for listeners</a>
           </div>
           <div class="hero__stats">
-            <div class="stat"><b>13</b>tools</div>
+            <div class="stat"><b>31</b>tools</div>
             <div class="stat"><b>0</b>bytes uploaded</div>
             <div class="stat"><b>∞</b>file size limit</div>
             <div class="stat"><b>$0</b>forever</div>
@@ -101,12 +100,23 @@
     </div>
   </section>
 
+  <nav class="cat-nav" aria-label="Tool categories">
+    <div class="container cat-nav__inner">
+      <a href="#edit">edit &amp; record</a>
+      <a href="#convert">convert</a>
+      <a href="#effects">effects</a>
+      <a href="#generate">generate</a>
+      <a href="#analyze">analyze</a>
+      <a href="#listeners">for listeners</a>
+    </div>
+  </nav>
+
   <section class="section" id="tools">
     <div class="container">
-      <h2 class="section-title reveal">Thirteen tools. All free. All local.</h2>
+      <h2 class="section-title reveal">Thirty-one instruments. All free. All local.</h2>
       <p class="section-sub reveal">No signup, no watermarks, no upload queue. Pick an instrument and get to work.</p>
 
-      <p class="cat-label reveal">01 / edit &amp; record</p>
+      <p class="cat-label reveal" id="edit">01 / edit &amp; record</p>
       <div class="tool-grid">
         <a class="tool-card reveal" href="/trim-audio/">
           <span class="tool-card__num">[01]</span>
@@ -132,77 +142,223 @@
           <h3>Voice Recorder</h3>
           <p>Live waveform, level meter, pause/resume, MP3/WAV export.</p>
         </a>
+        <a class="tool-card reveal" href="/silence-remover/">
+          <span class="tool-card__num">[05]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 3 14 2.5-9 1.5 2h5"/></svg></div>
+          <h3>Silence Remover</h3>
+          <p>Auto-detect dead air and cut it all with natural padding.</p>
+        </a>
+        <a class="tool-card reveal" href="/audio-tag-editor/">
+          <span class="tool-card__num">[06]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <h3>MP3 Tag Editor</h3>
+          <p>Edit ID3 tags and cover art — saved without re-encoding.</p>
+        </a>
       </div>
 
-      <p class="cat-label reveal">02 / convert</p>
+      <p class="cat-label reveal" id="convert">02 / convert</p>
       <div class="tool-grid">
         <a class="tool-card reveal" href="/convert-audio/">
-          <span class="tool-card__num">[05]</span>
+          <span class="tool-card__num">[07]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
           <h3>Convert Audio</h3>
           <p>MP3 · WAV · M4A · OGG · FLAC · AAC, in any direction.</p>
         </a>
         <a class="tool-card reveal" href="/compress-audio/">
-          <span class="tool-card__num">[06]</span>
+          <span class="tool-card__num">[08]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4a1 1 0 0 1-1 1H3"/><path d="M16 3v4a1 1 0 0 0 1 1h4"/><path d="M8 21v-4a1 1 0 0 0-1-1H3"/><path d="M16 21v-4a1 1 0 0 1 1-1h4"/></svg></div>
           <h3>Compress Audio</h3>
           <p>Bitrate control with live before/after size readout.</p>
         </a>
         <a class="tool-card reveal" href="/extract-audio-from-video/">
-          <span class="tool-card__num">[07]</span>
+          <span class="tool-card__num">[09]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="12" rx="2"/><path d="M22 7l-6 3 6 3z" fill="currentColor" stroke="none"/><path d="M7 20h13"/><path d="M17 17l3 3-3 3"/></svg></div>
           <h3>Video to MP3</h3>
           <p>Extract the audio track from MP4, WebM or MOV files.</p>
         </a>
+        <a class="tool-card reveal" href="/stereo-to-mono/">
+          <span class="tool-card__num">[10]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><path d="M11 12h2"/></svg></div>
+          <h3>Stereo ↔ Mono</h3>
+          <p>Downmix with balance control, or widen mono to stereo.</p>
+        </a>
+        <a class="tool-card reveal" href="/432hz-converter/">
+          <span class="tool-card__num">[11]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>432 Hz Converter</h3>
+          <p>Retune from 440 to 432 Hz with an honest A/B compare.</p>
+        </a>
       </div>
 
-      <p class="cat-label reveal">03 / effects</p>
+      <p class="cat-label reveal" id="effects">03 / effects</p>
       <div class="tool-grid">
         <a class="tool-card reveal" href="/volume-booster/">
-          <span class="tool-card__num">[08]</span>
+          <span class="tool-card__num">[12]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
           <h3>Volume Booster</h3>
           <p>Boost up to 400% or normalize peaks to −1 dB in one click.</p>
         </a>
+        <a class="tool-card reveal" href="/bass-booster/">
+          <span class="tool-card__num">[13]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.5 6.5a9.5 9.5 0 0 1 0 11"/></svg></div>
+          <h3>Bass Booster</h3>
+          <p>Studio low-shelf with five presets and clip protection.</p>
+        </a>
+        <a class="tool-card reveal" href="/equalizer/">
+          <span class="tool-card__num">[14]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
+          <h3>Equalizer</h3>
+          <p>10-band EQ with live preview, presets and response curve.</p>
+        </a>
+        <a class="tool-card reveal" href="/reverb/">
+          <span class="tool-card__num">[15]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 7v10M16 7v10M4 10v4M20 10v4"/></svg></div>
+          <h3>Reverb</h3>
+          <p>Five convolution spaces from bathroom to cathedral.</p>
+        </a>
+        <a class="tool-card reveal" href="/vocal-remover/">
+          <span class="tool-card__num">[16]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M2 2l20 20"/></svg></div>
+          <h3>Vocal Remover</h3>
+          <p>Phase-cancel center vocals for karaoke and practice tracks.</p>
+        </a>
+        <a class="tool-card reveal" href="/noise-reducer/">
+          <span class="tool-card__num">[17]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2l2-7 3 14 3-10 2 6 2-3h6"/></svg></div>
+          <h3>Noise Reducer</h3>
+          <p>Spectral gating: learn the hiss, then subtract it.</p>
+        </a>
+        <a class="tool-card reveal" href="/8d-audio/">
+          <span class="tool-card__num">[18]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-3a9 9 0 0 1 18 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></div>
+          <h3>8D Audio</h3>
+          <p>Send any song orbiting your head. Headphones required.</p>
+        </a>
+        <a class="tool-card reveal" href="/3d-audio-panner/">
+          <span class="tool-card__num">[19]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><circle cx="19" cy="7" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+          <h3>3D Audio Panner</h3>
+          <p>Place sound anywhere around a head with true HRTF.</p>
+        </a>
+        <a class="tool-card reveal" href="/slowed-and-reverb/">
+          <span class="tool-card__num">[20]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l-3 3"/></svg></div>
+          <h3>Slowed &amp; Reverb</h3>
+          <p>The 0.85× + hall aesthetic, adjustable, exported direct.</p>
+        </a>
         <a class="tool-card reveal" href="/audio-speed-changer/">
-          <span class="tool-card__num">[09]</span>
+          <span class="tool-card__num">[21]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10"/><path d="M12 6v6l4 2"/><path d="M19 16l3 3-3 3"/></svg></div>
           <h3>Speed Changer</h3>
           <p>0.25× to 4× playback with instant preview.</p>
         </a>
         <a class="tool-card reveal" href="/pitch-shifter/">
-          <span class="tool-card__num">[10]</span>
+          <span class="tool-card__num">[22]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
           <h3>Pitch Shifter</h3>
           <p>±12 semitones without changing the speed.</p>
         </a>
         <a class="tool-card reveal" href="/reverse-audio/">
-          <span class="tool-card__num">[11]</span>
+          <span class="tool-card__num">[23]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h13"/><path d="M8 7l-5 5 5 5"/><path d="M21 5v14"/></svg></div>
           <h3>Reverse Audio</h3>
           <p>Flip any track backwards. Instant, with preview.</p>
         </a>
-        <a class="tool-card reveal" href="/equalizer/">
-          <span class="tool-card__num">[12]</span>
-          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></svg></div>
-          <h3>Equalizer</h3>
-          <p>10-band EQ with live preview, presets and response curve.</p>
+      </div>
+
+      <p class="cat-label reveal" id="generate">04 / generate</p>
+      <div class="tool-grid">
+        <a class="tool-card reveal" href="/tone-generator/">
+          <span class="tool-card__num">[24]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-6 4-6 6 0s4 6 6 0 4-6 6 0"/></svg></div>
+          <h3>Tone Generator</h3>
+          <p>Four waveforms, 1 Hz–22 kHz, plus sweeps for speaker tests.</p>
+        </a>
+        <a class="tool-card reveal" href="/white-noise-generator/">
+          <span class="tool-card__num">[25]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2-3 2 4 2-8 2 6 2-10 2 12 2-6 2 3 2-2"/></svg></div>
+          <h3>Noise Generator</h3>
+          <p>White, pink and brown noise with a sleep timer and loops.</p>
+        </a>
+        <a class="tool-card reveal" href="/metronome/">
+          <span class="tool-card__num">[26]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6l3 16H6L9 3z"/><path d="M12 12l5-7"/><circle cx="12" cy="15" r="1" fill="currentColor"/></svg></div>
+          <h3>Metronome</h3>
+          <p>Sample-accurate clicks, time signatures, tap tempo.</p>
+        </a>
+        <a class="tool-card reveal" href="/text-to-speech/">
+          <span class="tool-card__num">[27]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
+          <h3>Text to Speech</h3>
+          <p>Your device's voices with rate and pitch controls.</p>
         </a>
       </div>
 
-      <p class="cat-label reveal">04 / analyze</p>
+      <p class="cat-label reveal" id="analyze">05 / analyze</p>
       <div class="tool-grid">
         <a class="tool-card reveal" href="/bpm-key-finder/">
-          <span class="tool-card__num">[13]</span>
+          <span class="tool-card__num">[28]</span>
           <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l3-9 4 18 3-9h3"/><circle cx="20" cy="12" r="2"/></svg></div>
           <h3>BPM &amp; Key Finder</h3>
           <p>Detect tempo and musical key with confidence scores.</p>
+        </a>
+        <a class="tool-card reveal" href="/instrument-tuner/">
+          <span class="tool-card__num">[29]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13V5"/><path d="M5 21a7 7 0 0 1 14 0"/><circle cx="12" cy="13" r="2"/></svg></div>
+          <h3>Instrument Tuner</h3>
+          <p>Mic pitch detection with a cents needle, A4 432–446 Hz.</p>
+        </a>
+        <a class="tool-card reveal" href="/spectrogram/">
+          <span class="tool-card__num">[30]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l4-4 3 3 5-5 6 6"/></svg></div>
+          <h3>Spectrogram</h3>
+          <p>See sound: playback-synced FFT render, PNG export, live mic.</p>
+        </a>
+        <a class="tool-card reveal" href="/waveform-image/">
+          <span class="tool-card__num">[31]</span>
+          <div class="tool-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-6M8 20V8M12 22V2M16 20V8M20 18v-6"/></svg></div>
+          <h3>Waveform Image</h3>
+          <p>Render shareable waveform PNGs up to 4K, any colors.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section section--soft">
+  <section class="section section--soft" id="listeners">
+    <div class="container">
+      <h2 class="section-title reveal">Built for listeners</h2>
+      <p class="section-sub reveal">Most tool sites treat audio as files to be processed. We treat it as sound to be understood — with the instrumentation audiophiles actually want.</p>
+      <div class="listener-grid">
+        <div class="listener-card reveal">
+          <span class="num">01 / see</span>
+          <h3>Spectrograms &amp; meters</h3>
+          <p>Every tool meters its output on a live stereo VU pair with a real-time spectrum strip. The <a href="/spectrogram/">spectrogram</a> exposes lossy ceilings, hum lines and hidden detail in any file.</p>
+        </div>
+        <div class="listener-card reveal">
+          <span class="num">02 / measure</span>
+          <h3>Technical readouts</h3>
+          <p>Load a file anywhere and get the full card — codec, bitrate, sample rate, bit depth, channels — in tabular monospace figures. No other free tool site shows you this.</p>
+        </div>
+        <div class="listener-card reveal">
+          <span class="num">03 / test</span>
+          <h3>Sweeps &amp; reference tones</h3>
+          <p>The <a href="/tone-generator/">tone generator</a> runs 20 Hz–20 kHz log sweeps for speaker and headphone evaluation, with sample-accurate WAV export for repeatable tests.</p>
+        </div>
+        <div class="listener-card reveal">
+          <span class="num">04 / tune</span>
+          <h3>Pitch instruments</h3>
+          <p>A <a href="/instrument-tuner/">chromatic tuner</a> with sub-cent resolution and adjustable reference pitch, plus an honest <a href="/432hz-converter/">432 Hz converter</a> with A/B compare.</p>
+        </div>
+        <div class="listener-card reveal">
+          <span class="num">05 / dwell</span>
+          <h3>Studio Mode</h3>
+          <p>Flip the theme toggle: near-black panels, glowing meters, hairline rules. Designed to be lived in during long sessions, not bolted on as an afterthought.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <h2 class="section-title reveal">Why we're different</h2>
       <p class="section-sub reveal">Every other "free online audio tool" makes you upload your file to their server first. We don't have a server to upload to.</p>
@@ -224,7 +380,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section--soft">
     <div class="container">
       <h2 class="section-title reveal">How it works</h2>
       <p class="section-sub reveal">Three steps. No account. Nothing uploaded.</p>
@@ -232,7 +388,7 @@
         <div class="step reveal">
           <div class="step__num">01</div>
           <h3>Pick a tool</h3>
-          <p>Thirteen focused instruments — each one does a single job exceptionally well.</p>
+          <p>Thirty-one focused instruments — each one does a single job exceptionally well.</p>
         </div>
         <div class="step reveal">
           <div class="step__num">02</div>
@@ -248,7 +404,7 @@
     </div>
   </section>
 
-  <section class="section section--soft">
+  <section class="section">
     <div class="container">
       <h2 class="section-title reveal">Frequently asked questions</h2>
       <div class="faq reveal">
@@ -356,10 +512,9 @@
   </div>
 </footer>
 
-
 <script src="/assets/js/site.js"></script>
 <script>
-// Animated hero waveform strip — transform/opacity-free canvas anim, skipped for reduced motion
+// Animated hero waveform strip — canvas anim, paused when hidden, skipped for reduced motion
 (function () {
   var canvas = document.getElementById('heroWave');
   if (!canvas) return;
@@ -386,9 +541,10 @@
       ctx.fillRect(x, (h - bh) / 2, 4, bh);
     }
     t += 0.045;
-    if (!reduced) requestAnimationFrame(draw);
+    if (!reduced && !document.hidden) requestAnimationFrame(draw);
   }
   draw();
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && !reduced) draw(); });
 })();
 </script>
 </body>

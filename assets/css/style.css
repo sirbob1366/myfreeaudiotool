@@ -26,22 +26,23 @@
   --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Liberation Mono", monospace;
 }
 
+/* Studio Mode — near-black neutral, glowing instrumentation */
 [data-theme="dark"] {
-  --bg: #060c15;
-  --bg-soft: #0a1322;
-  --grid-line: rgba(56, 189, 248, 0.05);
-  --text: #e8f3fc;
-  --muted: #8aa3bd;
+  --bg: #0a0a0c;
+  --bg-soft: #0f0f12;
+  --grid-line: rgba(56, 189, 248, 0.04);
+  --text: #ececf1;
+  --muted: #8d94a1;
   --accent: #38bdf8;
   --accent-2: #22d3ee;
   --accent-dark: #38bdf8;
   --accent-soft: rgba(56, 189, 248, 0.1);
-  --card: #0c1626;
-  --border: #1a2b42;
-  --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.65);
-  --wave-base: #1d3048;
-  --header-bg: rgba(6, 12, 21, 0.78);
+  --card: #141417;
+  --border: #242429;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+  --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.72);
+  --wave-base: #232329;
+  --header-bg: rgba(10, 10, 12, 0.8);
   --ok: #34d399;
   --err: #ff6b6b;
 }
@@ -63,7 +64,23 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+/* barely-perceptible paper grain over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 h1, h2, h3, .logo { font-family: var(--font-display); }
+
+/* tabular figures for every numeric readout */
+.status, .file-info, .mock-meta, .kicker, .tech-card, .hero__stats .stat, .knob__value, code {
+  font-variant-numeric: tabular-nums;
+}
 
 a { color: var(--accent-dark); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -560,6 +577,101 @@ input[type="range"].slider::-moz-range-thumb {
   .chip { animation: none; }
   * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
 }
+
+/* ---------- Technical readout card ---------- */
+.tech-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 0;
+  margin: -8px 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+.tech-card__cell {
+  padding: 9px 12px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: -1px -1px 0 0;
+}
+.tech-card dt {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2px;
+}
+.tech-card dd {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  white-space: nowrap;
+}
+.tech-card dd i { font-style: normal; color: var(--ok); font-size: 0.86em; }
+
+/* ---------- Sticky category nav (homepage) ---------- */
+.cat-nav {
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.cat-nav__inner {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 8px 0;
+  scrollbar-width: none;
+}
+.cat-nav__inner::-webkit-scrollbar { display: none; }
+.cat-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding: 7px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex: none;
+}
+.cat-nav a:hover { color: var(--accent-dark); text-decoration: none; background: var(--accent-soft); }
+.cat-nav a::before { content: "/"; color: var(--accent); margin-right: 4px; opacity: 0.7; }
+
+/* ---------- "Built for listeners" section ---------- */
+.listener-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.listener-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.listener-card .num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 10px;
+}
+.listener-card h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.listener-card p { margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.55; }
+.listener-card a { font-family: var(--font-mono); font-size: 0.78rem; display: inline-block; margin-top: 10px; }
 
 /* ---------- Meter rack (shared VU + spectrum, injected by meters.js) ---------- */
 .meter-rack {

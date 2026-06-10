@@ -42,43 +42,155 @@
   // ---------- File loading ----------
   Engine.decodeFile = function (file) {
     return file.arrayBuffer().then(function (buf) {
+      // keep a copy of the header — decodeAudioData detaches the buffer
+      var head = new Uint8Array(buf.slice(0, Math.min(buf.byteLength, 65536)));
       var ctx = Engine.getAudioContext();
       return new Promise(function (resolve, reject) {
         ctx.decodeAudioData(buf, resolve, function (e) {
           reject(e || new Error('decode failed'));
         });
+      }).then(function (audio) {
+        try {
+          var tech = Engine.probeTech(head, file, audio);
+          Engine.lastTech = tech;
+          document.dispatchEvent(new CustomEvent('mfat:decoded', { detail: { file: file, buffer: audio, tech: tech } }));
+        } catch (e) { /* the tech card is best-effort */ }
+        return audio;
       });
     });
   };
   Engine.loadAudioFile = Engine.decodeFile; // alias
 
+  // ---------- Technical metadata probing (header parsing, no libraries) ----------
+  Engine.probeTech = function (head, file, audio) {
+    var ext = (file.name.match(/\.([^.]+)$/) || [, ''])[1].toLowerCase();
+    var info = {
+      format: ext ? ext.toUpperCase() : (file.type || 'audio'),
+      codec: null,
+      bitrate: null,     // kbps
+      sampleRate: audio.sampleRate,
+      bitDepth: null,    // null = n/a (lossy)
+      lossless: false,
+      channels: audio.numberOfChannels,
+      duration: audio.duration
+    };
+    function str(off, len) {
+      var s = '';
+      for (var i = off; i < off + len && i < head.length; i++) s += String.fromCharCode(head[i]);
+      return s;
+    }
+    var payload = file.size;
+
+    if (str(0, 4) === 'RIFF' && str(8, 4) === 'WAVE') {
+      info.format = 'WAV';
+      info.lossless = true;
+      // walk chunks for "fmt "
+      var p = 12;
+      while (p + 8 < head.length) {
+        var id = str(p, 4);
+        var size = head[p + 4] | (head[p + 5] << 8) | (head[p + 6] << 16) | (head[p + 7] << 24);
+        if (id === 'fmt ') {
+          var fmt = head[p + 8] | (head[p + 9] << 8);
+          info.bitDepth = head[p + 22] | (head[p + 23] << 8);
+          info.codec = fmt === 3 ? 'PCM (float)' : fmt === 1 ? 'PCM' : fmt === 0xFFFE ? 'PCM (extensible)' : 'WAV codec ' + fmt;
+          break;
+        }
+        p += 8 + size + (size % 2);
+      }
+    } else if (str(0, 4) === 'fLaC') {
+      info.format = 'FLAC';
+      info.codec = 'FLAC';
+      info.lossless = true;
+      // STREAMINFO: 4 magic + 4 block header, then fixed layout
+      var b = 8 + 10;
+      if (b + 4 < head.length) {
+        info.bitDepth = (((head[b + 2] & 1) << 4) | (head[b + 3] >> 4)) + 1;
+      }
+    } else if (ext === 'mp3' || str(0, 3) === 'ID3' || file.type === 'audio/mpeg') {
+      info.format = 'MP3';
+      info.codec = 'MPEG Layer III';
+      if (str(0, 3) === 'ID3') {
+        var tagSize = ((head[6] & 0x7F) << 21) | ((head[7] & 0x7F) << 14) | ((head[8] & 0x7F) << 7) | (head[9] & 0x7F);
+        payload = Math.max(1, file.size - tagSize - 10);
+      }
+    } else if (ext === 'm4a' || ext === 'aac' || ext === 'mp4' || str(4, 4) === 'ftyp') {
+      info.format = ext === 'aac' ? 'AAC' : 'M4A';
+      info.codec = 'AAC';
+    } else if (str(0, 4) === 'OggS') {
+      info.format = 'OGG';
+      var headStr = str(0, 512);
+      info.codec = headStr.indexOf('OpusHead') >= 0 ? 'Opus' : 'Vorbis';
+    } else if (ext === 'flac') {
+      info.format = 'FLAC'; info.codec = 'FLAC'; info.lossless = true;
+    }
+    if (audio.duration > 0.2) info.bitrate = Math.round(payload * 8 / audio.duration / 1000);
+    return info;
+  };
+
+  // ---------- Technical readout card (auto-rendered after .file-info) ----------
+  document.addEventListener('mfat:decoded', function (e) {
+    var d = e.detail;
+    var fi = document.querySelector('#editor .file-info') || document.querySelector('.file-info');
+    if (!fi || !fi.parentNode) return;
+    var card = fi.parentNode.querySelector('.tech-card');
+    if (!card) {
+      card = document.createElement('dl');
+      card.className = 'tech-card';
+      fi.parentNode.insertBefore(card, fi.nextSibling);
+    }
+    var t = d.tech;
+    function cell(label, value) {
+      return '<div class="tech-card__cell"><dt>' + label + '</dt><dd>' + value + '</dd></div>';
+    }
+    var m = Math.floor(t.duration / 60);
+    var s = (t.duration - m * 60).toFixed(2);
+    card.innerHTML =
+      cell('format', t.format + (t.lossless ? ' <i>· lossless</i>' : '')) +
+      cell('codec', t.codec || '—') +
+      cell('bitrate', t.bitrate ? '≈' + t.bitrate + ' kbps' : '—') +
+      cell('sample rate', t.sampleRate.toLocaleString('en-US') + ' Hz') +
+      cell('bit depth', t.bitDepth ? t.bitDepth + '-bit' : 'n/a · lossy') +
+      cell('channels', t.channels === 1 ? '1 · mono' : t.channels === 2 ? '2 · stereo' : String(t.channels)) +
+      cell('duration', m + ':' + (s < 10 ? '0' : '') + s);
+  });
+
   // ---------- Waveform peaks (downsample to ~N peaks so big files stay fast) ----------
+  // The returned Float32Array carries a parallel `.rms` array used by
+  // drawWaveform to render the perceived-loudness band inside the peak silhouette.
   Engine.computePeaks = function (audioBuffer, count) {
     count = count || 2000;
     var length = audioBuffer.length;
     var block = Math.max(1, Math.floor(length / count));
     var peaks = new Float32Array(Math.ceil(length / block));
+    var rms = new Float32Array(peaks.length);
     var channels = [];
     for (var c = 0; c < audioBuffer.numberOfChannels; c++) channels.push(audioBuffer.getChannelData(c));
     for (var i = 0; i < peaks.length; i++) {
       var start = i * block;
       var end = Math.min(start + block, length);
-      var max = 0;
+      var max = 0, sum = 0, n = 0;
       for (var ch = 0; ch < channels.length; ch++) {
         var data = channels[ch];
         var step = block > 64 ? Math.floor(block / 64) : 1;
         for (var j = start; j < end; j += step) {
           var v = Math.abs(data[j]);
           if (v > max) max = v;
+          sum += v * v;
+          n++;
         }
       }
       peaks[i] = max;
+      rms[i] = n ? Math.sqrt(sum / n) : 0;
     }
+    peaks.rms = rms;
     return peaks;
   };
 
-  // ---------- Waveform drawing (retina-aware) ----------
+  // ---------- Waveform drawing (retina-aware, anti-aliased, dual peak/RMS render) ----------
   // opts: { selStart, selEnd } fractions 0..1; { playhead } fraction
+  // If peaks carries an `.rms` array (computePeaks attaches one), a darker inner
+  // band of perceived loudness is drawn inside the peak silhouette — the dual
+  // rendering real audio editors use.
   Engine.drawWaveform = function (canvas, peaks, opts) {
     opts = opts || {};
     var dpr = window.devicePixelRatio || 1;
@@ -96,22 +208,60 @@
     var styles = getComputedStyle(document.documentElement);
     var baseColor = styles.getPropertyValue('--wave-base').trim() || '#d9e8f4';
     var accent = styles.getPropertyValue('--accent').trim() || '#0ea5e9';
+    var accentDark = styles.getPropertyValue('--accent-dark').trim() || accent;
 
     var mid = h / 2;
     var n = peaks.length;
+    var amp = h / 2 - 2;
     var selStart = typeof opts.selStart === 'number' ? opts.selStart : null;
     var selEnd = typeof opts.selEnd === 'number' ? opts.selEnd : null;
+    var rms = peaks.rms || null;
 
-    for (var i = 0; i < n; i++) {
-      var x = (i / n) * w;
-      var amp = Math.max(peaks[i] * (h / 2 - 2), 1);
-      var frac = i / n;
-      var inSel = selStart !== null && frac >= selStart && frac <= selEnd;
-      g.fillStyle = (selStart === null || inSel) ? accent : baseColor;
-      g.fillRect(x, mid - amp, Math.max(w / n - 0.5, 0.8), amp * 2);
+    function silhouette(values, gainFloor) {
+      g.beginPath();
+      var i, x, y;
+      for (i = 0; i < n; i++) {
+        x = (i / (n - 1)) * w;
+        y = mid - Math.max(values[i] * amp, gainFloor);
+        if (i === 0) g.moveTo(x, y); else g.lineTo(x, y);
+      }
+      for (i = n - 1; i >= 0; i--) {
+        x = (i / (n - 1)) * w;
+        g.lineTo(x, mid + Math.max(values[i] * amp, gainFloor));
+      }
+      g.closePath();
     }
 
-    if (selStart !== null) {
+    function paint(peakColor, peakAlpha, rmsColor) {
+      g.globalAlpha = peakAlpha;
+      g.fillStyle = peakColor;
+      silhouette(peaks, 0.8);
+      g.fill();
+      if (rms) {
+        g.globalAlpha = 1;
+        g.fillStyle = rmsColor;
+        silhouette(rms, 0.4);
+        g.fill();
+      }
+      g.globalAlpha = 1;
+    }
+
+    if (selStart === null) {
+      paint(accent, 0.4, accentDark);
+    } else {
+      // outside the selection: muted
+      paint(baseColor, 0.55, baseColor);
+      // inside: clip to the selection and repaint in accent
+      g.save();
+      g.beginPath();
+      g.rect(selStart * w, 0, (selEnd - selStart) * w, h);
+      g.clip();
+      g.clearRect(selStart * w, 0, (selEnd - selStart) * w, h);
+      g.fillStyle = 'rgba(14,165,233,0.07)';
+      g.fillRect(selStart * w, 0, (selEnd - selStart) * w, h);
+      paint(accent, 0.4, accentDark);
+      g.restore();
+
       g.fillStyle = accent;
       [selStart, selEnd].forEach(function (f) {
         var hx = f * w;
@@ -120,8 +270,6 @@
         g.arc(hx, mid > 14 ? 10 : mid, 7, 0, Math.PI * 2);
         g.fill();
       });
-      g.fillStyle = 'rgba(14,165,233,0.08)';
-      g.fillRect(selStart * w, 0, (selEnd - selStart) * w, h);
     }
 
     if (typeof opts.playhead === 'number' && opts.playhead >= 0) {
