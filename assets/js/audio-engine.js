@@ -208,6 +208,72 @@
     });
   };
 
+  // ---------- Offline rendering ----------
+  // Renders `buffer` through a node graph. build(off, source) wires the graph
+  // and returns the output node to connect to off.destination (or null if it
+  // already connected everything itself). tailSec adds room for reverb tails.
+  Engine.renderBufferThrough = function (buffer, build, tailSec, channels) {
+    var rate = buffer.sampleRate;
+    var frames = Math.ceil((buffer.duration + (tailSec || 0)) * rate);
+    var off = new OfflineAudioContext(channels || buffer.numberOfChannels || 2, frames, rate);
+    var src = off.createBufferSource();
+    src.buffer = buffer;
+    var out = build(off, src);
+    if (out) out.connect(off.destination);
+    src.start(0);
+    return off.startRendering();
+  };
+
+  // Synthetic impulse response: stereo decaying noise burst.
+  // opts: { seconds, decay (exp curve, higher = faster die-off), brightness 0..1
+  //         (one-pole lowpass amount; 1 = full bandwidth), shimmer (early density) }
+  Engine.makeImpulse = function (ctx, opts) {
+    opts = opts || {};
+    var rate = ctx.sampleRate;
+    var len = Math.max(1, Math.floor((opts.seconds || 2) * rate));
+    var ir = ctx.createBuffer(2, len, rate);
+    var bright = typeof opts.brightness === 'number' ? opts.brightness : 0.7;
+    // one-pole lowpass coefficient from brightness (0 = very dark, 1 = none)
+    var a = 1 - Math.pow(1 - bright, 1.5) * 0.96;
+    for (var c = 0; c < 2; c++) {
+      var d = ir.getChannelData(c);
+      var lp = 0;
+      for (var i = 0; i < len; i++) {
+        var t = i / len;
+        var env = Math.pow(1 - t, opts.decay || 2.5);
+        var n = (Math.random() * 2 - 1);
+        lp += a * (n - lp);
+        d[i] = lp * env;
+      }
+      // soften the very first samples so the IR doesn't click
+      var ramp = Math.min(64, len);
+      for (var j = 0; j < ramp; j++) d[j] *= j / ramp;
+    }
+    return ir;
+  };
+
+  // Peak |sample| across all channels — clipping checks after a render.
+  Engine.bufferPeak = function (buffer) {
+    var peak = 0;
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var d = buffer.getChannelData(c);
+      for (var i = 0; i < d.length; i++) {
+        var v = Math.abs(d[i]);
+        if (v > peak) peak = v;
+      }
+    }
+    return peak;
+  };
+
+  // Scale every sample by `gain` (in place), e.g. to pull a clipped render under 0 dBFS.
+  Engine.scaleBuffer = function (buffer, gain) {
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var d = buffer.getChannelData(c);
+      for (var i = 0; i < d.length; i++) d[i] *= gain;
+    }
+    return buffer;
+  };
+
   // ---------- WAV encoding (16-bit PCM) ----------
   Engine.encodeWav = function (audioBuffer) {
     var numChannels = audioBuffer.numberOfChannels;

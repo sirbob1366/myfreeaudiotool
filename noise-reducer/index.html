@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noise Reducer Online Free — Remove Background Noise From Audio | MyFreeAudioTool</title>
+  <meta name="description" content="Remove hiss, hum and background noise from audio free, in your browser. Learn a noise profile, set the strength, compare before/after. Spectral gating with no uploads.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/noise-reducer/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/noise-reducer/">
+  <meta property="og:title" content="Noise Reducer Online Free — Remove Background Noise">
+  <meta property="og:description" content="Spectral noise reduction in your browser: learn the noise, set the strength, A/B the result. Free, no uploads.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Noise Reducer Online Free">
+  <meta name="twitter:description" content="Remove hiss, hum and background noise in your browser. Free, no uploads.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Noise Reducer — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/noise-reducer/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online noise reducer using spectral gating: learn a noise profile from a quiet section, set the reduction strength, and export clean audio — entirely in your browser."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How does the noise reducer work?", "acceptedAnswer": { "@type": "Answer", "text": "It uses spectral gating, the same approach as classic studio denoisers: it learns the frequency fingerprint of your noise from a section containing only noise, then attenuates each frequency band whenever its level falls near that fingerprint, leaving louder content (voice, music) untouched." } },
+      { "@type": "Question", "name": "What noise does it remove best?", "acceptedAnswer": { "@type": "Answer", "text": "Constant, steady noise: hiss, fan and air-conditioner rumble, electrical hum, room tone, preamp noise. It cannot remove unpredictable sounds like traffic, keyboard clicks, barking or other people talking — those need manual editing." } },
+      { "@type": "Question", "name": "Why does high strength sound watery or robotic?", "acceptedAnswer": { "@type": "Answer", "text": "Aggressive gating cuts frequencies that partly overlap your voice, creating 'musical noise' artifacts. Start around 50–60%, listen, and use the lowest strength that makes the noise unobtrusive — total silence between words usually sounds less natural than a whisper of room tone." } },
+      { "@type": "Question", "name": "Is my recording uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No. The entire spectral analysis and reduction run in your browser. Sensitive recordings never leave your device." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-h)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      <span>MyFreeAudioTool<em class="logo__tag">.com</em></span>
+    </a>
+    <nav class="nav">
+      <a href="/#tools">tools</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <p class="kicker">// effects · tool 21</p>
+      <h1>Noise Reducer</h1>
+      <p>Remove hiss, hum and room noise with spectral gating. Teach it the noise from a quiet moment, set the strength, and A/B the result — all on your device.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="privacy-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>YOUR FILE NEVER LEAVES YOUR DEVICE</div>
+
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2l2-7 3 14 3-10 2 6 2-3h6"/></svg></div>
+        <h2>Drop a noisy recording here</h2>
+        <p>MP3, WAV, M4A, OGG, FLAC and more — or click to browse</p>
+        <p class="hint-drop">[ drop works anywhere on this page ]</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac">
+      </div>
+
+      <div id="editor" style="display:none">
+        <div class="file-info">
+          <strong id="fileName"></strong>
+          <span class="meta" id="fileMeta"></span>
+        </div>
+
+        <p class="status" style="margin:0 0 6px"><b>Step 1</b> — select a moment that contains <em>only noise</em> (drag on the waveform), then learn the profile.</p>
+
+        <div class="wave-wrap">
+          <canvas id="wave" height="140" aria-label="Audio waveform — drag to select a noise-only region"></canvas>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary btn--sm" id="learnBtn" type="button">Learn noise from selection</button>
+          <button class="btn btn--ghost btn--sm" id="autoBtn" type="button">Auto-find quietest second</button>
+          <span class="status" id="profileInfo" style="margin:0"></span>
+        </div>
+
+        <div class="knob-row">
+          <input type="range" id="strength" data-knob data-label="Strength" data-unit="%" data-default="60" min="0" max="100" step="1" value="60">
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="processBtn" type="button" disabled>Reduce noise</button>
+          <label class="switch" id="abWrap" style="display:none"><input type="checkbox" id="abToggle" data-switch checked>Play cleaned version</label>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary btn--sm" id="previewBtn" type="button" disabled>▶ Preview</button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost btn--sm" id="newFileBtn" type="button">Process another file</button>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="exportWavBtn" type="button" disabled>Download WAV</button>
+          <button class="btn btn--ghost" id="exportMp3Btn" type="button" disabled>Download MP3</button>
+        </div>
+      </div>
+
+      <div class="progress" id="progress"><div class="progress__bar"></div></div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>How to remove background noise from a recording</h2>
+      <ol>
+        <li><strong>Load your file</strong> — voice memo, podcast take, interview, old tape transfer.</li>
+        <li><strong>Mark the noise</strong> — drag-select a second where nobody is talking (or click auto-find). The tool learns the exact frequency fingerprint of your hiss or hum.</li>
+        <li><strong>Reduce</strong> — pick a strength and process. Flip the A/B switch to compare cleaned and original.</li>
+        <li><strong>Export</strong> — WAV (lossless) or MP3.</li>
+      </ol>
+      <h3>Spectral gating, explained</h3>
+      <p>This is the same architecture as the noise reduction in serious audio editors: the recording is sliced into overlapping windows, each window is transformed into ~1,000 frequency bands, and every band is compared against the learned noise profile. Bands hovering near the noise floor get attenuated; bands carrying real signal pass through untouched. Because the gate operates per-frequency, it can pull hiss out from <em>around</em> a voice rather than just turning everything down.</p>
+      <h3>What it can and can't fix</h3>
+      <ul>
+        <li><strong>Great on:</strong> steady hiss, fan/AC rumble, electrical hum, room tone, preamp noise.</li>
+        <li><strong>Useless on:</strong> sudden sounds — clicks, traffic, dogs, other voices. Nothing 'learnable' about those; cut them out with the <a href="/trim-audio/">trimmer</a> instead.</li>
+        <li><strong>Tip:</strong> the cleanest results come from the lowest strength that works. 100% strength on a noisy file produces watery, robotic artifacts — leaving a whisper of room tone almost always sounds more natural.</li>
+      </ul>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>How does the noise reducer work?</summary>
+          <p>Spectral gating: it learns the frequency fingerprint of your noise from a noise-only section, then attenuates each frequency band whenever its level falls near that fingerprint — leaving louder content untouched.</p>
+        </details>
+        <details>
+          <summary>What noise does it remove best?</summary>
+          <p>Constant noise: hiss, fans, AC, hum, room tone. It can't remove unpredictable sounds like clicks, traffic or other people talking.</p>
+        </details>
+        <details>
+          <summary>Why does high strength sound watery?</summary>
+          <p>Aggressive gating cuts frequencies that overlap your voice, creating "musical noise." Start near 50–60% and use the lowest strength that makes noise unobtrusive.</p>
+        </details>
+        <details>
+          <summary>Is my recording uploaded?</summary>
+          <p>No — the entire analysis runs in your browser. Sensitive audio never leaves your device.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="related-strip">
+      <p class="kicker">// related tools</p>
+      <div class="related-grid">
+        <a class="related-card" href="/silence-remover/"><b>Silence Remover</b><span>Cut dead air automatically</span></a>
+        <a class="related-card" href="/audio-recorder/"><b>Voice Recorder</b><span>Record clean takes in the browser</span></a>
+        <a class="related-card" href="/equalizer/"><b>Equalizer</b><span>Roll off rumble with a low shelf</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-f)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          <span>MyFreeAudioTool</span>
+        </a>
+        <p class="tagline">Free audio tools that run entirely in your browser. Zero uploads. Zero accounts. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>// edit &amp; record</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+          <li><a href="/silence-remover/">Silence Remover</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// convert</h4>
+        <ul>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/extract-audio-from-video/">Video to MP3</a></li>
+          <li><a href="/stereo-to-mono/">Stereo ↔ Mono</a></li>
+          <li><a href="/432hz-converter/">432 Hz Converter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// effects</h4>
+        <ul>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/bass-booster/">Bass Booster</a></li>
+          <li><a href="/equalizer/">Equalizer</a></li>
+          <li><a href="/reverb/">Reverb</a></li>
+          <li><a href="/vocal-remover/">Vocal Remover</a></li>
+          <li><a href="/noise-reducer/">Noise Reducer</a></li>
+          <li><a href="/8d-audio/">8D Audio</a></li>
+          <li><a href="/3d-audio-panner/">3D Audio Panner</a></li>
+          <li><a href="/slowed-and-reverb/">Slowed &amp; Reverb</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/pitch-shifter/">Pitch Shifter</a></li>
+          <li><a href="/reverse-audio/">Reverse Audio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// analyze</h4>
+        <ul>
+          <li><a href="/bpm-key-finder/">BPM &amp; Key Finder</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// more free tools</h4>
+        <ul>
+          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
+          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script src="/assets/js/meters.js"></script>
+<script src="/assets/js/controls.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var FRAME = 2048, HOP = 512;
+  var buffer = null, processed = null, peaks = null, fileName = '';
+  var noiseProfile = null; // per-channel array of Float32Array(FRAME/2+1)
+  var sel = { start: 0.02, end: 0.08 };
+  var playing = null;
+
+  // ---------- FFT (iterative radix-2, in-place) ----------
+  function fft(re, im, inverse) {
+    var n = re.length;
+    for (var i = 1, j = 0; i < n; i++) {
+      var bit = n >> 1;
+      for (; j & bit; bit >>= 1) j ^= bit;
+      j ^= bit;
+      if (i < j) {
+        var tr = re[i]; re[i] = re[j]; re[j] = tr;
+        var ti = im[i]; im[i] = im[j]; im[j] = ti;
+      }
+    }
+    for (var len = 2; len <= n; len <<= 1) {
+      var ang = (inverse ? 2 : -2) * Math.PI / len;
+      var wr = Math.cos(ang), wi = Math.sin(ang);
+      for (var s = 0; s < n; s += len) {
+        var cr = 1, ci = 0;
+        for (var k = 0; k < len / 2; k++) {
+          var ur = re[s + k], ui = im[s + k];
+          var vr = re[s + k + len / 2] * cr - im[s + k + len / 2] * ci;
+          var vi = re[s + k + len / 2] * ci + im[s + k + len / 2] * cr;
+          re[s + k] = ur + vr; im[s + k] = ui + vi;
+          re[s + k + len / 2] = ur - vr; im[s + k + len / 2] = ui - vi;
+          var ncr = cr * wr - ci * wi;
+          ci = cr * wi + ci * wr; cr = ncr;
+        }
+      }
+    }
+    if (inverse) for (var m = 0; m < n; m++) { re[m] /= n; im[m] /= n; }
+  }
+
+  var hann = new Float32Array(FRAME);
+  for (var h = 0; h < FRAME; h++) hann[h] = 0.5 * (1 - Math.cos(2 * Math.PI * h / FRAME));
+
+  // ---------- waveform + selection ----------
+  var canvas = $('wave');
+  function draw(playhead) {
+    if (!peaks) return;
+    E.drawWaveform(canvas, peaks, { selStart: sel.start, selEnd: sel.end, playhead: playhead });
+  }
+  var dragging = null;
+  function fracFromEvent(e) {
+    var rect = canvas.getBoundingClientRect();
+    var x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    return Math.min(1, Math.max(0, x / rect.width));
+  }
+  function onDown(e) {
+    if (!buffer) return;
+    var f = fracFromEvent(e);
+    dragging = Math.abs(f - sel.start) <= Math.abs(f - sel.end) ? 'start' : 'end';
+    onMove(e);
+    e.preventDefault();
+  }
+  function onMove(e) {
+    if (!dragging) return;
+    var f = fracFromEvent(e);
+    if (dragging === 'start') sel.start = Math.min(f, sel.end - 0.002);
+    else sel.end = Math.max(f, sel.start + 0.002);
+    sel.start = Math.max(0, sel.start);
+    sel.end = Math.min(1, sel.end);
+    draw();
+    e.preventDefault();
+  }
+  canvas.addEventListener('mousedown', onDown);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', function () { dragging = null; });
+  canvas.addEventListener('touchstart', onDown, { passive: false });
+  canvas.addEventListener('touchmove', onMove, { passive: false });
+  canvas.addEventListener('touchend', function () { dragging = null; });
+  window.addEventListener('resize', function () { draw(); });
+
+  // ---------- load ----------
+  E.setupDropzone($('dropzone'), $('fileInput'), function (files) {
+    var file = files[0];
+    fileName = file.name;
+    E.status($('status'), 'Decoding audio…');
+    E.progress($('progress'), 'indeterminate');
+    E.decodeFile(file).then(function (buf) {
+      buffer = buf;
+      processed = null;
+      noiseProfile = null;
+      peaks = E.computePeaks(buf, 2000);
+      sel = { start: 0.02, end: Math.min(0.08, 0.02 + 0.5 / buf.duration) };
+      $('fileName').textContent = file.name;
+      $('fileMeta').textContent = E.formatTime(buf.duration) + ' · ' + buf.sampleRate + ' Hz · ' + buf.numberOfChannels + ' ch · ' + E.formatBytes(file.size);
+      $('dropzone').style.display = 'none';
+      $('editor').style.display = 'block';
+      $('profileInfo').textContent = 'no profile yet';
+      ['processBtn', 'previewBtn', 'exportWavBtn', 'exportMp3Btn'].forEach(function (id) { $(id).disabled = true; });
+      $('abWrap').style.display = 'none';
+      E.progress($('progress'), null);
+      E.status($('status'), '');
+      draw();
+    }).catch(function (err) {
+      E.progress($('progress'), null);
+      E.status($('status'), E.humanError(err), 'error');
+    });
+  });
+
+  // ---------- learn noise ----------
+  function learn() {
+    var startS = sel.start * buffer.duration, endS = sel.end * buffer.duration;
+    if (endS - startS < 0.15) {
+      E.status($('status'), 'Select at least 0.15 s of noise-only audio.', 'error');
+      return;
+    }
+    var bins = FRAME / 2 + 1;
+    noiseProfile = [];
+    var re = new Float32Array(FRAME), im = new Float32Array(FRAME);
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var data = buffer.getChannelData(c);
+      var s0 = Math.max(0, Math.min(Math.floor(startS * buffer.sampleRate), data.length - FRAME));
+      var s1 = Math.min(data.length - FRAME, Math.floor(endS * buffer.sampleRate) - FRAME);
+      var prof = new Float32Array(bins);
+      var count = 0;
+      for (var pos = s0; pos <= Math.max(s0, s1); pos += HOP) {
+        for (var i = 0; i < FRAME; i++) { re[i] = data[pos + i] * hann[i]; im[i] = 0; }
+        fft(re, im, false);
+        for (var b = 0; b < bins; b++) prof[b] += Math.sqrt(re[b] * re[b] + im[b] * im[b]);
+        count++;
+      }
+      if (count) for (var b2 = 0; b2 < bins; b2++) prof[b2] /= count;
+      noiseProfile.push(prof);
+    }
+    $('profileInfo').textContent = '✓ profile learned (' + (endS - startS).toFixed(2) + ' s)';
+    $('processBtn').disabled = false;
+    E.status($('status'), 'Noise profile learned. Now hit "Reduce noise".', 'success');
+  }
+  $('learnBtn').addEventListener('click', learn);
+
+  $('autoBtn').addEventListener('click', function () {
+    // quietest 0.5 s window by RMS
+    var data = buffer.getChannelData(0);
+    var win = Math.floor(0.5 * buffer.sampleRate);
+    var hop = Math.floor(win / 4);
+    var best = Infinity, bestPos = 0;
+    for (var pos = 0; pos + win < data.length; pos += hop) {
+      var sum = 0;
+      for (var i = pos; i < pos + win; i += 16) sum += data[i] * data[i];
+      if (sum < best) { best = sum; bestPos = pos; }
+    }
+    sel.start = bestPos / data.length;
+    sel.end = (bestPos + win) / data.length;
+    draw();
+    learn();
+  });
+
+  // ---------- process ----------
+  $('processBtn').addEventListener('click', function () {
+    stopPreview();
+    var strength = parseFloat($('strength').value) / 100;
+    var beta = 1 + 2.5 * strength;            // over-subtraction factor
+    var floorGain = 0.45 - 0.43 * strength;   // residual noise floor
+    var bins = FRAME / 2 + 1;
+    var ctx = E.getAudioContext();
+    processed = ctx.createBuffer(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+    E.status($('status'), 'Reducing noise…');
+    E.progress($('progress'), 0);
+
+    var c = 0, pos = 0;
+    var re = new Float32Array(FRAME), im = new Float32Array(FRAME);
+    var prevGain = new Float32Array(bins);
+    var gains = new Float32Array(bins);
+    var norm = new Float32Array(buffer.length); // hann OLA normalization
+    var totalWork = buffer.numberOfChannels * buffer.length;
+
+    function chunk() {
+      var deadline = Date.now() + 40;
+      var data = buffer.getChannelData(c);
+      var out = processed.getChannelData(c);
+      var prof = noiseProfile[Math.min(c, noiseProfile.length - 1)];
+      while (Date.now() < deadline) {
+        if (pos >= data.length) {
+          // normalize overlap-add, then next channel
+          for (var n = 0; n < out.length; n++) if (norm[n] > 1e-6) out[n] /= norm[n];
+          c++;
+          pos = 0;
+          prevGain.fill(0);
+          norm.fill(0);
+          if (c >= buffer.numberOfChannels) { finish(); return; }
+          data = buffer.getChannelData(c);
+          out = processed.getChannelData(c);
+          prof = noiseProfile[Math.min(c, noiseProfile.length - 1)];
+        }
+        var nIn = Math.min(FRAME, data.length - pos);
+        for (var i = 0; i < FRAME; i++) {
+          re[i] = i < nIn ? data[pos + i] * hann[i] : 0;
+          im[i] = 0;
+        }
+        fft(re, im, false);
+        for (var b = 0; b < bins; b++) {
+          var mag = Math.sqrt(re[b] * re[b] + im[b] * im[b]);
+          var g = mag > 0 ? Math.max(floorGain, 1 - beta * prof[b] / mag) : floorGain;
+          if (g > 1) g = 1;
+          gains[b] = g;
+        }
+        // frequency smoothing (3-bin) + time smoothing
+        var prev = gains[0];
+        for (var b2 = 1; b2 < bins - 1; b2++) {
+          var sm = (prev + gains[b2] + gains[b2 + 1]) / 3;
+          prev = gains[b2];
+          sm = 0.4 * prevGain[b2] + 0.6 * sm;
+          prevGain[b2] = sm;
+          gains[b2] = sm;
+        }
+        for (var b3 = 0; b3 < bins; b3++) {
+          var g2 = gains[b3];
+          re[b3] *= g2; im[b3] *= g2;
+          if (b3 > 0 && b3 < FRAME / 2) {       // mirror for conjugate bins
+            re[FRAME - b3] *= g2; im[FRAME - b3] *= g2;
+          }
+        }
+        fft(re, im, true);
+        var lim = Math.min(FRAME, out.length - pos);
+        for (var o = 0; o < lim; o++) {
+          out[pos + o] += re[o] * hann[o];
+          norm[pos + o] += hann[o] * hann[o];
+        }
+        pos += HOP;
+      }
+      E.progress($('progress'), (c * buffer.length + pos) / totalWork);
+      setTimeout(chunk, 0);
+    }
+
+    function finish() {
+      E.progress($('progress'), null);
+      E.status($('status'), '✓ Noise reduced. Preview with the A/B switch, then download.', 'success');
+      peaks = E.computePeaks(processed, 2000);
+      sel = { start: 0, end: 0.0001 };
+      draw();
+      ['previewBtn', 'exportWavBtn', 'exportMp3Btn'].forEach(function (id) { $(id).disabled = false; });
+      $('abWrap').style.display = '';
+      $('abToggle').checked = true;
+    }
+    chunk();
+  });
+
+  // ---------- preview (A/B) ----------
+  function stopPreview() {
+    if (!playing) return;
+    try { playing.source.onended = null; playing.source.stop(); } catch (e) {}
+    cancelAnimationFrame(playing.raf);
+    playing = null;
+    $('previewBtn').textContent = '▶ Preview';
+    draw();
+  }
+  function startPreview(offset) {
+    var buf = $('abToggle').checked && processed ? processed : buffer;
+    var ctx = E.getAudioContext();
+    var source = ctx.createBufferSource();
+    source.buffer = buf;
+    source.connect(ctx.destination);
+    source.start(0, offset || 0);
+    var startedAt = ctx.currentTime;
+    playing = { source: source, raf: 0, offset: offset || 0, startedAt: startedAt };
+    $('previewBtn').textContent = '⏸ Stop';
+    source.onended = function () { stopPreview(); };
+    (function tick() {
+      if (!playing) return;
+      draw((playing.offset + ctx.currentTime - startedAt) / buf.duration);
+      playing.raf = requestAnimationFrame(tick);
+    })();
+  }
+  $('previewBtn').addEventListener('click', function () {
+    if (playing) { stopPreview(); return; }
+    startPreview(0);
+  });
+  $('abToggle').addEventListener('change', function () {
+    if (!playing) return;
+    var ctx = E.getAudioContext();
+    var pos = playing.offset + ctx.currentTime - playing.startedAt;
+    stopPreview();
+    startPreview(Math.min(pos, buffer.duration - 0.05));
+  });
+
+  // ---------- export ----------
+  function doExport(kind) {
+    stopPreview();
+    var base = E.baseName(fileName) + '-denoised';
+    if (kind === 'wav') {
+      var blob = E.encodeWav(processed);
+      E.downloadBlob(blob, base + '.wav');
+      E.status($('status'), '✓ WAV saved (' + E.formatBytes(blob.size) + ').', 'success');
+    } else {
+      E.status($('status'), 'Encoding MP3…');
+      E.progress($('progress'), 0);
+      E.encodeMp3(processed, 192, function (p) { E.progress($('progress'), p); }).then(function (blob) {
+        E.downloadBlob(blob, base + '.mp3');
+        E.progress($('progress'), null);
+        E.status($('status'), '✓ MP3 saved (' + E.formatBytes(blob.size) + ').', 'success');
+      }).catch(function (err) {
+        E.progress($('progress'), null);
+        E.status($('status'), E.humanError(err), 'error');
+      });
+    }
+  }
+  $('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
+  $('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
+
+  $('newFileBtn').addEventListener('click', function () {
+    stopPreview();
+    $('editor').style.display = 'none';
+    $('dropzone').style.display = '';
+    E.status($('status'), '');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silence Remover Online Free — Cut Dead Air From Audio Automatically | MyFreeAudioTool</title>
+  <meta name="description" content="Remove silence from audio automatically, free, in your browser. Adjustable threshold and duration, see detected gaps on the waveform, one-click removal with natural padding. No uploads.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/silence-remover/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/silence-remover/">
+  <meta property="og:title" content="Silence Remover Online Free — Cut Dead Air Automatically">
+  <meta property="og:description" content="Auto-detect and remove silences with adjustable threshold, duration and padding. Free, private, no uploads.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Silence Remover Online Free">
+  <meta name="twitter:description" content="Auto-detect and remove dead air from any recording in your browser. Free, no uploads.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82L8RP86P1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-82L8RP86P1');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Silence Remover — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/silence-remover/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online silence remover: auto-detects gaps below an adjustable threshold and duration, shows them on the waveform, and removes them all with natural padding — entirely in your browser."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How does silence detection work?", "acceptedAnswer": { "@type": "Answer", "text": "The audio is scanned in 20-millisecond windows and the loudness of each window is measured. Stretches that stay below your threshold (in dB) for longer than the minimum duration are marked as silence and highlighted on the waveform before anything is removed." } },
+      { "@type": "Question", "name": "What threshold should I use for podcasts?", "acceptedAnswer": { "@type": "Answer", "text": "Start at −40 dB with a minimum duration of 0.5 seconds and 150 ms padding. If quiet breaths are being flagged, lower the threshold toward −50 dB; if room tone is escaping detection, raise it toward −35 dB." } },
+      { "@type": "Question", "name": "What does the padding control do?", "acceptedAnswer": { "@type": "Answer", "text": "Instead of cutting silences flush against the audio, padding keeps a short natural gap at each cut (150 ms by default). This prevents the choppy, machine-gun pacing you get from removing every pause completely." } },
+      { "@type": "Question", "name": "Is my recording uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No — detection and removal run in your browser via the Web Audio API. Your file never leaves your device." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-h" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-h)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      <span>MyFreeAudioTool<em class="logo__tag">.com</em></span>
+    </a>
+    <nav class="nav">
+      <a href="/#tools">tools</a>
+      <a href="/about/">about</a>
+      <a href="/contact/">contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <p class="kicker">// effects · tool 22</p>
+      <h1>Silence Remover</h1>
+      <p>Cut dead air from podcasts, voice memos and interviews automatically. See every detected gap on the waveform before removing them all in one click.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="privacy-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>YOUR FILE NEVER LEAVES YOUR DEVICE</div>
+
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-7 3 14 2.5-9 1.5 2h5"/><path d="M19 5l3 3m0-3l-3 3"/></svg></div>
+        <h2>Drop your recording here</h2>
+        <p>MP3, WAV, M4A, OGG, FLAC and more — or click to browse</p>
+        <p class="hint-drop">[ drop works anywhere on this page ]</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac">
+      </div>
+
+      <div id="editor" style="display:none">
+        <div class="file-info">
+          <strong id="fileName"></strong>
+          <span class="meta" id="fileMeta"></span>
+        </div>
+
+        <div class="wave-wrap">
+          <canvas id="wave" height="140" aria-label="Audio waveform with detected silences highlighted"></canvas>
+        </div>
+        <p class="status" id="detectInfo" style="margin:2px 0 8px"></p>
+
+        <div class="knob-row">
+          <input type="range" id="threshold" data-knob data-label="Threshold" data-unit="dB" data-default="-40" min="-60" max="-20" step="1" value="-40">
+          <input type="range" id="minDur" data-knob data-label="Min silence" data-unit="s" data-default="0.5" min="0.1" max="3" step="0.1" data-decimals="1" value="0.5">
+          <input type="range" id="padding" data-knob data-label="Keep gap" data-unit="ms" data-default="150" min="0" max="500" step="10" value="150">
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="removeBtn" type="button">Remove all silences</button>
+          <label class="switch" id="abWrap" style="display:none"><input type="checkbox" id="abToggle" data-switch checked>Play tightened version</label>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary btn--sm" id="previewBtn" type="button">▶ Preview</button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost btn--sm" id="newFileBtn" type="button">Process another file</button>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="exportWavBtn" type="button" disabled>Download WAV</button>
+          <button class="btn btn--ghost" id="exportMp3Btn" type="button" disabled>Download MP3</button>
+        </div>
+      </div>
+
+      <div class="progress" id="progress"><div class="progress__bar"></div></div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>Remove silence from audio automatically</h2>
+      <ol>
+        <li><strong>Drop your file</strong> — the waveform appears with silences already highlighted using the default settings.</li>
+        <li><strong>Tune the detection</strong> — threshold (how quiet counts as silence), minimum duration (how long a gap must be) and padding (how much natural gap to keep at each cut). The highlights update live.</li>
+        <li><strong>Remove</strong> — one click deletes every detected gap; the A/B switch compares the tightened cut with the original.</li>
+        <li><strong>Export</strong> — WAV or MP3, with a readout of exactly how much time you saved.</li>
+      </ol>
+      <h3>Built for podcast editing</h3>
+      <p>Manually hunting pauses in an hour-long episode is the most tedious job in podcasting. This tool measures loudness in 20 ms windows across the whole file, finds every stretch that sits under your threshold longer than the minimum duration, and shows each one on the waveform <em>before</em> you commit. The <strong>Keep gap</strong> control is what makes the result sound human: instead of slamming words together, each cut keeps a short breath of room tone (150 ms by default), preserving natural pacing while still tightening minutes out of a long recording.</p>
+      <h3>Suggested settings</h3>
+      <ul>
+        <li><strong>Podcast / interview</strong> — −40 dB, 0.5 s, 150 ms padding.</li>
+        <li><strong>Tight YouTube edit</strong> — −38 dB, 0.3 s, 80 ms padding.</li>
+        <li><strong>Lecture cleanup</strong> — −45 dB, 1.0 s, 250 ms padding (gentler, keeps thinking pauses).</li>
+      </ul>
+      <p>Noisy room tone making detection miss? Run the <a href="/noise-reducer/">Noise Reducer</a> first — a cleaner noise floor makes silences easier to find.</p>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>How does silence detection work?</summary>
+          <p>The audio is scanned in 20 ms windows; stretches below your dB threshold for longer than the minimum duration are marked and highlighted before anything is removed.</p>
+        </details>
+        <details>
+          <summary>What threshold should I use for podcasts?</summary>
+          <p>Start at −40 dB / 0.5 s / 150 ms padding. Lower the threshold if breaths get flagged; raise it if room tone escapes detection.</p>
+        </details>
+        <details>
+          <summary>What does the padding control do?</summary>
+          <p>It keeps a short natural gap at every cut instead of slamming audio together — preventing choppy, machine-gun pacing.</p>
+        </details>
+        <details>
+          <summary>Is my recording uploaded?</summary>
+          <p>No — everything runs in your browser. Your file never leaves your device.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="related-strip">
+      <p class="kicker">// related tools</p>
+      <div class="related-grid">
+        <a class="related-card" href="/trim-audio/"><b>Trim Audio</b><span>Cut a specific region by hand</span></a>
+        <a class="related-card" href="/noise-reducer/"><b>Noise Reducer</b><span>Clean the noise floor first</span></a>
+        <a class="related-card" href="/audio-recorder/"><b>Voice Recorder</b><span>Record takes right in the browser</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg-f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#lg-f)"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          <span>MyFreeAudioTool</span>
+        </a>
+        <p class="tagline">Free audio tools that run entirely in your browser. Zero uploads. Zero accounts. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>// edit &amp; record</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+          <li><a href="/silence-remover/">Silence Remover</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// convert</h4>
+        <ul>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/extract-audio-from-video/">Video to MP3</a></li>
+          <li><a href="/stereo-to-mono/">Stereo ↔ Mono</a></li>
+          <li><a href="/432hz-converter/">432 Hz Converter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// effects</h4>
+        <ul>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/bass-booster/">Bass Booster</a></li>
+          <li><a href="/equalizer/">Equalizer</a></li>
+          <li><a href="/reverb/">Reverb</a></li>
+          <li><a href="/vocal-remover/">Vocal Remover</a></li>
+          <li><a href="/noise-reducer/">Noise Reducer</a></li>
+          <li><a href="/8d-audio/">8D Audio</a></li>
+          <li><a href="/3d-audio-panner/">3D Audio Panner</a></li>
+          <li><a href="/slowed-and-reverb/">Slowed &amp; Reverb</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/pitch-shifter/">Pitch Shifter</a></li>
+          <li><a href="/reverse-audio/">Reverse Audio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>// analyze</h4>
+        <ul>
+          <li><a href="/bpm-key-finder/">BPM &amp; Key Finder</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+        <h4 style="margin-top:20px">// more free tools</h4>
+        <ul>
+          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
+          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script src="/assets/js/meters.js"></script>
+<script src="/assets/js/controls.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+  var $ = function (id) { return document.getElementById(id); };
+
+  var buffer = null, processed = null, peaks = null, processedPeaks = null;
+  var fileName = '', regions = [], playing = null;
+
+  var canvas = $('wave');
+
+  function draw(playhead) {
+    var showProcessed = processed && $('abToggle').checked;
+    var pk = showProcessed ? processedPeaks : peaks;
+    if (!pk) return;
+    E.drawWaveform(canvas, pk, { playhead: playhead });
+    if (!showProcessed && regions.length && buffer) {
+      var g = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var rect = canvas.getBoundingClientRect();
+      g.fillStyle = 'rgba(224, 45, 45, 0.18)';
+      var dur = buffer.duration;
+      regions.forEach(function (r) {
+        var x = (r[0] / dur) * rect.width;
+        var w = ((r[1] - r[0]) / dur) * rect.width;
+        g.fillRect(x, 0, w, rect.height);
+      });
+    }
+  }
+
+  // ---------- detection ----------
+  function detect() {
+    if (!buffer) return;
+    var thrDb = parseFloat($('threshold').value);
+    var minDur = parseFloat($('minDur').value);
+    var pad = parseFloat($('padding').value) / 1000;
+    var thr = Math.pow(10, thrDb / 20);
+    var win = Math.max(1, Math.floor(0.02 * buffer.sampleRate));
+    var chans = [];
+    for (var c = 0; c < buffer.numberOfChannels; c++) chans.push(buffer.getChannelData(c));
+    var nWin = Math.floor(buffer.length / win);
+    regions = [];
+    var silStart = -1;
+    for (var w = 0; w <= nWin; w++) {
+      var loud = false;
+      if (w < nWin) {
+        var sum = 0, n0 = w * win;
+        for (var i = 0; i < win; i += 4) {
+          for (var ch = 0; ch < chans.length; ch++) {
+            var v = chans[ch][n0 + i];
+            sum += v * v;
+          }
+        }
+        var rms = Math.sqrt(sum / (Math.ceil(win / 4) * chans.length));
+        loud = rms > thr;
+      } else {
+        loud = true; // force-close at end of file
+      }
+      var t = (w * win) / buffer.sampleRate;
+      if (!loud && silStart < 0) silStart = t;
+      if (loud && silStart >= 0) {
+        if (t - silStart >= minDur) {
+          // shrink by padding on both sides; drop if nothing left
+          var a = silStart + pad, b = t - pad;
+          if (b - a > 0.01) regions.push([a, b]);
+        }
+        silStart = -1;
+      }
+    }
+    var saved = regions.reduce(function (s, r) { return s + (r[1] - r[0]); }, 0);
+    $('detectInfo').textContent = regions.length
+      ? regions.length + ' silence' + (regions.length === 1 ? '' : 's') + ' detected · removing saves ' + E.formatTime(saved) + ' (' + Math.round(saved / buffer.duration * 100) + '%)'
+      : 'no silences detected with these settings';
+    $('removeBtn').disabled = !regions.length;
+    draw();
+  }
+
+  ['threshold', 'minDur', 'padding'].forEach(function (id) {
+    $(id).addEventListener('input', function () {
+      processed = null;
+      $('abWrap').style.display = 'none';
+      $('exportWavBtn').disabled = true;
+      $('exportMp3Btn').disabled = true;
+      detect();
+    });
+  });
+
+  // ---------- load ----------
+  E.setupDropzone($('dropzone'), $('fileInput'), function (files) {
+    var file = files[0];
+    fileName = file.name;
+    E.status($('status'), 'Decoding audio…');
+    E.progress($('progress'), 'indeterminate');
+    E.decodeFile(file).then(function (buf) {
+      buffer = buf;
+      processed = null;
+      peaks = E.computePeaks(buf, 2000);
+      $('fileName').textContent = file.name;
+      $('fileMeta').textContent = E.formatTime(buf.duration) + ' · ' + buf.sampleRate + ' Hz · ' + buf.numberOfChannels + ' ch · ' + E.formatBytes(file.size);
+      $('dropzone').style.display = 'none';
+      $('editor').style.display = 'block';
+      $('abWrap').style.display = 'none';
+      $('exportWavBtn').disabled = true;
+      $('exportMp3Btn').disabled = true;
+      E.progress($('progress'), null);
+      E.status($('status'), '');
+      detect();
+    }).catch(function (err) {
+      E.progress($('progress'), null);
+      E.status($('status'), E.humanError(err), 'error');
+    });
+  });
+
+  // ---------- removal ----------
+  $('removeBtn').addEventListener('click', function () {
+    stopPreview();
+    if (!regions.length) return;
+    var ctx = E.getAudioContext();
+    var rate = buffer.sampleRate;
+    var keep = [];
+    var cursor = 0;
+    regions.forEach(function (r) {
+      if (r[0] > cursor) keep.push([cursor, r[0]]);
+      cursor = r[1];
+    });
+    if (cursor < buffer.duration) keep.push([cursor, buffer.duration]);
+    var totalFrames = keep.reduce(function (s, k) { return s + (Math.floor(k[1] * rate) - Math.floor(k[0] * rate)); }, 0);
+    processed = ctx.createBuffer(buffer.numberOfChannels, Math.max(1, totalFrames), rate);
+    for (var c = 0; c < buffer.numberOfChannels; c++) {
+      var src = buffer.getChannelData(c);
+      var dst = processed.getChannelData(c);
+      var offset = 0;
+      keep.forEach(function (k) {
+        var a = Math.floor(k[0] * rate), b = Math.floor(k[1] * rate);
+        dst.set(src.subarray(a, b), offset);
+        // 3 ms crossfade at each joint to avoid clicks
+        var fade = Math.min(Math.floor(0.003 * rate), b - a);
+        for (var f = 0; f < fade; f++) {
+          if (offset > 0) dst[offset + f] *= f / fade;
+        }
+        offset += b - a;
+      });
+    }
+    processedPeaks = E.computePeaks(processed, 2000);
+    $('abWrap').style.display = '';
+    $('abToggle').checked = true;
+    $('exportWavBtn').disabled = false;
+    $('exportMp3Btn').disabled = false;
+    var saved = buffer.duration - processed.duration;
+    E.status($('status'), '✓ Removed ' + regions.length + ' gaps — ' + E.formatTime(saved) + ' shorter (' + E.formatTime(processed.duration) + ' total).', 'success');
+    draw();
+  });
+
+  $('abToggle').addEventListener('change', function () { stopPreview(); draw(); });
+
+  // ---------- preview ----------
+  function activeBuffer() { return (processed && $('abToggle').checked) ? processed : buffer; }
+  function stopPreview() {
+    if (!playing) return;
+    try { playing.source.onended = null; playing.source.stop(); } catch (e) {}
+    cancelAnimationFrame(playing.raf);
+    playing = null;
+    $('previewBtn').textContent = '▶ Preview';
+    draw();
+  }
+  $('previewBtn').addEventListener('click', function () {
+    if (playing) { stopPreview(); return; }
+    var buf = activeBuffer();
+    var ctx = E.getAudioContext();
+    var source = ctx.createBufferSource();
+    source.buffer = buf;
+    source.connect(ctx.destination);
+    source.start(0);
+    var startedAt = ctx.currentTime;
+    playing = { source: source, raf: 0 };
+    $('previewBtn').textContent = '⏸ Stop';
+    source.onended = function () { stopPreview(); };
+    (function tick() {
+      if (!playing) return;
+      draw((ctx.currentTime - startedAt) / buf.duration);
+      playing.raf = requestAnimationFrame(tick);
+    })();
+  });
+
+  // ---------- export ----------
+  function doExport(kind) {
+    stopPreview();
+    var base = E.baseName(fileName) + '-tightened';
+    if (kind === 'wav') {
+      var blob = E.encodeWav(processed);
+      E.downloadBlob(blob, base + '.wav');
+      E.status($('status'), '✓ WAV saved (' + E.formatBytes(blob.size) + ').', 'success');
+    } else {
+      E.status($('status'), 'Encoding MP3…');
+      E.progress($('progress'), 0);
+      E.encodeMp3(processed, 192, function (p) { E.progress($('progress'), p); }).then(function (blob) {
+        E.downloadBlob(blob, base + '.mp3');
+        E.progress($('progress'), null);
+        E.status($('status'), '✓ MP3 saved (' + E.formatBytes(blob.size) + ').', 'success');
+      }).catch(function (err) {
+        E.progress($('progress'), null);
+        E.status($('status'), E.humanError(err), 'error');
+      });
+    }
+  }
+  $('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
+  $('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
+
+  $('newFileBtn').addEventListener('click', function () {
+    stopPreview();
+    $('editor').style.display = 'none';
+    $('dropzone').style.display = '';
+    E.status($('status'), '');
+  });
+
+  window.addEventListener('resize', function () { draw(); });
+})();
+</script>
+</body>
+</html>
