@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert Audio Online Free — MP3, WAV, M4A, OGG, FLAC, AAC | MyFreeAudioTool</title>
+  <meta name="description" content="Convert audio files online for free between MP3, WAV, M4A, OGG, FLAC and AAC. Runs entirely in your browser — no uploads, no signup, no file limits.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/convert-audio/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/convert-audio/">
+  <meta property="og:title" content="Convert Audio Online Free — MP3, WAV, M4A, OGG, FLAC, AAC">
+  <meta property="og:description" content="Free in-browser audio converter. No uploads — your files stay on your device.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Convert Audio Online Free — MP3, WAV, M4A, OGG, FLAC, AAC">
+  <meta name="twitter:description" content="Free in-browser audio converter. No uploads — your files stay on your device.">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Audio Converter — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/convert-audio/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online audio converter between MP3, WAV, M4A, OGG, FLAC and AAC. Powered by FFmpeg WebAssembly, entirely in your browser."
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      MyFreeAudioTool
+    </a>
+    <nav class="nav">
+      <a href="/#tools">Tools</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <h1>Convert Audio</h1>
+      <p>Convert between MP3, WAV, M4A, OGG, FLAC and AAC — free and unlimited. The converter runs entirely on your device.</p>
+      <div class="privacy-note">🔒 Processed in your browser — never uploaded</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div>
+        <h2>Drop your audio file here</h2>
+        <p>or click to browse — MP3, WAV, M4A, OGG, FLAC, AAC and more</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac,.wma,.aiff,.opus">
+      </div>
+
+      <div id="editor" style="display:none">
+        <div class="file-info">
+          <strong id="fileName"></strong>
+          <span class="meta" id="fileMeta"></span>
+        </div>
+
+        <div class="field">
+          <label for="formatSelect">Convert to</label>
+          <select class="input" id="formatSelect">
+            <option value="mp3">MP3 — universal, small</option>
+            <option value="wav">WAV — lossless, large</option>
+            <option value="m4a">M4A — Apple / AAC</option>
+            <option value="ogg">OGG — open Vorbis</option>
+            <option value="flac">FLAC — lossless, compressed</option>
+            <option value="aac">AAC — raw AAC stream</option>
+          </select>
+        </div>
+
+        <div class="field" id="bitrateField">
+          <label for="bitrateSelect">Quality <span class="hint">(for lossy formats)</span></label>
+          <select class="input" id="bitrateSelect">
+            <option value="320">320 kbps — best</option>
+            <option value="192" selected>192 kbps — great (recommended)</option>
+            <option value="128">128 kbps — good</option>
+            <option value="96">96 kbps — smaller</option>
+          </select>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="convertBtn" type="button">Convert</button>
+          <button class="btn btn--ghost" id="newFileBtn" type="button">Load another file</button>
+        </div>
+
+        <div class="progress" id="progress"><div class="progress__bar"></div></div>
+        <div class="status" id="status"></div>
+        <div class="result-box" id="resultBox" style="display:none">
+          <p id="resultText"></p>
+          <button class="btn btn--primary" id="downloadBtn" type="button">Download converted file</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>Free online audio converter — no uploads</h2>
+      <p>This converter uses FFmpeg compiled to WebAssembly, running directly in your browser. The first time you convert, it downloads the converter engine (~30 MB, one time only — it's cached afterwards). After that, conversions start instantly and your files never leave your device.</p>
+      <h3>Supported conversions</h3>
+      <p>Convert any common audio format to <strong>MP3, WAV, M4A, OGG, FLAC or AAC</strong> — including MP3 to WAV, M4A to MP3, FLAC to MP3, OGG to MP3, WAV to FLAC, and dozens more combinations. Video files (MP4, WebM) can also be loaded to extract their audio track.</p>
+      <h3>Which format should I pick?</h3>
+      <ul>
+        <li><strong>MP3</strong> — plays everywhere; the safe default for sharing.</li>
+        <li><strong>WAV</strong> — uncompressed and lossless; best for editing, but large.</li>
+        <li><strong>M4A (AAC)</strong> — better quality than MP3 at the same bitrate; native on Apple devices.</li>
+        <li><strong>FLAC</strong> — lossless like WAV but roughly half the size.</li>
+        <li><strong>OGG</strong> — open-source Vorbis; great for games and the web.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          MyFreeAudioTool
+        </a>
+        <p class="tagline">Free, private, browser-based audio tools. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — All processing happens in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+
+  var dropzone = document.getElementById('dropzone');
+  var editor = document.getElementById('editor');
+  var statusEl = document.getElementById('status');
+  var progressEl = document.getElementById('progress');
+  var resultBox = document.getElementById('resultBox');
+
+  var currentFile = null;
+  var resultBlob = null;
+  var resultName = '';
+
+  E.setupDropzone(dropzone, document.getElementById('fileInput'), function (files) {
+    currentFile = files[0];
+    resultBox.style.display = 'none';
+    document.getElementById('fileName').textContent = currentFile.name;
+    document.getElementById('fileMeta').textContent = E.formatBytes(currentFile.size);
+    dropzone.style.display = 'none';
+    editor.style.display = 'block';
+    E.status(statusEl, '');
+    // Lazy-load FFmpeg the moment a file lands on this tool
+    preloadFFmpeg();
+  });
+
+  var ffmpegReady = false;
+  function preloadFFmpeg() {
+    if (ffmpegReady) return Promise.resolve();
+    E.status(statusEl, 'Loading converter (~30 MB, one time — cached afterwards)…');
+    E.progress(progressEl, 'indeterminate');
+    return E.getFFmpeg().then(function () {
+      ffmpegReady = true;
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Converter ready.', 'success');
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Could not load the converter: ' + err.message, 'error');
+      throw err;
+    });
+  }
+
+  document.getElementById('newFileBtn').addEventListener('click', function () {
+    editor.style.display = 'none';
+    dropzone.style.display = '';
+    resultBox.style.display = 'none';
+    currentFile = null;
+  });
+
+  var EXT_ARGS = {
+    mp3:  function (br) { return ['-b:a', br + 'k']; },
+    wav:  function ()   { return []; },
+    m4a:  function (br) { return ['-c:a', 'aac', '-b:a', br + 'k']; },
+    ogg:  function (br) { return ['-c:a', 'libvorbis', '-b:a', br + 'k']; },
+    flac: function ()   { return []; },
+    aac:  function (br) { return ['-c:a', 'aac', '-b:a', br + 'k']; }
+  };
+
+  document.getElementById('formatSelect').addEventListener('change', function () {
+    var lossless = this.value === 'wav' || this.value === 'flac';
+    document.getElementById('bitrateField').style.display = lossless ? 'none' : '';
+  });
+
+  document.getElementById('convertBtn').addEventListener('click', function () {
+    if (!currentFile) return;
+    var fmt = document.getElementById('formatSelect').value;
+    var br = document.getElementById('bitrateSelect').value;
+    var btn = this;
+    btn.disabled = true;
+    resultBox.style.display = 'none';
+
+    preloadFFmpeg().then(function () {
+      return E.getFFmpeg();
+    }).then(function (ff) {
+      E.status(statusEl, 'Converting to ' + fmt.toUpperCase() + '…');
+      E.progress(progressEl, 0);
+      ff.setProgress(function (p) {
+        if (p && typeof p.ratio === 'number' && p.ratio >= 0 && p.ratio <= 1) {
+          E.progress(progressEl, p.ratio);
+        }
+      });
+      var inExt = (currentFile.name.match(/\.([^.]+)$/) || [0, 'dat'])[1].toLowerCase();
+      var inName = 'input.' + inExt;
+      var outName = 'output.' + fmt;
+      return E.fetchFile(currentFile).then(function (data) {
+        ff.FS('writeFile', inName, data);
+        var args = ['-i', inName, '-vn'].concat(EXT_ARGS[fmt](br)).concat([outName]);
+        return ff.run.apply(ff, args).then(function () {
+          var out = ff.FS('readFile', outName);
+          try { ff.FS('unlink', inName); ff.FS('unlink', outName); } catch (e) {}
+          var mimes = { mp3: 'audio/mpeg', wav: 'audio/wav', m4a: 'audio/mp4', ogg: 'audio/ogg', flac: 'audio/flac', aac: 'audio/aac' };
+          resultBlob = new Blob([out.buffer], { type: mimes[fmt] });
+          resultName = E.baseName(currentFile.name) + '.' + fmt;
+          E.progress(progressEl, null);
+          E.status(statusEl, '');
+          document.getElementById('resultText').textContent =
+            'Done! ' + resultName + ' (' + E.formatBytes(resultBlob.size) + ')';
+          resultBox.style.display = 'block';
+        });
+      });
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Conversion failed: ' + (err.message || err) + '. Try a different output format.', 'error');
+    }).then(function () {
+      btn.disabled = false;
+    });
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', function () {
+    if (resultBlob) E.downloadBlob(resultBlob, resultName);
+  });
+})();
+</script>
+</body>
+</html>

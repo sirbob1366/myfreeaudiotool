@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merge Audio Files Online Free — Join MP3, WAV & More | MyFreeAudioTool</title>
+  <meta name="description" content="Merge audio files online for free. Combine multiple MP3, WAV or M4A files into one — drag to reorder, then download as WAV or MP3. No uploads, 100% private.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/merge-audio/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/merge-audio/">
+  <meta property="og:title" content="Merge Audio Files Online Free — Join MP3, WAV & More">
+  <meta property="og:description" content="Combine multiple audio files into one, entirely in your browser. No uploads.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Merge Audio Files Online Free — Join MP3, WAV & More">
+  <meta name="twitter:description" content="Combine multiple audio files into one, entirely in your browser. No uploads.">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Audio Merger — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/merge-audio/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online audio merger. Join multiple MP3, WAV, M4A, OGG or FLAC files into one, entirely in your browser."
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      MyFreeAudioTool
+    </a>
+    <nav class="nav">
+      <a href="/#tools">Tools</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <h1>Merge Audio</h1>
+      <p>Join multiple audio files into a single track. Drag to set the order, then export as WAV or MP3.</p>
+      <div class="privacy-note">🔒 Processed in your browser — never uploaded</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="18" height="4" rx="1"/><rect x="3" y="16" width="18" height="4" rx="1"/></svg></div>
+        <h2>Drop audio files here</h2>
+        <p>or click to browse — add two or more files, in any format</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac" multiple>
+      </div>
+
+      <div id="editor" style="display:none">
+        <ul class="merge-list" id="mergeList"></ul>
+
+        <div class="controls-row">
+          <button class="btn btn--ghost btn--sm" id="addMoreBtn" type="button">+ Add more files</button>
+          <span class="spacer"></span>
+          <span class="status" id="totalInfo" style="margin:0"></span>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="exportWavBtn" type="button">Merge &amp; download WAV</button>
+          <button class="btn btn--ghost" id="exportMp3Btn" type="button">Merge &amp; download MP3</button>
+        </div>
+
+      </div>
+
+      <div class="progress" id="progress"><div class="progress__bar"></div></div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>How to merge audio files online</h2>
+      <ol>
+        <li><strong>Add your files</strong> — drop two or more audio files (they can be different formats; we'll handle mixing sample rates).</li>
+        <li><strong>Set the order</strong> — drag the rows, or use the arrows on mobile. Top plays first.</li>
+        <li><strong>Merge</strong> — download the joined result as lossless WAV or compact MP3.</li>
+      </ol>
+      <h3>Mix any formats together</h3>
+      <p>You can merge an MP3 with a WAV and an M4A in one go. Each file is decoded with the Web Audio API and automatically resampled to a common sample rate and channel layout before the tracks are joined back-to-back. Everything happens locally — perfect for combining voice memos, stitching podcast segments, or joining song parts without installing software.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          MyFreeAudioTool
+        </a>
+        <p class="tagline">Free, private, browser-based audio tools. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — All processing happens in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+
+  var dropzone = document.getElementById('dropzone');
+  var fileInput = document.getElementById('fileInput');
+  var editor = document.getElementById('editor');
+  var listEl = document.getElementById('mergeList');
+  var statusEl = document.getElementById('status');
+  var progressEl = document.getElementById('progress');
+
+  var items = []; // { id, name, buffer, size }
+  var nextId = 1;
+
+  function addFiles(files) {
+    E.status(statusEl, 'Decoding ' + files.length + ' file' + (files.length > 1 ? 's' : '') + '…');
+    E.progress(progressEl, 'indeterminate');
+    var chain = Promise.resolve();
+    files.forEach(function (file) {
+      chain = chain.then(function () {
+        return E.decodeFile(file).then(function (buf) {
+          items.push({ id: nextId++, name: file.name, buffer: buf, size: file.size });
+        }).catch(function () {
+          E.status(statusEl, 'Skipped "' + file.name + '" — could not decode it.', 'error');
+        });
+      });
+    });
+    chain.then(function () {
+      E.progress(progressEl, null);
+      if (items.length) {
+        dropzone.style.display = 'none';
+        editor.style.display = 'block';
+        if (!statusEl.classList.contains('error')) E.status(statusEl, '');
+        render();
+      }
+    });
+  }
+
+  E.setupDropzone(dropzone, fileInput, addFiles);
+
+  document.getElementById('addMoreBtn').addEventListener('click', function () { fileInput.click(); });
+
+  function render() {
+    listEl.innerHTML = '';
+    items.forEach(function (item, idx) {
+      var li = document.createElement('li');
+      li.draggable = true;
+      li.dataset.id = item.id;
+      li.innerHTML =
+        '<span class="grip" aria-hidden="true">⠿</span>' +
+        '<span class="name"></span>' +
+        '<span class="meta">' + E.formatTime(item.buffer.duration) + '</span>' +
+        '<button class="item-btn" data-act="up" title="Move up" type="button">↑</button>' +
+        '<button class="item-btn" data-act="down" title="Move down" type="button">↓</button>' +
+        '<button class="item-btn" data-act="remove" title="Remove" type="button">✕</button>';
+      li.querySelector('.name').textContent = (idx + 1) + '. ' + item.name;
+      listEl.appendChild(li);
+    });
+    var total = items.reduce(function (s, it) { return s + it.buffer.duration; }, 0);
+    document.getElementById('totalInfo').textContent =
+      items.length + ' file' + (items.length !== 1 ? 's' : '') + ' · total ' + E.formatTime(total);
+    if (!items.length) {
+      editor.style.display = 'none';
+      dropzone.style.display = '';
+    }
+  }
+
+  // up / down / remove buttons
+  listEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.item-btn');
+    if (!btn) return;
+    var li = btn.closest('li');
+    var idx = items.findIndex(function (it) { return it.id == li.dataset.id; });
+    var act = btn.dataset.act;
+    if (act === 'remove') items.splice(idx, 1);
+    else if (act === 'up' && idx > 0) items.splice(idx - 1, 0, items.splice(idx, 1)[0]);
+    else if (act === 'down' && idx < items.length - 1) items.splice(idx + 1, 0, items.splice(idx, 1)[0]);
+    render();
+  });
+
+  // drag to reorder
+  var dragId = null;
+  listEl.addEventListener('dragstart', function (e) {
+    var li = e.target.closest('li');
+    if (!li) return;
+    dragId = li.dataset.id;
+    li.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    try { e.dataTransfer.setData('text/plain', dragId); } catch (err) {}
+  });
+  listEl.addEventListener('dragend', function (e) {
+    var li = e.target.closest('li');
+    if (li) li.classList.remove('dragging');
+    Array.prototype.forEach.call(listEl.children, function (c) { c.classList.remove('dragover-item'); });
+    dragId = null;
+  });
+  listEl.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    var li = e.target.closest('li');
+    Array.prototype.forEach.call(listEl.children, function (c) { c.classList.remove('dragover-item'); });
+    if (li && li.dataset.id !== dragId) li.classList.add('dragover-item');
+  });
+  listEl.addEventListener('drop', function (e) {
+    e.preventDefault();
+    var li = e.target.closest('li');
+    if (!li || dragId === null || li.dataset.id === dragId) return;
+    var from = items.findIndex(function (it) { return it.id == dragId; });
+    var to = items.findIndex(function (it) { return it.id == li.dataset.id; });
+    items.splice(to, 0, items.splice(from, 1)[0]);
+    render();
+  });
+
+  // ---------- Export ----------
+  function doExport(format) {
+    if (items.length < 2) {
+      E.status(statusEl, 'Add at least two files to merge.', 'error');
+      return;
+    }
+    E.status(statusEl, 'Merging ' + items.length + ' tracks…');
+    E.progress(progressEl, 'indeterminate');
+    E.concatBuffers(items.map(function (it) { return it.buffer; })).then(function (merged) {
+      if (format === 'wav') {
+        var blob = E.encodeWav(merged);
+        E.downloadBlob(blob, 'merged-audio.wav');
+        E.progress(progressEl, null);
+        E.status(statusEl, 'Done! WAV saved (' + E.formatBytes(blob.size) + ').', 'success');
+      } else {
+        E.status(statusEl, 'Encoding MP3…');
+        return E.encodeMp3(merged, 192, function (p) { E.progress(progressEl, p); }).then(function (blob) {
+          E.downloadBlob(blob, 'merged-audio.mp3');
+          E.progress(progressEl, null);
+          E.status(statusEl, 'Done! MP3 saved (' + E.formatBytes(blob.size) + ').', 'success');
+        });
+      }
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Merge failed: ' + (err.message || err), 'error');
+    });
+  }
+
+  document.getElementById('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
+  document.getElementById('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
+})();
+</script>
+</body>
+</html>

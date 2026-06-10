@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volume Booster Online Free — Make Audio Louder | MyFreeAudioTool</title>
+  <meta name="description" content="Boost audio volume online for free. Increase loudness up to 400%, preview live, or normalize peaks to -1 dB with one click. No uploads — 100% in your browser.">
+  <link rel="canonical" href="https://myfreeaudiotool.com/volume-booster/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://myfreeaudiotool.com/volume-booster/">
+  <meta property="og:title" content="Volume Booster Online Free — Make Audio Louder">
+  <meta property="og:description" content="Increase audio volume with live preview, or normalize with one click. No uploads.">
+  <meta property="og:site_name" content="MyFreeAudioTool">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Volume Booster Online Free — Make Audio Louder">
+  <meta name="twitter:description" content="Increase audio volume with live preview, or normalize with one click. No uploads.">
+  <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Volume Booster — MyFreeAudioTool",
+    "url": "https://myfreeaudiotool.com/volume-booster/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free online volume booster and normalizer. Make quiet audio louder with live preview, entirely in your browser."
+  }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="/" aria-label="MyFreeAudioTool home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+      MyFreeAudioTool
+    </a>
+    <nav class="nav">
+      <a href="/#tools">Tools</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" type="button">
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="tool-hero">
+    <div class="container">
+      <h1>Volume Booster</h1>
+      <p>Make quiet audio louder — up to 400% — with a live preview. Or hit Normalize to automatically scale peaks to −1 dB.</p>
+      <div class="privacy-note">🔒 Processed in your browser — never uploaded</div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="tool-panel">
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg></div>
+        <h2>Drop your audio file here</h2>
+        <p>or click to browse — MP3, WAV, M4A, OGG, FLAC and more</p>
+        <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac">
+      </div>
+
+      <div id="editor" style="display:none">
+        <div class="file-info">
+          <strong id="fileName"></strong>
+          <span class="meta" id="fileMeta"></span>
+        </div>
+
+        <div class="field">
+          <label for="gainSlider">Volume: <span id="gainLabel">100%</span> <span class="hint" id="clipWarn"></span></label>
+          <input type="range" class="slider" id="gainSlider" min="0" max="400" value="100" step="1">
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary btn--sm" id="previewBtn" type="button">▶ Preview</button>
+          <button class="btn btn--ghost btn--sm" id="normalizeBtn" type="button">⚡ Normalize to −1 dB</button>
+          <span class="spacer"></span>
+          <button class="btn btn--ghost btn--sm" id="newFileBtn" type="button">Load another file</button>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn btn--primary" id="exportWavBtn" type="button">Download WAV</button>
+          <button class="btn btn--ghost" id="exportMp3Btn" type="button">Download MP3</button>
+        </div>
+
+      </div>
+
+      <div class="progress" id="progress"><div class="progress__bar"></div></div>
+      <div class="status" id="status"></div>
+    </div>
+
+    <div class="tool-copy">
+      <h2>Boost audio volume online</h2>
+      <p>Quiet voice memo? Lecture recording you can barely hear? Drag the slider to amplify your audio up to 400% and listen to the change live before exporting. Boosting happens with the Web Audio API directly in your browser, so there's no upload, no queue and no quality loss beyond the boost itself.</p>
+      <h3>What does Normalize do?</h3>
+      <p>Normalize scans your whole file for its loudest peak, then raises (or lowers) the entire track so that peak sits at −1 dB — the loudest level that's safely below clipping. It's the one-click way to make a track as loud as possible without distortion.</p>
+      <h3>Watch out for clipping</h3>
+      <p>If you boost past the point where peaks exceed 100%, the loudest moments will distort. The slider warns you when your current setting will clip — use Normalize if you want maximum clean volume.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <a class="logo" href="/">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ff5c5c"/><g fill="#fff"><rect x="10" y="26" width="5" height="12" rx="2.5"/><rect x="19" y="18" width="5" height="28" rx="2.5"/><rect x="28" y="10" width="5" height="44" rx="2.5"/><rect x="37" y="16" width="5" height="32" rx="2.5"/><rect x="46" y="24" width="5" height="16" rx="2.5"/></g></svg>
+          MyFreeAudioTool
+        </a>
+        <p class="tagline">Free, private, browser-based audio tools. Your files never leave your device.</p>
+      </div>
+      <div>
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="/trim-audio/">Trim Audio</a></li>
+          <li><a href="/convert-audio/">Convert Audio</a></li>
+          <li><a href="/compress-audio/">Compress Audio</a></li>
+          <li><a href="/merge-audio/">Merge Audio</a></li>
+          <li><a href="/volume-booster/">Volume Booster</a></li>
+          <li><a href="/audio-speed-changer/">Speed Changer</a></li>
+          <li><a href="/ringtone-maker/">Ringtone Maker</a></li>
+          <li><a href="/audio-recorder/">Voice Recorder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — All processing happens in your browser.</div>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/audio-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  var E = window.AudioEngine;
+
+  var dropzone = document.getElementById('dropzone');
+  var editor = document.getElementById('editor');
+  var statusEl = document.getElementById('status');
+  var progressEl = document.getElementById('progress');
+  var gainSlider = document.getElementById('gainSlider');
+  var gainLabel = document.getElementById('gainLabel');
+  var clipWarn = document.getElementById('clipWarn');
+
+  var audioBuffer = null;
+  var fileName = '';
+  var peak = 1;
+  var playing = null; // { source, gainNode }
+
+  function findPeak(buf) {
+    var max = 0;
+    for (var c = 0; c < buf.numberOfChannels; c++) {
+      var data = buf.getChannelData(c);
+      for (var i = 0; i < data.length; i += 4) {
+        var v = Math.abs(data[i]);
+        if (v > max) max = v;
+      }
+    }
+    return max || 1e-6;
+  }
+
+  E.setupDropzone(dropzone, document.getElementById('fileInput'), function (files) {
+    var file = files[0];
+    fileName = file.name;
+    E.status(statusEl, 'Decoding audio…');
+    E.progress(progressEl, 'indeterminate');
+    E.decodeFile(file).then(function (buf) {
+      audioBuffer = buf;
+      peak = findPeak(buf);
+      document.getElementById('fileName').textContent = file.name;
+      document.getElementById('fileMeta').textContent =
+        E.formatTime(buf.duration) + ' · peak ' + (20 * Math.log10(peak)).toFixed(1) + ' dB · ' + E.formatBytes(file.size);
+      dropzone.style.display = 'none';
+      editor.style.display = 'block';
+      E.progress(progressEl, null);
+      E.status(statusEl, '');
+      updateLabel();
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Could not load this file: ' + (err.message || 'unsupported format.'), 'error');
+    });
+  });
+
+  function gainValue() { return gainSlider.value / 100; }
+
+  function updateLabel() {
+    gainLabel.textContent = gainSlider.value + '%';
+    if (audioBuffer && peak * gainValue() > 1.001) {
+      clipWarn.textContent = '⚠ will clip — loudest parts will distort';
+      clipWarn.style.color = '#d33';
+    } else {
+      clipWarn.textContent = '';
+    }
+  }
+
+  gainSlider.addEventListener('input', function () {
+    updateLabel();
+    if (playing) playing.gainNode.gain.value = gainValue();
+  });
+
+  document.getElementById('normalizeBtn').addEventListener('click', function () {
+    if (!audioBuffer) return;
+    // -1 dB target = 10^(-1/20) ≈ 0.891
+    var target = Math.pow(10, -1 / 20);
+    gainSlider.value = Math.min(400, Math.round((target / peak) * 100));
+    updateLabel();
+    if (playing) playing.gainNode.gain.value = gainValue();
+    E.status(statusEl, 'Normalized: gain set to ' + gainSlider.value + '% (peak → −1 dB).', 'success');
+  });
+
+  function stopPreview() {
+    if (playing) {
+      try { playing.source.stop(); } catch (e) {}
+      playing = null;
+      document.getElementById('previewBtn').textContent = '▶ Preview';
+    }
+  }
+
+  document.getElementById('previewBtn').addEventListener('click', function () {
+    if (playing) { stopPreview(); return; }
+    var ctx = E.getAudioContext();
+    var source = ctx.createBufferSource();
+    source.buffer = audioBuffer;
+    var gainNode = ctx.createGain();
+    gainNode.gain.value = gainValue();
+    source.connect(gainNode).connect(ctx.destination);
+    source.start();
+    playing = { source: source, gainNode: gainNode };
+    this.textContent = '⏸ Stop';
+    source.onended = stopPreview;
+  });
+
+  document.getElementById('newFileBtn').addEventListener('click', function () {
+    stopPreview();
+    editor.style.display = 'none';
+    dropzone.style.display = '';
+    audioBuffer = null;
+    E.status(statusEl, '');
+  });
+
+  function renderBoosted() {
+    var g = gainValue();
+    var off = new OfflineAudioContext(audioBuffer.numberOfChannels, audioBuffer.length, audioBuffer.sampleRate);
+    var src = off.createBufferSource();
+    src.buffer = audioBuffer;
+    var gn = off.createGain();
+    gn.gain.value = g;
+    src.connect(gn).connect(off.destination);
+    src.start(0);
+    return off.startRendering();
+  }
+
+  function doExport(format) {
+    if (!audioBuffer) return;
+    stopPreview();
+    E.status(statusEl, 'Applying ' + gainSlider.value + '% volume…');
+    E.progress(progressEl, 'indeterminate');
+    renderBoosted().then(function (rendered) {
+      if (format === 'wav') {
+        var blob = E.encodeWav(rendered);
+        E.downloadBlob(blob, E.baseName(fileName) + '-boosted.wav');
+        E.progress(progressEl, null);
+        E.status(statusEl, 'Done! WAV saved (' + E.formatBytes(blob.size) + ').', 'success');
+      } else {
+        E.status(statusEl, 'Encoding MP3…');
+        return E.encodeMp3(rendered, 192, function (p) { E.progress(progressEl, p); }).then(function (blob) {
+          E.downloadBlob(blob, E.baseName(fileName) + '-boosted.mp3');
+          E.progress(progressEl, null);
+          E.status(statusEl, 'Done! MP3 saved (' + E.formatBytes(blob.size) + ').', 'success');
+        });
+      }
+    }).catch(function (err) {
+      E.progress(progressEl, null);
+      E.status(statusEl, 'Export failed: ' + (err.message || err), 'error');
+    });
+  }
+
+  document.getElementById('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
+  document.getElementById('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
+})();
+</script>
+</body>
+</html>
