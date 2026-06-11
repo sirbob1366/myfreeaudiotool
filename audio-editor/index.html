@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Editor Online Free — Cut, Edit & Add Effects In Your Browser | MyFreeAudioTool</title>
-  <meta name="description" content="Free online audio editor: cut, copy, paste, crop, fade, normalize and reverse on a zoomable waveform, plus reverb, echo, bass boost, vocal removal and noise reduction — with full undo. No uploads, no signup, no watermarks.">
+  <title>Audio Editor Online Free — Multitrack Editing In Your Browser | MyFreeAudioTool</title>
+  <meta name="description" content="Free online multitrack audio editor: layer tracks, split and drag clips, record from your mic, mix with mute/solo/pan, add reverb, echo, vocal removal and noise reduction — full undo, no uploads, no signup, no watermarks.">
   <link rel="canonical" href="https://myfreeaudiotool.com/audio-editor/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://myfreeaudiotool.com/audio-editor/">
-  <meta property="og:title" content="Audio Editor Online Free — Cut, Edit & Add Effects In Your Browser">
-  <meta property="og:description" content="A full waveform editor with effects, undo/redo and keyboard shortcuts — free, private, zero uploads.">
+  <meta property="og:title" content="Audio Editor Online Free — Multitrack Editing In Your Browser">
+  <meta property="og:description" content="Layer tracks, split and drag clips, record, mix and export — free, private, zero uploads.">
   <meta property="og:site_name" content="MyFreeAudioTool">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Audio Editor Online Free">
-  <meta name="twitter:description" content="Cut, edit and add effects on a zoomable waveform — free, in your browser, zero uploads.">
+  <meta name="twitter:title" content="Audio Editor Online Free — Multitrack">
+  <meta name="twitter:description" content="Layer tracks, split clips, record and mix in your browser — free, zero uploads.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Free online audio editor with a zoomable waveform: cut, copy, paste, crop, silence, fades, normalize, reverse, plus reverb, echo, bass boost, speed, vocal removal, 8D and noise reduction effects with preview, multi-level undo and WAV/MP3 export. Runs entirely in the browser."
+    "description": "Free online multitrack audio editor: layer unlimited tracks, split and drag clips on a shared timeline, record from the microphone, mix with per-track mute/solo/volume/pan, apply reverb, echo, bass boost, speed, vocal removal, 8D and noise reduction, and export a WAV or MP3 mixdown — entirely in the browser with no uploads."
   }
   </script>
   <script type="application/ld+json">
@@ -41,10 +41,10 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Is this audio editor really free with no catch?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — no signup, no watermarks, no export limits, no 'pro' tier. The editor runs entirely in your browser, so there is no server cost per file for us to recoup." } },
-      { "@type": "Question", "name": "Are my files uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. The file is decoded into your browser's memory and every edit, effect and export is computed on your own device. Nothing is transmitted — the editor even keeps working if you go offline after the page loads." } },
-      { "@type": "Question", "name": "What can I do with the editor?", "acceptedAnswer": { "@type": "Answer", "text": "Cut, copy, paste, delete, crop and silence regions on a zoomable waveform; apply fades, normalize and reverse; and use studio effects — reverb, echo, bass boost, speed change, vocal removal, 8D orbit and spectral noise reduction — on a selection or the whole track. Everything has multi-level undo, and you export to WAV or MP3." } },
-      { "@type": "Question", "name": "Does it work with large files and on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. There is no fixed size limit — capacity depends on your device's memory, and hour-long recordings work on a typical laptop. The editor is touch-friendly: drag to select, use the zoom buttons, and all edits work the same on mobile." } }
+      { "@type": "Question", "name": "Can I layer multiple audio files on top of each other?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — every file you drop becomes its own track on a shared timeline. Layer voice over music, stack harmonies, or assemble a podcast from separate recordings. Each track has its own volume, pan, mute and solo, and the export is a proper mixdown of everything together." } },
+      { "@type": "Question", "name": "How do I split and arrange audio?", "acceptedAnswer": { "@type": "Answer", "text": "Place the cursor and press S (or the Split button) to cut a clip in two, then drag any clip by its colored top strip to move it along the timeline — with magnetic snapping to other clip edges, the cursor and zero. Selections support cut, copy, paste, delete, crop, silence, fades, normalize and reverse." } },
+      { "@type": "Question", "name": "Can I record directly into the editor?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — press Record (R) and your microphone records onto a new track starting at the cursor while the existing tracks play back, so you can record voice-overs and harmonies in time. Nothing is uploaded; the recording stays on your device." } },
+      { "@type": "Question", "name": "Is it really free, and are my files uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "Completely free — no signup, watermarks or export limits — and nothing is ever uploaded. Decoding, editing, mixing and export all run in your browser's memory, and the editor keeps working offline once loaded." } }
     ]
   }
   </script>
@@ -71,147 +71,172 @@
 </header>
 
 <main>
-  <section class="tool-hero" style="padding-bottom:8px">
+  <section class="tool-hero" style="padding:36px 0 14px">
     <div class="container">
-      <p class="kicker">// the studio · all 31 tools in one place</p>
+      <p class="kicker">// the studio · multitrack</p>
       <h1>Audio Editor</h1>
-      <p>Cut, arrange and polish on a zoomable waveform — with studio effects, full undo and zero uploads. Your whole session stays on your device.</p>
+      <p>Layer tracks, split and drag clips, record, mix and master — a studio that lives in a tab and never uploads a byte.</p>
     </div>
   </section>
 
   <div class="editor-shell">
-    <div class="editor-bar" role="toolbar" aria-label="Editor toolbar">
-      <button class="ebtn" id="openBtn" type="button" title="Open an audio file (or drop one anywhere)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-        <span class="ebtn-label">Open</span>
-      </button>
-      <input type="file" id="edFileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac" style="display:none">
-      <span class="divider"></span>
-      <button class="ebtn" id="undoBtn" type="button" title="Undo (Ctrl+Z)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
-        <span class="ebtn-label">Undo</span>
-      </button>
-      <button class="ebtn" id="redoBtn" type="button" title="Redo (Ctrl+Y)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 15-6.7L21 13"/></svg>
-        <span class="ebtn-label">Redo</span>
-      </button>
-      <span class="divider"></span>
-      <button class="ebtn" id="cutBtn" type="button" title="Cut selection (Ctrl+X)">✂<span class="ebtn-label">Cut</span></button>
-      <button class="ebtn" id="copyBtn" type="button" title="Copy selection (Ctrl+C)">⧉<span class="ebtn-label">Copy</span></button>
-      <button class="ebtn" id="pasteBtn" type="button" title="Paste at cursor / over selection (Ctrl+V)">⎘<span class="ebtn-label">Paste</span></button>
-      <button class="ebtn" id="delBtn" type="button" title="Delete selection (Del)">⌫<span class="ebtn-label">Delete</span></button>
-      <button class="ebtn" id="cropBtn" type="button" title="Keep only the selection">▣<span class="ebtn-label">Crop</span></button>
-      <button class="ebtn" id="silBtn" type="button" title="Silence the selection">∅<span class="ebtn-label">Silence</span></button>
-      <span class="divider"></span>
-      <button class="ebtn" id="fadeInBtn" type="button" title="Fade in over the selection">⟋<span class="ebtn-label">Fade in</span></button>
-      <button class="ebtn" id="fadeOutBtn" type="button" title="Fade out over the selection">⟍<span class="ebtn-label">Fade out</span></button>
-      <button class="ebtn" id="normBtn" type="button" title="Normalize selection or whole track to −0.2 dBFS">⩓<span class="ebtn-label">Normalize</span></button>
-      <button class="ebtn" id="revBtn" type="button" title="Reverse selection or whole track">⇄<span class="ebtn-label">Reverse</span></button>
-      <span class="spacer"></span>
-      <button class="ebtn" id="zoomOutBtn" type="button" title="Zoom out (−)">−</button>
-      <button class="ebtn" id="zoomInBtn" type="button" title="Zoom in (+)">+</button>
-      <button class="ebtn" id="fitBtn" type="button" title="Fit whole track (0)">↔<span class="ebtn-label">Fit</span></button>
-      <span class="divider"></span>
-      <button class="ebtn ebtn--primary" id="exportWavBtn" type="button" title="Export lossless WAV">⬇<span class="ebtn-label">WAV</span></button>
-      <button class="ebtn ebtn--primary" id="exportMp3Btn" type="button" title="Export MP3 (192 kbps)">⬇<span class="ebtn-label">MP3</span></button>
-    </div>
+    <div class="editor-app" id="editorApp">
+      <div class="editor-aurora" aria-hidden="true"></div>
 
-    <div class="editor-stage">
-      <canvas id="edRuler" aria-label="Timeline ruler — click to move the cursor"></canvas>
-      <canvas id="edWave" aria-label="Waveform — drag to select, click to place the cursor, scroll to zoom"></canvas>
-      <div class="editor-empty" id="edEmpty">
-        <div class="dropzone__icon"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg></div>
-        <h2>Drop an audio file to start editing</h2>
-        <p>MP3, WAV, M4A, OGG, FLAC and more — everything stays on your device.</p>
-        <p class="hint-drop">[ drop works anywhere on this page · or click to browse ]</p>
-        <button class="btn btn--ghost btn--sm" id="demoBtn" type="button">…or try the demo clip</button>
+      <div class="editor-bar" role="toolbar" aria-label="Editor toolbar">
+        <button class="ebtn" id="openBtn" type="button" title="Add audio files as new tracks (or drop them anywhere)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="ebtn-label">Add audio</span>
+        </button>
+        <input type="file" id="edFileInput" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.aac" multiple style="display:none">
+        <button class="ebtn" id="addTrackBtn" type="button" title="Add an empty track">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="5" rx="2"/><rect x="3" y="14" width="11" height="5" rx="2"/><path d="M18.5 14.5v5M16 17h5"/></svg>
+          <span class="ebtn-label">Track</span>
+        </button>
+        <button class="ebtn ebtn--rec" id="recBtn" type="button" title="Record from microphone onto a new track (R)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+          <span class="ebtn-label">Record</span>
+        </button>
+        <span class="divider"></span>
+        <button class="ebtn" id="undoBtn" type="button" title="Undo (Ctrl+Z)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>
+          <span class="ebtn-label">Undo</span>
+        </button>
+        <button class="ebtn" id="redoBtn" type="button" title="Redo (Ctrl+Y)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 15-6.7L21 13"/></svg>
+          <span class="ebtn-label">Redo</span>
+        </button>
+        <span class="divider"></span>
+        <button class="ebtn" id="splitBtn" type="button" title="Split the clip at the cursor (S)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18" stroke-dasharray="2 3"/><rect x="3" y="8" width="6" height="8" rx="2"/><rect x="15" y="8" width="6" height="8" rx="2"/></svg>
+          <span class="ebtn-label">Split</span>
+        </button>
+        <button class="ebtn" id="cutBtn" type="button" title="Cut selection (Ctrl+X)">✂<span class="ebtn-label">Cut</span></button>
+        <button class="ebtn" id="copyBtn" type="button" title="Copy selection (Ctrl+C)">⧉<span class="ebtn-label">Copy</span></button>
+        <button class="ebtn" id="pasteBtn" type="button" title="Paste at cursor (Ctrl+V)">⎘<span class="ebtn-label">Paste</span></button>
+        <button class="ebtn" id="delBtn" type="button" title="Delete selection (Del)">⌫<span class="ebtn-label">Delete</span></button>
+        <button class="ebtn" id="cropBtn" type="button" title="Crop the clip to the selection">▣<span class="ebtn-label">Crop</span></button>
+        <button class="ebtn" id="silBtn" type="button" title="Silence the selection">∅<span class="ebtn-label">Silence</span></button>
+        <span class="divider"></span>
+        <button class="ebtn" id="fadeInBtn" type="button" title="Fade in over the selection">⟋<span class="ebtn-label">Fade in</span></button>
+        <button class="ebtn" id="fadeOutBtn" type="button" title="Fade out over the selection">⟍<span class="ebtn-label">Fade out</span></button>
+        <button class="ebtn" id="normBtn" type="button" title="Normalize the selection or clip">⩓<span class="ebtn-label">Normalize</span></button>
+        <button class="ebtn" id="revBtn" type="button" title="Reverse the selection or clip">⇄<span class="ebtn-label">Reverse</span></button>
+        <span class="spacer"></span>
+        <button class="ebtn" id="zoomOutBtn" type="button" title="Zoom out (−)">−</button>
+        <button class="ebtn" id="zoomInBtn" type="button" title="Zoom in (+)">+</button>
+        <button class="ebtn" id="fitBtn" type="button" title="Fit project (0)">↔<span class="ebtn-label">Fit</span></button>
+        <span class="divider"></span>
+        <button class="ebtn ebtn--primary" id="exportWavBtn" type="button" title="Export the full mixdown as lossless WAV">⬇<span class="ebtn-label">WAV</span></button>
+        <button class="ebtn ebtn--primary" id="exportMp3Btn" type="button" title="Export the full mixdown as MP3">⬇<span class="ebtn-label">MP3</span></button>
       </div>
-    </div>
 
-    <div class="editor-transport">
-      <button class="ebtn" id="playBtn" type="button" title="Play / pause (Space)">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>
-        <span class="ebtn-label">Play</span>
-      </button>
-      <button class="ebtn" id="stopBtn" type="button" title="Stop and return to start">
-        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12"/></svg>
-        <span class="ebtn-label">Stop</span>
-      </button>
-      <button class="ebtn" id="loopBtn" type="button" title="Loop the selection (L)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
-        <span class="ebtn-label">Loop</span>
-      </button>
-      <span class="editor-time" id="edTime">0:00.00 <small>/ 0:00.00</small></span>
-      <span class="editor-selinfo" id="edSelInfo"></span>
-      <div class="tool-panel"></div>
-    </div>
-
-    <div class="fx-drawer">
-      <div class="fx-list" role="tablist" aria-label="Effects">
-        <button type="button" data-fx="gain" class="active">Volume</button>
-        <button type="button" data-fx="bass">Bass Boost</button>
-        <button type="button" data-fx="reverb">Reverb</button>
-        <button type="button" data-fx="echo">Echo / Delay</button>
-        <button type="button" data-fx="speed">Speed</button>
-        <button type="button" data-fx="vocal">Vocal Remover</button>
-        <button type="button" data-fx="spatial">8D Orbit</button>
-        <button type="button" data-fx="noisered">Noise Reduction</button>
+      <div class="timeline">
+        <div class="timeline__rails">
+          <canvas id="edMinimap" title="Project overview — click or drag to navigate"></canvas>
+          <canvas id="edRuler" title="Click to place the cursor"></canvas>
+        </div>
+        <div class="tracks-wrap" id="tracksWrap">
+          <div id="tracksList"></div>
+          <div class="ed-line ed-line--cursor" id="cursorLine"></div>
+          <div class="ed-line ed-line--playhead" id="playheadLine"></div>
+          <div class="editor-empty" id="edEmpty">
+            <div class="editor-empty__icon" aria-hidden="true">
+              <svg viewBox="0 0 64 40" width="180" height="112" fill="none" stroke-linecap="round">
+                <rect x="2" y="4" width="34" height="12" rx="4" fill="rgba(56,189,248,0.16)" stroke="rgba(56,189,248,0.8)"/>
+                <rect x="20" y="22" width="40" height="12" rx="4" fill="rgba(167,139,250,0.16)" stroke="rgba(167,139,250,0.8)"/>
+                <path d="M6 10c2-3 3 3 5 0s3 3 5 0 3 3 5 0 3 3 5 0 3 3 5 0" stroke="rgba(56,189,248,0.9)"/>
+                <path d="M25 28c2-3 3 3 5 0s3 3 5 0 3 3 5 0 3 3 5 0 3 3 5 0 3 3 5 0 3 3 5 0" stroke="rgba(167,139,250,0.9)"/>
+              </svg>
+            </div>
+            <h2>Drop audio to start — every file becomes a track</h2>
+            <p>Layer music under voice, stack takes, build a podcast. Nothing uploads.</p>
+            <p class="hint-drop">[ drop anywhere · click to browse · or press R to record ]</p>
+            <button class="btn btn--ghost btn--sm" id="demoBtn" type="button">…or load the 2-track demo</button>
+          </div>
+        </div>
       </div>
-      <div class="fx-params" id="fxParams">
-        <h3>Volume</h3>
-        <p class="fx-note">Load a file to start using effects.</p>
+
+      <div class="editor-transport">
+        <button class="ebtn ebtn--play" id="playBtn" type="button" title="Play / pause (Space)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>
+        </button>
+        <button class="ebtn" id="stopBtn" type="button" title="Stop">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
+        </button>
+        <button class="ebtn" id="loopBtn" type="button" title="Loop the selection / project (L)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+        <span class="editor-time" id="edTime">0:00.00 <small>/ 0:00.00</small></span>
+        <span class="editor-selinfo" id="edSelInfo"></span>
+        <div class="tool-panel"></div>
       </div>
-    </div>
 
-    <div class="file-info" style="margin-top:10px">
-      <strong id="edFileName">no file loaded</strong>
-      <span class="meta" id="edFileMeta"></span>
-    </div>
+      <div class="fx-drawer">
+        <div class="fx-list" role="tablist" aria-label="Effects">
+          <button type="button" data-fx="gain" class="active">Volume</button>
+          <button type="button" data-fx="bass">Bass Boost</button>
+          <button type="button" data-fx="reverb">Reverb</button>
+          <button type="button" data-fx="echo">Echo / Delay</button>
+          <button type="button" data-fx="speed">Speed</button>
+          <button type="button" data-fx="vocal">Vocal Remover</button>
+          <button type="button" data-fx="spatial">8D Orbit</button>
+          <button type="button" data-fx="noisered">Noise Reduction</button>
+        </div>
+        <div class="fx-params" id="fxParams"></div>
+      </div>
 
-    <div class="editor-status" id="edStatus"></div>
+      <div class="file-info" style="display:none">
+        <strong id="edFileName"></strong>
+        <span class="meta" id="edFileMeta"></span>
+      </div>
+
+      <div class="editor-status" id="edStatus">Drop audio, press R to record, or load the demo — every action has undo.</div>
+    </div>
   </div>
 
   <div class="container">
-    <div class="tool-copy" style="margin-top:26px">
-      <h2>Everything in one editor — without the upload</h2>
-      <p>This is the full MyFreeAudioTool workflow on a single screen: a zoomable, sample-accurate waveform you can cut, rearrange and polish, with the same effect engines that power our standalone tools — reverb, echo, bass boost, speed, vocal removal, 8D orbit and spectral noise reduction — applied to a selection or the whole track, each with live preview and full undo. Other "free online audio editors" upload your file to a server, cap its size, and watermark or paywall the export. This one physically can't: there's no server in the loop. Your audio is decoded into your browser's memory and never leaves it.</p>
-      <h3>A workflow that feels native</h3>
+    <div class="tool-copy" style="margin-top:30px">
+      <h2>A real multitrack studio — without the upload</h2>
+      <p>This is no longer a one-lane cutter. Drop in as many files as you like and each becomes a <strong>track on a shared timeline</strong>: drag clips by their colored strip to arrange them (with magnetic snapping), press <kbd>S</kbd> to split at the cursor, layer music under narration, and balance everything with per-track <strong>volume, pan, mute and solo</strong>. Press <kbd>R</kbd> and your microphone records onto a fresh track <em>while the other tracks play</em> — voice-overs and harmonies land in time. Export renders a true mixdown of every audible track to WAV or MP3. And unlike every upload-based "free" editor: no account, no watermark, no size cap, no server — your session never leaves your browser's memory.</p>
+      <h3>The full toolkit</h3>
       <ul>
-        <li><strong>Select like a pro</strong> — drag on the waveform, grab either edge to adjust, double-click for everything, <kbd>Esc</kbd> to clear.</li>
-        <li><strong>Navigate fast</strong> — scroll to zoom at the pointer, <kbd>Shift</kbd>+scroll to pan, <kbd>0</kbd> to fit the whole track.</li>
-        <li><strong>Edit fearlessly</strong> — every destructive action lands on a multi-level undo stack (<kbd>Ctrl</kbd>+<kbd>Z</kbd>).</li>
-        <li><strong>Effects that splice cleanly</strong> — apply reverb to just the last word of a phrase and the tail blends into the audio that follows, the way a real DAW renders it.</li>
-        <li><strong>Continue from any tool</strong> — every effect page has an "Open in Editor" button that carries the processed audio straight here.</li>
+        <li><strong>Arrange</strong> — unlimited tracks, draggable clips, split, crop, magnetic snapping, minimap navigation, deep zoom.</li>
+        <li><strong>Edit</strong> — cut / copy / paste / delete / silence on any selection, fades, normalize, reverse — all with structural undo (<kbd>Ctrl</kbd>+<kbd>Z</kbd>) that's instant even on huge files.</li>
+        <li><strong>Mix</strong> — per-track gain and stereo pan, mute and solo, live while playing.</li>
+        <li><strong>Process</strong> — reverb, echo, bass boost, speed, vocal remover, 8D orbit and spectral noise reduction, applied to a selection or a whole clip with live preview. Effect tails blend into whatever plays next, like a real DAW render.</li>
+        <li><strong>Record</strong> — mic capture onto a new track at the cursor, monitoring the existing tracks as you go.</li>
       </ul>
       <h3>Keyboard shortcuts</h3>
       <div class="kbd-grid">
         <div><span>Play / pause</span><kbd>Space</kbd></div>
+        <div><span>Split at cursor</span><kbd>S</kbd></div>
+        <div><span>Record</span><kbd>R</kbd></div>
         <div><span>Undo / redo</span><kbd>Ctrl+Z / Ctrl+Y</kbd></div>
         <div><span>Cut / copy / paste</span><kbd>Ctrl+X / C / V</kbd></div>
-        <div><span>Select all</span><kbd>Ctrl+A</kbd></div>
+        <div><span>Select whole clip</span><kbd>Ctrl+A</kbd></div>
         <div><span>Delete selection</span><kbd>Del</kbd></div>
         <div><span>Clear selection</span><kbd>Esc</kbd></div>
         <div><span>Zoom in / out / fit</span><kbd>+ / − / 0</kbd></div>
-        <div><span>Loop selection</span><kbd>L</kbd></div>
-        <div><span>Jump to start / end</span><kbd>Home / End</kbd></div>
+        <div><span>Loop</span><kbd>L</kbd></div>
       </div>
       <h2>FAQ</h2>
       <div class="faq">
         <details>
-          <summary>Is this audio editor really free with no catch?</summary>
-          <p>Yes — no signup, no watermarks, no export limits, no "pro" tier. It runs on your device, so there's no per-file server cost for us to recoup.</p>
+          <summary>Can I layer multiple audio files on top of each other?</summary>
+          <p>Yes — every file becomes its own track with volume, pan, mute and solo. The export is a proper mixdown of all audible tracks.</p>
         </details>
         <details>
-          <summary>Are my files uploaded to a server?</summary>
-          <p>No. Decoding, editing, effects and export all happen in your browser's memory. The editor keeps working offline after the page loads.</p>
+          <summary>How do I split and arrange audio?</summary>
+          <p>Press S at the cursor to split a clip, then drag clips by their colored top strip — with magnetic snapping to other clips, the cursor and zero.</p>
         </details>
         <details>
-          <summary>What can I do with the editor?</summary>
-          <p>Cut/copy/paste/delete/crop/silence on a zoomable waveform; fades, normalize, reverse; and reverb, echo, bass boost, speed, vocal removal, 8D and noise reduction with preview — all with multi-level undo and WAV/MP3 export.</p>
+          <summary>Can I record directly into the editor?</summary>
+          <p>Yes — Record (R) captures your mic onto a new track at the cursor while existing tracks play back, so overdubs land in time. Nothing is uploaded.</p>
         </details>
         <details>
-          <summary>Does it work with large files and on mobile?</summary>
-          <p>Yes — no fixed size limit (device memory is the ceiling), and the editor is touch-friendly: drag to select, zoom buttons, same edits everywhere.</p>
+          <summary>Is it really free, and are my files uploaded?</summary>
+          <p>Completely free, no watermarks or limits, and nothing ever uploads — the whole session runs in your browser's memory and keeps working offline.</p>
         </details>
       </div>
     </div>
@@ -219,9 +244,9 @@
     <div class="related-strip">
       <p class="kicker">// dedicated tools</p>
       <div class="related-grid">
-        <a class="related-card" href="/trim-audio/"><b>Trim Audio</b><span>Just need a quick cut? One-page trimmer</span></a>
+        <a class="related-card" href="/trim-audio/"><b>Trim Audio</b><span>Just need one quick cut?</span></a>
         <a class="related-card" href="/convert-audio/"><b>Convert Audio</b><span>Export to M4A, OGG, FLAC and more</span></a>
-        <a class="related-card" href="/audio-recorder/"><b>Voice Recorder</b><span>Record a take, then edit it here</span></a>
+        <a class="related-card" href="/noise-reducer/"><b>Noise Reducer</b><span>The standalone denoiser</span></a>
       </div>
     </div>
   </div>

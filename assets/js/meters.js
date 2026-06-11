@@ -101,7 +101,8 @@
   }
 
   function css(name, fallback) {
-    var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    // resolve against the rack so scoped themes (e.g. the editor) apply
+    var v = getComputedStyle(rack || document.documentElement).getPropertyValue(name).trim();
     return v || fallback;
   }
 
