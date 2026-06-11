@@ -613,6 +613,48 @@
     return file.arrayBuffer().then(function (b) { return new Uint8Array(b); });
   };
 
+  // ---------- Tool → Editor handoff (IndexedDB survives the navigation) ----------
+  function handoffDb() {
+    return new Promise(function (resolve, reject) {
+      var req = indexedDB.open('mfat-handoff', 1);
+      req.onupgradeneeded = function () { req.result.createObjectStore('files'); };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+  }
+
+  Engine.sendToEditor = function (blob, name) {
+    return handoffDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction('files', 'readwrite');
+        tx.objectStore('files').put({ blob: blob, name: name, ts: Date.now() }, 'handoff');
+        tx.oncomplete = function () {
+          window.location.href = '/audio-editor/?from=tool';
+          resolve();
+        };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  };
+
+  Engine.readEditorHandoff = function () {
+    if (!window.indexedDB) return Promise.resolve(null);
+    return handoffDb().then(function (db) {
+      return new Promise(function (resolve) {
+        var tx = db.transaction('files', 'readwrite');
+        var store = tx.objectStore('files');
+        var get = store.get('handoff');
+        get.onsuccess = function () {
+          var v = get.result;
+          store.delete('handoff');
+          // ignore stale handoffs (>5 min old)
+          resolve(v && Date.now() - v.ts < 300000 ? v : null);
+        };
+        get.onerror = function () { resolve(null); };
+      });
+    }).catch(function () { return null; });
+  };
+
   // ---------- Download helper ----------
   Engine.downloadBlob = function (blob, filename) {
     var url = URL.createObjectURL(blob);

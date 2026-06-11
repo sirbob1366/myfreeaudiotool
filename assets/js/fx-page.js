@@ -156,6 +156,31 @@
     if ($('exportWavBtn')) $('exportWavBtn').addEventListener('click', function () { doExport('wav'); });
     if ($('exportMp3Btn')) $('exportMp3Btn').addEventListener('click', function () { doExport('mp3'); });
 
+    // "Open in Editor": render the current effect, hand the result to /audio-editor/
+    if ($('exportWavBtn') && E.sendToEditor && window.indexedDB) {
+      var edBtn = document.createElement('button');
+      edBtn.type = 'button';
+      edBtn.className = 'btn btn--ghost';
+      edBtn.textContent = 'Open in Editor →';
+      edBtn.title = 'Continue working on the processed audio in the full Audio Editor';
+      ($('exportMp3Btn') || $('exportWavBtn')).insertAdjacentElement('afterend', edBtn);
+      edBtn.addEventListener('click', function () {
+        stopPreview();
+        E.status(statusEl, 'Processing for the editor…');
+        E.progress(progressEl, 'indeterminate');
+        cfg.render().then(function (rendered) {
+          var peak = E.bufferPeak(rendered);
+          if (peak > 1) E.scaleBuffer(rendered, 0.98 / peak);
+          var blob = E.encodeWav(rendered);
+          E.status(statusEl, 'Opening the editor…');
+          return E.sendToEditor(blob, E.baseName(state.file.name) + (cfg.suffix || '') + '.wav');
+        }).catch(function (err) {
+          E.progress(progressEl, null);
+          E.status(statusEl, E.humanError(err), 'error');
+        });
+      });
+    }
+
     if ($('newFileBtn')) {
       $('newFileBtn').addEventListener('click', function () {
         stopPreview();
