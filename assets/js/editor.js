@@ -661,27 +661,46 @@
   };
 
   var currentFx = 'gain';
-  var fxScope = 'auto'; // 'sel' | 'all'
+  var fxScope = 'sel'; // 'sel' | 'all'
   var fxPreview = null;
   var noiseProfile = null;
+  var fxValues = {};   // per-effect param memory — survives re-renders and Apply
 
   function fxParams() {
     var fx = FX[currentFx];
     var out = {};
+    var stored = fxValues[currentFx] || {};
     (fx.params || []).forEach(function (p) {
       var el = $('fxp_' + p.id);
-      out[p.id] = el ? parseFloat(el.value) : p.def;
+      out[p.id] = el ? parseFloat(el.value) : (stored[p.id] !== undefined ? stored[p.id] : p.def);
     });
     return out;
   }
 
+  // remember every tweak so the panel never snaps back to defaults
+  $('fxParams').addEventListener('input', function (e) {
+    if (e.target.id && e.target.id.indexOf('fxp_') === 0) {
+      (fxValues[currentFx] = fxValues[currentFx] || {})[e.target.id.slice(4)] = parseFloat(e.target.value);
+    }
+  });
+  // re-hear the effect with the new setting if a preview is running
+  $('fxParams').addEventListener('change', function (e) {
+    if (fxPreview && e.target.id && e.target.id.indexOf('fxp_') === 0) {
+      stopFxPreview();
+      toggleFxPreview();
+    }
+  });
+
   function renderFxPanel() {
     var fx = FX[currentFx];
+    var stored = fxValues[currentFx] || {};
+    function val(p) { return stored[p.id] !== undefined ? stored[p.id] : p.def; }
     document.querySelectorAll('.fx-list button').forEach(function (b) {
       b.classList.toggle('active', b.dataset.fx === currentFx);
     });
     var html = '<h3>' + fx.name + '</h3><p class="fx-note">' + (fx.note || '') + '</p>';
     if (currentFx === 'noisered') {
+      var strength = stored.strength !== undefined ? stored.strength : 60;
       html +=
         '<p class="fx-note"><b>1.</b> Drag-select a moment of pure noise on the waveform → <b>2.</b> Learn → <b>3.</b> Apply to the whole track.</p>' +
         '<div class="fx-actions">' +
@@ -689,7 +708,7 @@
         '<span class="editor-selinfo" id="fxProfileInfo">' + (noiseProfile ? '✓ profile ready' : 'no profile yet') + '</span>' +
         '</div>' +
         '<div class="knob-row" style="justify-content:flex-start">' +
-        '<input type="range" id="fxp_strength" data-knob data-label="Strength" data-unit="%" data-default="60" min="0" max="100" step="1" value="60">' +
+        '<input type="range" id="fxp_strength" data-knob data-label="Strength" data-unit="%" data-default="60" min="0" max="100" step="1" value="' + strength + '">' +
         '</div>' +
         '<div class="fx-actions">' +
         '<button class="btn btn--primary btn--sm" id="fxApplyBtn" type="button"' + (noiseProfile ? '' : ' disabled') + '>Apply noise reduction</button>' +
@@ -700,31 +719,31 @@
         html += '<input type="range" id="fxp_' + p.id + '" data-knob data-label="' + p.label + '" data-unit="' + p.unit + '"' +
           (p.signed ? ' data-signed' : '') +
           (p.decimals ? ' data-decimals="' + p.decimals + '"' : '') +
-          ' data-default="' + p.def + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + p.def + '">';
+          ' data-default="' + p.def + '" min="' + p.min + '" max="' + p.max + '" step="' + p.step + '" value="' + val(p) + '">';
       });
       html += '</div>';
+      var monoBlock = fx.stereoOnly && buffer && buffer.numberOfChannels < 2;
       html +=
         '<div class="fx-actions">' +
         '<div class="fx-scope" id="fxScope">' +
         '<button type="button" data-scope="sel"' + (sel ? '' : ' disabled') + '>Selection</button>' +
         '<button type="button" data-scope="all">Whole track</button>' +
         '</div>' +
-        '<button class="btn btn--ghost btn--sm" id="fxPreviewBtn" type="button">▶ Preview</button>' +
-        '<button class="btn btn--primary btn--sm" id="fxApplyBtn" type="button">Apply</button>' +
-        (fx.stereoOnly && buffer && buffer.numberOfChannels < 2
-          ? '<span class="editor-selinfo" style="color:var(--err)">needs stereo audio</span>' : '') +
+        '<button class="btn btn--ghost btn--sm" id="fxPreviewBtn" type="button"' + (monoBlock ? ' disabled' : '') + '>▶ Preview</button>' +
+        '<button class="btn btn--primary btn--sm" id="fxApplyBtn" type="button"' + (monoBlock ? ' disabled' : '') + '>Apply</button>' +
+        (monoBlock ? '<span class="editor-selinfo" style="color:var(--err)">needs stereo audio</span>' : '') +
         '</div>';
     }
     $('fxParams').innerHTML = html;
     if (window.Controls) Controls.upgrade($('fxParams'));
 
-    // scope buttons
+    // scope buttons — remember the user's last choice while a selection exists
     var scopeBtns = document.querySelectorAll('#fxScope button');
     function setScope(s) {
       fxScope = s;
       scopeBtns.forEach(function (b) { b.classList.toggle('active', b.dataset.scope === s); });
     }
-    if (scopeBtns.length) setScope(sel ? 'sel' : 'all');
+    if (scopeBtns.length) setScope(sel ? (fxScope === 'all' ? 'all' : 'sel') : 'all');
     scopeBtns.forEach(function (b) {
       b.addEventListener('click', function () { setScope(b.dataset.scope); });
     });
@@ -734,7 +753,6 @@
     var applyBtn = $('fxApplyBtn');
     if (applyBtn) {
       applyBtn.addEventListener('click', currentFx === 'noisered' ? applyNoiseReduction : applyFx);
-      if (FX[currentFx].stereoOnly && buffer && buffer.numberOfChannels < 2) applyBtn.disabled = true;
     }
     var learnBtn = $('fxLearnBtn');
     if (learnBtn) learnBtn.addEventListener('click', learnNoise);
@@ -782,6 +800,7 @@
     status('Applying ' + fx.name + '…');
     var p = fxParams();
     var r = fxScopeRange();
+    var usedSel = fxScope === 'sel' && !!sel;
     // the 8D orbit needs a stereo canvas — upgrade mono tracks first
     if (currentFx === 'spatial' && buffer.numberOfChannels === 1) {
       var st = ctx().createBuffer(2, buffer.length, buffer.sampleRate);
@@ -839,6 +858,13 @@
       }
       busy = false;
       setBuffer(next, fx.name + ' applied');
+      // keep the selection on the processed region so tweaking + re-applying is effortless
+      if (usedSel) {
+        sel = { a: r.a, b: Math.min(dur(), r.a + mainFrames / rate) };
+        requestDraw();
+        updateTime();
+        updateUI();
+      }
       fitIfOutOfRange();
       renderFxPanel();
     }).catch(function (err) {
@@ -1143,8 +1169,8 @@
     else if (e.key === '+' || e.key === '=') { zoomAt(cursor, 0.5); }
     else if (e.key === '-') { zoomAt(cursor, 2); }
     else if (e.key === '0') { fit(); }
-    else if (e.key === 'Home') { cursor = 0; requestDraw(); updateTime(); }
-    else if (e.key === 'End') { cursor = dur(); requestDraw(); updateTime(); }
+    else if (e.key === 'Home') { e.preventDefault(); cursor = 0; requestDraw(); updateTime(); }
+    else if (e.key === 'End') { e.preventDefault(); cursor = dur(); requestDraw(); updateTime(); }
     else if (e.key === 'l' || e.key === 'L') { $('loopBtn').click(); }
   });
 

@@ -212,6 +212,7 @@
 
     var mid = h / 2;
     var n = peaks.length;
+    if (n < 2) return;
     var amp = h / 2 - 2;
     var selStart = typeof opts.selStart === 'number' ? opts.selStart : null;
     var selEnd = typeof opts.selEnd === 'number' ? opts.selEnd : null;

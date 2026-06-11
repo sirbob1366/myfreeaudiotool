@@ -557,6 +557,34 @@
   draw();
   document.addEventListener('visibilitychange', function () { if (!document.hidden && !reduced) draw(); });
 })();
+
+// Pointer-parallax 3D tilt on the hero window — desktop pointers only
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+  var hero = document.querySelector('.hero');
+  var win = document.querySelector('.scene--hero .mock-window');
+  if (!hero || !win || reduced || !fine) return;
+  var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, engaged = false;
+  function loop() {
+    cx += (tx - cx) * 0.09;
+    cy += (ty - cy) * 0.09;
+    win.style.transform = 'rotateY(' + (-14 + cx) + 'deg) rotateX(' + (7 + cy) + 'deg) rotateZ(1deg)';
+    if (Math.abs(tx - cx) > 0.02 || Math.abs(ty - cy) > 0.02) raf = requestAnimationFrame(loop);
+    else raf = 0;
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+  hero.addEventListener('pointermove', function (e) {
+    if (!engaged) { win.style.transition = 'none'; engaged = true; }
+    var r = hero.getBoundingClientRect();
+    var nx = (e.clientX - r.left) / r.width * 2 - 1;   // -1 .. 1
+    var ny = (e.clientY - r.top) / r.height * 2 - 1;
+    tx = nx * 8;
+    ty = -ny * 5;
+    kick();
+  });
+  hero.addEventListener('pointerleave', function () { tx = 0; ty = 0; kick(); });
+})();
 </script>
 </body>
 </html>
