@@ -371,9 +371,34 @@ code { font-family: var(--font-mono); font-size: 0.9em; background: var(--accent
 .site-footer a:hover { color: var(--text); }
 .site-footer .tagline { color: var(--muted); font-size: 0.88rem; max-width: 300px; }
 .site-footer .copyright {
-  margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border);
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);
   color: var(--muted); font-size: 0.8rem; text-align: center; font-family: var(--font-mono);
 }
+.site-footer .copyright a { color: var(--accent-dark); }
+
+/* ---------- Footer cross-promo — sibling apps ---------- */
+.other-apps { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--border); }
+.other-apps h4 {
+  margin: 0 0 14px; font-family: var(--font-mono); font-size: 0.74rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+  display: flex; align-items: center; gap: 12px;
+}
+.other-apps h4::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.other-apps__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.other-apps__card {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 14px; box-shadow: var(--shadow);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.other-apps__card:hover { transform: translateY(-3px); border-color: var(--accent); text-decoration: none; }
+.other-apps__card svg { width: 30px; height: 30px; flex: none; }
+.other-apps__card b { display: block; font-family: var(--font-display); font-size: 0.88rem; color: var(--text); letter-spacing: -0.01em; }
+.other-apps__card .desc { display: block; color: var(--muted); font-size: 0.76rem; line-height: 1.4; }
+.other-apps__note { margin: 14px 0 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-align: center; }
+
+/* the editor toolbar Help link is an <a> wearing the ebtn class */
+a.ebtn { text-decoration: none !important; }
 
 /* ---------- Tool page ---------- */
 .tool-hero { padding: 52px 0 24px; text-align: center; }

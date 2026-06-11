@@ -1,4 +1,4 @@
-/* MyFreeAudioTool — theme toggle + scroll reveal */
+/* MyFreeAudioTool — theme toggle + scroll reveal + lazy support widget */
 (function () {
   'use strict';
 
@@ -37,4 +37,22 @@
     }, { threshold: 0.12 });
     els.forEach(function (el) { io.observe(el); });
   });
+
+  // ----- Support widget (lazy, skipped in the studio where space is tight) -----
+  if (!document.querySelector('.editor-app')) {
+    var loadSupport = function () {
+      if (document.getElementById('swScript')) return;
+      var s = document.createElement('script');
+      s.id = 'swScript';
+      s.src = '/assets/js/support-widget.js';
+      s.defer = true;
+      document.body.appendChild(s);
+    };
+    var queueSupport = function () {
+      if ('requestIdleCallback' in window) requestIdleCallback(loadSupport, { timeout: 4000 });
+      else setTimeout(loadSupport, 1800);
+    };
+    if (document.readyState === 'complete') queueSupport();
+    else window.addEventListener('load', queueSupport);
+  }
 })();

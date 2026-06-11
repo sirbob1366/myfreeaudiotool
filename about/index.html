@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — MyFreeAudioTool</title>
-  <meta name="description" content="About MyFreeAudioTool: 31 free, private, browser-based audio tools. Why we built it and how everything runs on your device with zero uploads.">
+  <meta name="description" content="MyFreeAudioTool is built by Rob Sawant: 31 free, private, browser-based audio tools. No uploads, no accounts, no watermarks — files never leave your device.">
   <link rel="canonical" href="https://myfreeaudiotool.com/about/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://myfreeaudiotool.com/about/">
   <meta property="og:title" content="About — MyFreeAudioTool">
-  <meta property="og:description" content="31 free, private, browser-based audio tools. Why we built it.">
+  <meta property="og:description" content="Built by Rob Sawant: 31 free, private, browser-based audio tools. Why it exists.">
   <meta property="og:site_name" content="MyFreeAudioTool">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="About — MyFreeAudioTool">
-  <meta name="twitter:description" content="31 free, private, browser-based audio tools. Why we built it.">
+  <meta name="twitter:description" content="Built by Rob Sawant: 31 free, private, browser-based audio tools. Why it exists.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <script>(function(){try{var t=localStorage.getItem('mfat-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,6 +34,30 @@
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "description": "31 free online audio tools that run entirely in your browser. No uploads, no signup."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://myfreeaudiotool.com/about/#rob-sawant",
+        "name": "Rob Sawant",
+        "jobTitle": "Engineer & Project Manager",
+        "url": "https://myfreeaudiotool.com/about/",
+        "description": "Engineer and project manager building genuinely free, privacy-first web tools that process files entirely in the browser.",
+        "knowsAbout": ["Audio processing", "Web Audio API", "WebAssembly", "Privacy-first software", "Browser-based tools"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://myfreeaudiotool.com/#organization",
+        "name": "MyFreeAudioTool",
+        "url": "https://myfreeaudiotool.com/",
+        "logo": "https://myfreeaudiotool.com/favicon.svg",
+        "founder": { "@id": "https://myfreeaudiotool.com/about/#rob-sawant" }
+      }
+    ]
   }
   </script>
 </head>
@@ -63,24 +87,37 @@
   <div class="container container--narrow prose">
     <p class="kicker">// about</p>
     <h1>About MyFreeAudioTool</h1>
-    <p>MyFreeAudioTool is a collection of thirty-one free audio utilities that run entirely in your web browser — editing (trim, merge, silence removal, tagging), conversion, effects (EQ, reverb, vocal removal, noise reduction, 8D and 3D spatial audio, slowed + reverb), generators (test tones, noise colors, metronome) and analysis (BPM/key, chromatic tuner, spectrogram, waveform art).</p>
+    <p>Hi — I'm <strong>Rob Sawant</strong>, an engineer and project manager, and I build this site (along with its four siblings) in my spare time. It started the way most side projects do: with mild irritation. I needed to trim one audio clip, and every "free" tool I tried wanted to upload my file to a server, stamp a watermark on the export, or hide the actual feature behind a signup wall. None of that is necessary. So I built the tool I wanted — and then thirty more.</p>
 
-    <h2>Why we built it</h2>
-    <p>Most "free online audio tools" work the same way: you upload your file to their server, wait, they process it, you wait again, and then you download the result. That's slow, it caps your file size, and — more importantly — your personal recordings, voice memos and music end up on someone else's computer.</p>
-    <p>Modern browsers don't need any of that. The Web Audio API and WebAssembly are powerful enough to decode, edit and re-encode audio at full speed, locally. So that's what this site does. <strong>Your files never leave your device.</strong> There's no upload step, which also makes everything dramatically faster.</p>
+    <h2>The mission</h2>
+    <p>The same promise holds across all five of my apps: <strong>genuinely free, no accounts, no watermarks, and privacy by architecture.</strong> That last part is the one I care about most. Your recordings, voice memos and music are processed entirely in your browser using the Web Audio API and WebAssembly — there is no upload step, no server that ever receives a file, nothing for me to see or store even if I wanted to. It's not a privacy <em>policy</em>, it's a privacy <em>architecture</em>: the data path to my servers simply doesn't exist. As a bonus, skipping the upload makes everything dramatically faster too.</p>
 
-    <h2>Our principles</h2>
-    <ul>
-      <li><strong>Private by architecture.</strong> We can't see your files even if we wanted to — there's no server that receives them.</li>
-      <li><strong>Actually free.</strong> No signup, no watermark, no trial, no daily limit.</li>
-      <li><strong>Focused tools.</strong> Each page does one job and does it well, on desktop and mobile.</li>
-      <li><strong>No installs.</strong> If you have a browser, you have the tools.</li>
-    </ul>
+    <h2>What's here</h2>
+    <p>MyFreeAudioTool is thirty-one focused audio utilities plus a full <a href="/audio-editor/">multitrack studio</a> — editing (trim, merge, silence removal, tagging), conversion, effects (EQ, reverb, vocal removal, noise reduction, 8D and 3D spatial audio, slowed + reverb), generators (test tones, noise colors, metronome) and analysis (BPM/key, chromatic tuner, spectrogram, waveform art). Each page does one job well, on desktop and mobile, with nothing to install.</p>
+
+    <h2>The suite</h2>
+    <p>This site is one of five built on the same no-upload principle: <a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit</a> for PDF work, <a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool</a> for image editing, conversion and OCR, <strong>MyFreeAudioTool</strong> (you're here), <a href="https://myfreevideotool.com" rel="noopener">MyFreeVideoTool</a> for video editing, and <a href="https://myfreeinvoicetool.com" rel="noopener">MyFreeInvoiceTool</a> for invoices and billing documents. Different file types, identical deal: free, private, on-device.</p>
 
     <h2>The technology</h2>
     <p>The tools are built on the Web Audio API for decoding, editing, filtering and rendering; FFmpeg compiled to WebAssembly for format conversion, compression and extraction; the LAME encoder (also WebAssembly) for MP3 export; the MediaRecorder API for recording; and hand-rolled DSP (FFT, autocorrelation, granular synthesis) for analysis and pitch shifting. All of it runs in your browser tab and is gone when you close it.</p>
 
-    <p>Questions or ideas? <a href="/contact/">Get in touch</a> — we read everything. And if you like this site, we also make <a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit</a> and <a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool</a>, built on the same no-upload principle.</p>
+    <h2>Get in touch</h2>
+    <p>Questions, bugs, ideas for tool number thirty-two? Email me at <span id="sup-em">sawantrob [at] gmail [dot] com</span> — I read everything, usually within a day or two. The <a href="/contact/">contact page</a> lists the details that help me fix problems fastest.</p>
+    <script>
+    (function () {
+      var p = ['sawantrob', 'gmail', 'com'];
+      var addr = p[0] + '@' + p[1] + '.' + p[2];
+      var el = document.getElementById('sup-em');
+      if (!el) return;
+      var a = document.createElement('a');
+      a.href = 'mailto:' + addr + '?subject=' + encodeURIComponent('Support: MyFreeAudioTool');
+      var s = document.createElement('strong');
+      s.textContent = addr;
+      a.appendChild(s);
+      el.textContent = '';
+      el.appendChild(a);
+    })();
+    </script>
   </div>
 </main>
 
@@ -153,14 +190,31 @@
           <li><a href="/privacy/">Privacy Policy</a></li>
           <li><a href="/terms/">Terms of Service</a></li>
         </ul>
-        <h4 style="margin-top:20px">// more free tools</h4>
-        <ul>
-          <li><a href="https://myfreepdfedit.com" rel="noopener">MyFreePDFEdit — PDF tools</a></li>
-          <li><a href="https://myfreeimagetool.com" rel="noopener">MyFreeImageTool — image tools</a></li>
-        </ul>
       </div>
     </div>
-    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser.</div>
+    <div class="other-apps">
+      <h4>// try our other free apps</h4>
+      <div class="other-apps__grid">
+        <a class="other-apps__card" href="https://myfreepdfedit.com" rel="noopener">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="oa-p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#oa-p)"/><g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h14l8 8v32H22z"/><path d="M36 12v8h8"/><path d="M28 32h12M28 40h12"/></g></svg>
+          <span><b>MyFreePDFEdit</b><span class="desc">27 free PDF tools, on-device</span></span>
+        </a>
+        <a class="other-apps__card" href="https://myfreeimagetool.com" rel="noopener">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="oa-i" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#oa-i)"/><g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="16" width="36" height="32" rx="5"/><circle cx="26" cy="27" r="3.5" fill="#fff" stroke="none"/><path d="M14 42l10-9 7 6 9-10 10 11"/></g></svg>
+          <span><b>MyFreeImageTool</b><span class="desc">Image editing, conversion &amp; OCR</span></span>
+        </a>
+        <a class="other-apps__card" href="https://myfreevideotool.com" rel="noopener">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="oa-v" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#oa-v)"/><g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="18" width="38" height="28" rx="6"/><path d="M28 26l10 6-10 6z" fill="#fff" stroke-linejoin="round"/></g></svg>
+          <span><b>MyFreeVideoTool</b><span class="desc">Video editing without uploads</span></span>
+        </a>
+        <a class="other-apps__card" href="https://myfreeinvoicetool.com" rel="noopener">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="oa-n" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="url(#oa-n)"/><g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12h26v38l-5-4-5 4-5-4-5 4-6-4z"/><path d="M27 24h10M27 32h10"/></g></svg>
+          <span><b>MyFreeInvoiceTool</b><span class="desc">Invoices, GST &amp; billing documents</span></span>
+        </a>
+      </div>
+      <p class="other-apps__note">All our tools are free, private, and process files on your device.</p>
+    </div>
+    <div class="copyright">© 2026 MyFreeAudioTool.com — every byte processed locally, in your browser. · Built by <a href="/about/">Rob Sawant</a></div>
   </div>
 </footer>
 
